@@ -1496,6 +1496,55 @@ body.modal-open{ overflow:hidden; touch-action: none; }
     --dot-gap: 4px;
   }
 }
+
+@media (max-width: 768px){
+  /* Başlık */
+  .slider .slide-content h3{
+    font-size: clamp(.9rem, 3.6vw, 1.05rem);
+    line-height: 1.15;
+    margin: 0 0 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;          /* neden: uzun başlıkta taşmayı engelle */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-wrap: balance;
+  }
+
+  /* Alt metin */
+  .slider .slide-content p{
+    font-size: clamp(.8rem, 3.2vw, .9rem);
+    line-height: 1.25;
+    margin: 0;
+    opacity: .95;
+  }
+
+  /* Metin bloğu sıkılaştırma */
+  .slider .slide-content{
+    padding: 12px 12px 10px;        /* neden: görsel alanı arttır */
+    max-width: 92%;                 /* çok uzun metinlerde kırılmayı teşvik et */
+  }
+
+  /* (Varsa) Slider üzerindeki butonlar */
+  .slider .slide-content .btn,
+  .slider .slide-content a.button{
+    font-size: .85rem;
+    padding: 8px 12px;              /* neden: dokunulabilir ama kompakt */
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px){
+  .slider .slide-content h3{
+    font-size: clamp(.85rem, 4vw, 1rem);
+  }
+  .slider .slide-content p{
+    font-size: clamp(.75rem, 3.4vw, .85rem);
+  }
+  .slider .slide-content{
+    padding: 10px 10px 8px;
+    max-width: 95%;
+  }
+}
     </style>
 </head>
 
