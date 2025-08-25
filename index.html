@@ -1442,6 +1442,44 @@ body.modal-open{ overflow:hidden; touch-action: none; }
   .slide[style*="img/6.jpg"]{ background-position: 50% 35%; }
   /* gerekirse diğer img/X.jpg için benzer ayarlar */
 }
+
+@media (max-width: 768px){
+  /* Slider noktaları: daha küçük ve tabana yakın */
+  .slider-indicators{
+    bottom: 8px;             /* neden: aşağı al */
+    gap: 6px;
+    z-index: 11;             /* olası içeriklerin altında kalmasın */
+  }
+  .slider-dot{
+    width: 7px;              /* görsel boyut */
+    height: 7px;
+    padding: 10px;           /* neden: dokunma alanı >= 27px */
+    background-clip: content-box; /* padding görünümü büyütmesin */
+  }
+  .slider-dot.active{
+    transform: none;         /* mobilde orantısız büyüme olmasın */
+  }
+
+  /* (Varsa) Galeri noktaları: küçült ve daha aşağı */
+  .gallery-indicators{
+    margin-top: 12px;
+  }
+  .gallery-dot{
+    width: 8px;
+    height: 8px;
+    padding: 8px;            /* hit-area */
+    background-clip: content-box;
+  }
+}
+
+/* Çok küçük telefonlar */
+@media (max-width: 480px){
+  .slider-indicators{ bottom: 6px; gap: 5px; }
+  .slider-dot{ width: 6px; height: 6px; padding: 10px; }
+
+  .gallery-indicators{ margin-top: 10px; }
+  .gallery-dot{ width: 7px; height: 7px; padding: 8px; }
+}
     </style>
 </head>
 
