@@ -1444,41 +1444,57 @@ body.modal-open{ overflow:hidden; touch-action: none; }
 }
 
 @media (max-width: 768px){
-  /* Slider noktaları: daha küçük ve tabana yakın */
   .slider-indicators{
-    bottom: 8px;             /* neden: aşağı al */
-    gap: 6px;
-    z-index: 11;             /* olası içeriklerin altında kalmasın */
-  }
-  .slider-dot{
-    width: 7px;              /* görsel boyut */
-    height: 7px;
-    padding: 10px;           /* neden: dokunma alanı >= 27px */
-    background-clip: content-box; /* padding görünümü büyütmesin */
-  }
-  .slider-dot.active{
-    transform: none;         /* mobilde orantısız büyüme olmasın */
+    --dot-size: 4px;   /* görünür çap */
+    --dot-hit: 12px;   /* dokunma yastığı (hit-area) */
+    --dot-gap: 5px;
+    bottom: 6px;
+    gap: var(--dot-gap);
+    z-index: 11;
   }
 
-  /* (Varsa) Galeri noktaları: küçült ve daha aşağı */
-  .gallery-indicators{
-    margin-top: 12px;
-  }
-  .gallery-dot{
-    width: 8px;
-    height: 8px;
-    padding: 8px;            /* hit-area */
+  .slider-indicators .slider-dot{
+    width: var(--dot-size) !important;
+    height: var(--dot-size) !important;
+    padding: var(--dot-hit) !important;  /* neden: erişilebilir dokunma alanı */
     background-clip: content-box;
+    border-radius: 9999px;
+    transform: none !important;          /* büyütme efektlerini iptal et */
+  }
+
+  .slider-indicators .slider-dot.active{
+    box-shadow: inset 0 0 0 2px currentColor; /* halka ile vurgula */
+  }
+
+  /* (Varsa) galeri noktaları */
+  .gallery-indicators{
+    --dot-size: 4px;
+    --dot-hit: 10px;
+    --dot-gap: 5px;
+    margin-top: 8px;
+    gap: var(--dot-gap);
+  }
+  .gallery-indicators .gallery-dot{
+    width: var(--dot-size) !important;
+    height: var(--dot-size) !important;
+    padding: var(--dot-hit) !important;
+    background-clip: content-box;
+    border-radius: 9999px;
   }
 }
 
-/* Çok küçük telefonlar */
 @media (max-width: 480px){
-  .slider-indicators{ bottom: 6px; gap: 5px; }
-  .slider-dot{ width: 6px; height: 6px; padding: 10px; }
-
-  .gallery-indicators{ margin-top: 10px; }
-  .gallery-dot{ width: 7px; height: 7px; padding: 8px; }
+  .slider-indicators{
+    --dot-size: 3px;
+    --dot-hit: 12px;
+    --dot-gap: 4px;
+    bottom: 5px;
+  }
+  .gallery-indicators{
+    --dot-size: 3px;
+    --dot-hit: 10px;
+    --dot-gap: 4px;
+  }
 }
     </style>
 </head>
