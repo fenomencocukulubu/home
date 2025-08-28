@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://fenomencocukulubu.github.io/home/sitemap.xml
