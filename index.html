@@ -1536,25 +1536,25 @@ body.modal-open{ overflow:hidden; touch-action: none; }
   }
 }
 @media (max-width: 768px) {
-    .gallery-main {
-        height: 300px;  /* Reduce height on smaller screens */
-    }
+  .gallery-main {
+    width: 100% !important;      /* Tam genişlik */
+    max-width: 95% !important;   /* Kenarlarda boşluk kalsın */
+    height: auto !important;     /* Sabit yüksekliği iptal et */
+    aspect-ratio: 4 / 3;         /* Görüntü oranını koru */
+  }
 
-    .gallery-image {
-        width: 100%;
-        object-fit: cover;  /* To make sure it looks good on mobile */
-    }
+  .gallery-image {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;           /* Taşma olmadan doldur */
+  }
 }
 
-/* Mobile-specific fixes */
 @media (max-width: 480px) {
-    .gallery-main {
-        height: 200px;  /* Further reduce height on very small screens */
-    }
-
-    .gallery-image {
-        object-fit: contain;  /* Prevent image overflow */
-    }
+  .gallery-main {
+    aspect-ratio: 16 / 9;        /* Çok küçük telefonlarda yatay görünüm */
+    max-width: 100% !important;
+  }
 }
     </style>
 </head>
