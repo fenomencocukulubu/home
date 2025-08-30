@@ -1536,25 +1536,18 @@ body.modal-open{ overflow:hidden; touch-action: none; }
   }
 }
 @media (max-width: 768px) {
-  .gallery-main {
-    width: 100% !important;      /* Tam genişlik */
-    max-width: 95% !important;   /* Kenarlarda boşluk kalsın */
-    height: auto !important;     /* Sabit yüksekliği iptal et */
-    aspect-ratio: 4 / 3;         /* Görüntü oranını koru */
-  }
-
-  .gallery-image {
-    width: 100% !important;
-    height: auto !important;
-    object-fit: cover;           /* Taşma olmadan doldur */
-  }
-}
+    .gallery-main {
+        width: 100%;          /* Galeri genişliği tamamen ekran genişliğiyle uyumlu */
+        height: auto;         /* Yüksekliği otomatik yaparak orantıyı bozmadan sığmasını sağla */
+        aspect-ratio: 1 / 1;  /* Galerinin orantılı görünmesini sağla */
+        max-width: 100%;      /* Ekranın tüm genişliğini kaplasın */
+        margin: 0 auto;       /* Ortalanacak şekilde hizala */
+    }
 
 @media (max-width: 480px) {
-  .gallery-main {
-    aspect-ratio: 16 / 9;        /* Çok küçük telefonlarda yatay görünüm */
-    max-width: 100% !important;
-  }
+    .gallery-main {
+        aspect-ratio: 16 / 9;      /* Yüksekliği daha yatay yaparak mobil uyumluluğu artır */
+    }@media (max-width: 480px) {
 }
     </style>
 </head>
