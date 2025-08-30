@@ -1535,6 +1535,27 @@ body.modal-open{ overflow:hidden; touch-action: none; }
     max-width: 95%;
   }
 }
+@media (max-width: 768px) {
+    .gallery-main {
+        height: 300px;  /* Reduce height on smaller screens */
+    }
+
+    .gallery-image {
+        width: 100%;
+        object-fit: cover;  /* To make sure it looks good on mobile */
+    }
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 480px) {
+    .gallery-main {
+        height: 200px;  /* Further reduce height on very small screens */
+    }
+
+    .gallery-image {
+        object-fit: contain;  /* Prevent image overflow */
+    }
+}
     </style>
 </head>
 
