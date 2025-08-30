@@ -441,8 +441,8 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
             text-align: center;
         }
         .teacher-card .teacher-photo {
-            width: 120px;
-            height: 120px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             margin: 0 auto 16px;
             object-fit: cover;
@@ -462,20 +462,21 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
         }
         
         .gallery-main {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
+    position: relative;
+    width: 800px; 
+    height: 800px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin: 0 auto; /* Resmi ortalar */
+}
         
         .gallery-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: none;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Resmin tamamının görünmesini sağlar */
+    display: none;
+}
         
         .gallery-image.active {
             display: block;
@@ -1566,7 +1567,7 @@ body.modal-open{ overflow:hidden; touch-action: none; }
                     <a href="#yaptiklarimiz"><i class="fas fa-star"></i> Yaptıklarımız</a>
                     <a href="#programlarimiz"><i class="fas fa-graduation-cap"></i> Programlarımız</a>
                     <a href="#ogretmenlerimiz"><i class="fas fa-chalkboard-teacher"></i> Öğretmenlerimiz</a>
-                    <a href="#veli-gorusleri"><i class="fas fa-comments"></i> Veli Görüşleri</a>
+                    <a href="#veli-gorusleri"><i class="fas fa-comments"></i> Öğrenci Görüşleri</a>
                     <a href="#galerimiz"><i class="fas fa-images"></i> Galeri</a>
                     <a href="#hakkimizda"><i class="fas fa-info-circle"></i> Hakkımızda</a>
                     <a href="#iletisim"><i class="fas fa-envelope"></i> Bize Ulaşın</a>
@@ -1582,7 +1583,7 @@ body.modal-open{ overflow:hidden; touch-action: none; }
                 <a href="#yaptiklarimiz"><i class="fas fa-star"></i> Yaptıklarımız</a>
                 <a href="#programlarimiz"><i class="fas fa-graduation-cap"></i> Programlarımız</a>
                 <a href="#ogretmenlerimiz"><i class="fas fa-chalkboard-teacher"></i> Öğretmenlerimiz</a>
-                <a href="#veli-gorusleri"><i class="fas fa-comments"></i> Veli Görüşleri</a>
+                <a href="#veli-gorusleri"><i class="fas fa-comments"></i> Öğrenci Görüşleri</a>
                 <a href="#galerimiz"><i class="fas fa-images"></i> Galeri</a>
                 <a href="#hakkimizda"><i class="fas fa-info-circle"></i> Hakkımızda</a>
                 <a href="#iletisim"><i class="fas fa-envelope"></i> Bize Ulaşın</a>
@@ -2037,100 +2038,115 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 <p class="subtitle">Alanında uzman, deneyimli öğretmenlerimizle tanışın</p>
                 
                 <div class="cards-grid">
+                   <div class="card teacher-card">
+                        <img class="teacher-photo" src="" alt="Ramazan Bey">
+                        <h4>Ramazan UYSALCAN</h4>
+                        <p><strong>Yönetim Kurulu Başkanı</strong></p>
+                    </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="Cemil Bey">
+                        <img class="teacher-photo" src="img/cemil.jpg" alt="Cemil Bey">
                         <h4>Cemil KARAÇETE</h4>
                         <p><strong>MÜDÜR</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="Gülçin Hanım">
+                        <img class="teacher-photo" src="img/gülçin.jpg" alt="Gülçin Hanım">
                         <h4>Gülçin BAYSAL</h4>
                         <p><strong>Sosyal Bilgiler Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="Ferhat Bey">
+                        <img class="teacher-photo" src="img/ferhat.jpg" alt="Ferhat Bey">
                         <h4>Ferhat KARAGÖZ</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="Hüseyin Bey">
+                        <img class="teacher-photo" src="img/eda.jpg" alt="17">
+                        <h4>Eda ÇETİNKAYA</h4>
+                        <p><strong>Muhasebe</strong></p>
+                    </div>
+                    <div class="card teacher-card">
+                        <img class="teacher-photo" src="img/hüseyin.jpg" alt="Hüseyin Bey">
                         <h4>Hüseyin DAĞDELEN</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="1">
+                        <img class="teacher-photo" src="img/müşerref.jpg" alt="1">
                         <h4>Müşerref GÖKŞEN</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="2">
+                        <img class="teacher-photo" src="img/havana.jpg" alt="2">
                         <h4>Havana ALAGÖZ</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="3">
+                        <img class="teacher-photo" src="img/canan.jpg" alt="3">
                         <h4>Canan CAMUZCU</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="4">
+                        <img class="teacher-photo" src="img/mukaddes.jpg" alt="4">
                         <h4>Mukaddes YENİGÜN</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="5">
+                        <img class="teacher-photo" src="img/erdem.jpg" alt="5">
                         <h4>Erdem KURT</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="6">
+                        <img class="teacher-photo" src="img/zeynep.jpg" alt="6">
                         <h4>Zeynep GÜNGÖR</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="7">
+                        <img class="teacher-photo" src="img/şahiste.jpg" alt="7">
                         <h4>Şahiste Nur AKA</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="8">
+                        <img class="teacher-photo" src="img/büşra.jpg" alt="8">
                         <h4>Büşra Uysal REÇBER</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="9">
+                        <img class="teacher-photo" src="img/esra.jpg" alt="9">
                         <h4>Esra Nur ÖZ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="10">
+                        <img class="teacher-photo" src="img/ülker.jpg" alt="10">
                         <h4>Ülker ÇALIŞ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="11">
+                        <img class="teacher-photo" src="img/elif.jpg" alt="11">
                         <h4>Elif ALAKISA</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="12">
+                        <img class="teacher-photo" src="img/nazire.jpg" alt="16">
+                        <h4>Nazira BARAN</h4>
+                        <p><strong>Matematik Öğretmeni</strong></p>
+                    </div>
+                    <div class="card teacher-card">
+                        <img class="teacher-photo" src="img/sedef.jpg" alt="12">
                         <h4>Sedef SİVİŞLİ</h4>
                         <p><strong>İnglizce Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="13">
-                        <h4>Bayram Bey</h4>
-                        <p><strong>Din Kültürü ve Ahlak Bilgisi Öğretmeni</strong></p>
-                    </div>
-                    <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="14">
+                        <img class="teacher-photo" src="img/merve.jpg" alt="14">
                         <h4>Merve SARI</h4>
                         <p><strong>Sınıf Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="15">
+                        <img class="teacher-photo" src="img/duygu.jpg" alt="15">
                         <h4>Duygu GÜZELTAŞ</h4>
                         <p><strong>Sınıf Öğretmeni</strong></p>
+                    </div>
+                    <div class="card teacher-card">
+                        <img class="teacher-photo" src="img/deniz.jpg" alt="18">
+                        <h4>Kader Deniz SARI</h4>
+                        <p><strong>Rehber Öğretmen</strong></p>
                     </div>
                 </div>
             </div>
@@ -2139,8 +2155,8 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
         <!-- Parent Testimonials Section -->
         <section class="section parent-testimonials" id="veli-gorusleri">
             <div class="container">
-                <h2 class="title fire-text">👨‍👩‍👧‍👦 Veli Görüşleri</h2>
-                <p class="subtitle">Değerli velilerimizin deneyimlerini ve başarı hikayelerini sizinle paylaşıyoruz</p>
+                <h2 class="title fire-text">👨‍👩‍👧‍👦 Öğrenci Görüşleri</h2>
+                <p class="subtitle">Değerli öğrencilerimizin deneyimlerini ve başarı hikayelerini sizinle paylaşıyoruz</p>
                 
                 <!-- Statistics -->
                 <div class="success-stats">
@@ -2149,19 +2165,19 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <div class="stat-label">% Memnuniyet</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">150</div>
+                        <div class="stat-number">800</div>
                         <div class="stat-label">Mutlu Öğrenci</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">90</div>
+                        <div class="stat-number">92</div>
                         <div class="stat-label">% LGS Başarı</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">4</div>
+                        <div class="stat-number">15</div>
                         <div class="stat-label">Yıllık Deneyim</div>
                     </div>
                 </div>
-                
+                <!-- 
                 <div class="testimonials-grid">
                 <div class="testimonial-card video-testimonial" data-testimonial="1">
                         <div class="testimonial-header">
@@ -2190,66 +2206,11 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                             <span class="testimonial-date">Mayıs 2024</span>
                         </div>
                         </div>
-                    <div class="testimonial-card" data-testimonial="2">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="testimonial-info">
-                                <h4>Mehmet Yılmaz</h4>
-                                <span>7. Sınıf Velisi - LGS Hazırlık</span>
-                            </div>
-                            <div class="success-badge">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-preview">
-                            <p>"Kızım burada özgüvenini buldu. LGS'ye hazırlanırken hiç stres yaşamadık. Hedeflediği liseye girdi!"</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="testimonial-date">Şubat 2024</span>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card featured-testimonial" data-testimonial="3">
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="testimonial-info">
-                                <h4>Fatma Özkan</h4>
-                                <span>6. Sınıf Velisi - Fen Bilimleri</span>
-                            </div>
-                           <div class="success-badge">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-preview">
-                            <p>"Sadece not artışı değil, çocuğumuzun öğrenmeye olan ilgisi de arttı. Fen bilimlerini artık seviyor!"</p>
-                        </div>
-                        <div class="testimonial-footer">
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="testimonial-date">Mart 2024</span>
-                    </div>
-                    </div>
                 </div>
-                
+                -->
                 <div class="testimonial-cta">
                     <button class="cta-button secondary" onclick="window.open('https://www.instagram.com/fenomencocukkulubu/', '_blank')">
-                        <i class="fab fa-instagram"></i> Daha Fazla Görüş
+                        <i class="fab fa-instagram"></i> Öğrenci Görüşleri
                     </button>
                 </div>
             </div>
@@ -2263,12 +2224,10 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 
                 <div class="gallery-container">
                     <div class="gallery-main">
-                        <img class="gallery-image active" src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=400&fit=crop" alt="Galeri Resmi 1">
-                        <img class="gallery-image" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=400&fit=crop" alt="Galeri Resmi 2">
-                        <img class="gallery-image" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&h=400&fit=crop" alt="Galeri Resmi 3">
-                        <img class="gallery-image" src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=800&h=400&fit=crop" alt="Galeri Resmi 4">
-                        <img class="gallery-image" src="https://images.unsplash.com/photo-1581726690015-c9861c2d3456?w=800&h=400&fit=crop" alt="Galeri Resmi 5">
-                        <img class="gallery-image" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=400&fit=crop" alt="Galeri Resmi 6">
+                        <img class="gallery-image active" src="img/matzum.jpg" alt="Galeri Resmi 1">
+                        <img class="gallery-image" src="img/fenzum.jpg" alt="Galeri Resmi 2">
+                        <img class="gallery-image" src="img/turkcezum.jpg" alt="Galeri Resmi 3">
+                        <img class="gallery-image" src="img/Sosveingzum.jpg" alt="Galeri Resmi 4">
                         
                         <button class="gallery-nav gallery-prev">
                             <i class="fas fa-chevron-left"></i>
@@ -2280,8 +2239,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                     
                     <div class="gallery-indicators">
                         <span class="gallery-dot active"></span>
-                        <span class="gallery-dot"></span>
-                        <span class="gallery-dot"></span>
                         <span class="gallery-dot"></span>
                         <span class="gallery-dot"></span>
                         <span class="gallery-dot"></span>
