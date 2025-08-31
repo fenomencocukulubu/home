@@ -2053,7 +2053,7 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 
                 <div class="cards-grid">
                    <div class="card teacher-card">
-                        <img class="teacher-photo" src="" alt="Ramazan Bey">
+                        <img class="teacher-photo" src="img/ramazan.jpg" alt="Ramazan Bey">
                         <h4>Ramazan UYSALCAN</h4>
                         <p><strong>Yönetim Kurulu Başkanı</strong></p>
                     </div>
@@ -2161,6 +2161,11 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <img class="teacher-photo" src="img/deniz.jpg" alt="18">
                         <h4>Kader Deniz SARI</h4>
                         <p><strong>Rehber Öğretmen</strong></p>
+                    </div>
+                    <div class="card teacher-card">
+                        <img class="teacher-photo" src="img/fatos.jpg" alt="18">
+                        <h4>Fatoş KARAÇETE</h4>
+                        <p><strong>Personel</strong></p>
                     </div>
                 </div>
             </div>
@@ -3867,6 +3872,27 @@ const content = rawEl ? rawEl.innerHTML : 'Daha fazla bilgi için bizimle ileti�
   document.querySelectorAll('.modal').forEach(wireModal);
 })();
 </script>
+<style>
+  /* /index.html — Slider → Duyurular arası boşluğu ZORLA kısalt */
 
+/* 1) Temiz zorunlu override'lar */
+.slider-container{
+  margin-bottom: 18px !important;          /* neden: slider kendi altındaki 40px'i ezer */
+}
+main > .section:first-of-type{
+  padding-bottom: 16px !important;         /* neden: ilk section'ın 60px alt boşluğu */
+}
+#duyurular{
+  padding-top: 28px !important;            /* başlığı slider’a iyice yaklaştır */
+}
+
+/* 3) Mobilde daha da sıkı istersen */
+@media (max-width: 768px){
+  .slider-container{ margin-bottom: 8px !important; }
+  main > .section:first-of-type{ padding-bottom: 8px !important; }
+  #duyurular{ margin-top: -18px !important; padding-top: 8px !important; }
+}
+
+</style>
 </body>
 </html>
