@@ -493,19 +493,59 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
         
         .teacher-card {
             text-align: center;
+            overflow: visible;
+            z-index: 1;
         }
-        .teacher-card .teacher-photo {
-            width: 300px;
-            height: 300px;
+        .teacher-card:hover {
+            z-index: 6;
+        }
+        .teacher-photo-frame {
+            width: min(300px, 78vw);
+            aspect-ratio: 1 / 1;
             border-radius: 50%;
             margin: 0 auto 16px;
-            object-fit: cover;
+            overflow: hidden;
             border: 4px solid rgba(255,255,255,.3);
-            transition: all .3s ease;
+            background: rgba(255,255,255,.28);
+            box-shadow: 0 12px 26px rgba(15,23,42,.14);
+            transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+        }
+        .teacher-card .teacher-photo {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 34%;
+            border-radius: 0;
+            margin: 0;
+            border: 0;
+            filter: contrast(1.06) saturate(1.04) brightness(1.01);
+            image-rendering: auto;
+            backface-visibility: hidden;
+            transform: translate3d(0,0,0) scale(1);
+            transform-origin: 50% 24%;
+            will-change: transform, filter, object-position;
+            transition: transform .45s cubic-bezier(.2,.75,.2,1),
+                        object-position .45s cubic-bezier(.2,.75,.2,1),
+                        filter .35s ease;
+        }
+        .teacher-card:hover .teacher-photo-frame {
+            border-color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 42px rgba(15,23,42,.22), 0 0 0 6px rgba(249,115,22,.14);
         }
         .teacher-card:hover .teacher-photo {
-            border-color: #fff;
-            transform: scale(1.05);
+            object-position: 50% 18%;
+            transform: translate3d(0,-10px,0) scale(1.24);
+            filter: contrast(1.18) saturate(1.10) brightness(1.04);
+        }
+
+        @media (hover: none) {
+            .teacher-card:active .teacher-photo {
+                object-position: 50% 18%;
+                transform: translate3d(0,-8px,0) scale(1.16);
+                filter: contrast(1.14) saturate(1.08) brightness(1.03);
+            }
         }
 
         
@@ -2630,107 +2670,149 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 
                 <div class="cards-grid">
                    <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/ramazan.jpg" alt="Ramazan Bey">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/ramazan.jpg" alt="Ramazan Bey">
+                        </div>
                         <h4>Ramazan UYSALCAN</h4>
                         <p><strong>Yönetim Kurulu Başkanı</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/cemil.jpg" alt="Cemil Bey">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/cemil.jpg" alt="Cemil Bey">
+                        </div>
                         <h4>Cemil KARAÇETE</h4>
                         <p><strong>MÜDÜR</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/gülçin.jpg" alt="Gülçin Hanım">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/gülçin.jpg" alt="Gülçin Hanım">
+                        </div>
                         <h4>Gülçin BAYSAL</h4>
                         <p><strong>Sosyal Bilgiler Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/ferhat.jpg" alt="Ferhat Bey">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/ferhat.jpg" alt="Ferhat Bey">
+                        </div>
                         <h4>Ferhat KARAGÖZ</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/eda.jpg" alt="17">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/eda.jpg" alt="17">
+                        </div>
                         <h4>Eda ÇETİNKAYA</h4>
                         <p><strong>Muhasebe</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/hüseyin.jpg" alt="Hüseyin Bey">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/hüseyin.jpg" alt="Hüseyin Bey">
+                        </div>
                         <h4>Hüseyin DAĞDELEN</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/müşerref.jpg" alt="1">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/müşerref.jpg" alt="1">
+                        </div>
                         <h4>Müşerref GÖKŞEN</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/havana.jpg" alt="2">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/havana.jpg" alt="2">
+                        </div>
                         <h4>Havana ALAGÖZ</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/canan.jpg" alt="3">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/canan.jpg" alt="3">
+                        </div>
                         <h4>Canan CAMUZCU</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/mukaddes.jpg" alt="4">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/mukaddes.jpg" alt="4">
+                        </div>
                         <h4>Mukaddes YENİGÜN</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/erdem.jpg" alt="5">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/erdem.jpg" alt="5">
+                        </div>
                         <h4>Erdem KURT</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/zeynep.jpg" alt="6">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/zeynep.jpg" alt="6">
+                        </div>
                         <h4>Zeynep GÜNGÖR</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/şahiste.jpg" alt="7">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/şahiste.jpg" alt="7">
+                        </div>
                         <h4>Şahiste Nur AKA</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/büşra.jpg" alt="8">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/büşra.jpg" alt="8">
+                        </div>
                         <h4>Büşra Uysal REÇBER</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/esra.jpg" alt="9">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/esra.jpg" alt="9">
+                        </div>
                         <h4>Esra Nur ÖZ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/ülker.jpg" alt="10">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/ülker.jpg" alt="10">
+                        </div>
                         <h4>Ülker ÇALIŞ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
 <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/nazire.jpg" alt="16">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/nazire.jpg" alt="16">
+                        </div>
                         <h4>Nazira BARAN</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/sedef.jpg" alt="12">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/sedef.jpg" alt="12">
+                        </div>
                         <h4>Sedef SİVİŞLİ</h4>
                         <p><strong>İnglizce Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/merve.jpg" alt="14">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/merve.jpg" alt="14">
+                        </div>
                         <h4>Merve SARI</h4>
                         <p><strong>Sınıf Öğretmeni</strong></p>
                     </div>
 <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/deniz.jpg" alt="18">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/deniz.jpg" alt="18">
+                        </div>
                         <h4>Kader Deniz SARI</h4>
                         <p><strong>Rehber Öğretmen</strong></p>
                     </div>
                     <div class="card teacher-card">
-                        <img class="teacher-photo" src="img/fatos.jpg" alt="18">
+                        <div class="teacher-photo-frame">
+                            <img class="teacher-photo" src="img/fatos.jpg" alt="18">
+                        </div>
                         <h4>Fatoş KARAÇETE</h4>
                         <p><strong>Personel</strong></p>
                     </div>
@@ -4973,7 +5055,9 @@ main > .section:first-of-type{
     if (!grid) return;
     grid.innerHTML = (section.items || []).filter(t => t.enabled !== false).map(t => `
       <div class="card teacher-card">
-        <img class="teacher-photo" src="${esc(normalizeImagePath(t.image?.src))}" alt="${esc(t.image?.alt || t.name || '')}">
+        <div class="teacher-photo-frame">
+            <img class="teacher-photo" src="${esc(normalizeImagePath(t.image?.src))}" alt="${esc(t.image?.alt || t.name || '')}">
+        </div>
         <h4>${esc(t.name || '')}</h4>
         <p><strong>${esc(t.role || '')}</strong></p>
         ${t.descriptionHtml ? `<p>${t.descriptionHtml}</p>` : ""}
