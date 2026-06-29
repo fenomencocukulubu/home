@@ -1816,7 +1816,7 @@ body.swal2-height-auto{ height:100% !important; }
    2026 Tema Güncellemesi (turuncu ana renk korunarak)
    - Daha ilgi çekici, açık tonlu arka plan + yumuşak geçişler
    - Kenarlarda hareketli emoji alanı
-   - IntersectionObserver ile header küçülme ve saydamlık ayarı
+   - Scroll ile header küçülme ve saydamlık ayarı
    ================================================================================= */
 
 :root{
@@ -1874,7 +1874,7 @@ html::before{
   background-repeat: repeat;
 }
 
-/* Bölüm görünürlüğüne göre arka plan tonu (hafif) */
+/* Scroll ile arka plan tonu (hafif) */
 body[data-stage="1"]{ filter: none; }
 
 /* Tonlar: aşağı indikçe farklı bir palet hissi */
@@ -1938,7 +1938,7 @@ a{ color: inherit; }
   font-size: 1.25rem !important;
 }
 
-/* ---- Header görünürlük eşiği geçilince daha fazla küçülsün + %50 saydamlık ---- */
+/* ---- Scroll'da header daha fazla küçülsün + %50 saydamlık ---- */
 .header.is-scrolled .nav{ padding: 6px 0 !important; }
 .header.is-scrolled .brand img{
   width: 64px !important;
@@ -3733,41 +3733,19 @@ function closeModal(options = {}) {
             if (e.key === 'Escape') closeModal();
         }
         
-        // Testimonial kartları için gecikmesiz ve dinamik başlatma
-        const testimonialCardSelector = '.testimonial-card';
-
-        function initTestimonialCards(rootNode = document) {
-            const scope = rootNode.nodeType === 1 ? rootNode : document;
-            const cards = [];
-
-            if (scope.matches?.(testimonialCardSelector)) {
-                cards.push(scope);
-            }
-
-            scope.querySelectorAll?.(testimonialCardSelector).forEach(card => {
-                cards.push(card);
+        // Testimonial kartları için event listener
+        setTimeout(() => {
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const testimonialId = this.dataset.testimonial;
+                    const data = testimonialData[testimonialId];
+                    
+                    if (data) {
+                        createTestimonialModal(data);
+                    }
+                });
             });
-
-            cards.forEach(card => {
-                card.style.cursor = 'pointer';
-            });
-        }
-
-        document.addEventListener('click', function(e) {
-            const card = e.target.closest(testimonialCardSelector);
-            if (!card) return;
-            if (e.target.closest('a, button, input, select, textarea, label')) return;
-
-            const testimonialId = card.dataset.testimonial;
-            const data = testimonialData[testimonialId];
-
-            if (data) {
-                e.preventDefault();
-                createTestimonialModal(data);
-            }
-        });
-
-        initTestimonialCards();
+        }, 1000);
         
         // ==================== WHATSAPP FUNCTIONALITY ====================
         let whatsappFormVisible = false;
@@ -4134,55 +4112,22 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
             'Akademik Başarı': 'https://www.instagram.com/fenomencocukkulubu?utm_source=ig_web_button_share_sheet&igsh=dmZ2MHY4cjBodWhh'
         };
         
-        const modalCardSelector = '.card:not(.testimonial-card):not(.contact-card):not(.no-modal):not(.teacher-card)';
-
-        function initCardModalTriggers(rootNode = document) {
-            const scope = rootNode.nodeType === 1 ? rootNode : document;
-            const cards = [];
-
-            if (scope.matches?.(modalCardSelector)) {
-                cards.push(scope);
-            }
-
-            scope.querySelectorAll?.(modalCardSelector).forEach(card => {
-                cards.push(card);
-            });
-
-            cards.forEach(card => {
-                card.style.cursor = 'pointer';
-            });
-        }
-
-        document.addEventListener('click', function(e) {
-            const card = e.target.closest(modalCardSelector);
-            if (!card) return;
-            if (e.target.closest('a, button, input, select, textarea, label')) return;
-
-            e.preventDefault();
-
-            const title = card.querySelector('h3, h4, .card-title')?.textContent || 'Detay';
-            const rawEl = card.querySelector('.card-description') || card.querySelector('p');
-            const content = rawEl ? rawEl.innerHTML : 'Daha fazla bilgi için bizimle iletişime geçin.';
-            const image = card.querySelector('img')?.src || '';
-            const linkUrl = cardLinks[title.trim()] || '';
-
-            createCardModal(title, content, image, linkUrl);
-        });
-
-        initCardModalTriggers();
-
-        if (window.MutationObserver) {
-            const modalCardObserver = new MutationObserver(mutations => {
-                for (const mutation of mutations) {
-                    mutation.addedNodes.forEach(node => {
-                        if (node.nodeType !== 1) return;
-                        initTestimonialCards(node);
-                        initCardModalTriggers(node);
+        setTimeout(() => {
+            document.querySelectorAll('.card:not(.testimonial-card):not(.contact-card):not(.no-modal):not(.teacher-card)').forEach(card => {
+                if (!card.dataset.modalAdded) {
+                    card.style.cursor = 'pointer';
+                    card.dataset.modalAdded = 'true';
+                    card.addEventListener('click', function() {
+                        const title = this.querySelector('h3, h4, .card-title')?.textContent || 'Detay';
+const rawEl   = this.querySelector('.card-description') || this.querySelector('p');
+const content = rawEl ? rawEl.innerHTML : 'Daha fazla bilgi için bizimle iletişime geçin.';
+                        const image = this.querySelector('img')?.src || '';
+                        const linkUrl = cardLinks[title.trim()] || '';
+                        createCardModal(title, content, image, linkUrl);
                     });
                 }
             });
-            modalCardObserver.observe(document.body, { childList: true, subtree: true });
-        }
+        }, 1000);
         
         // ==================== SMOOTH SCROLLING (HEADER OFFSET) ====================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -4213,18 +4158,21 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
         window.addEventListener('resize', handleResize);
         
         
-        // ==================== HEADER SHRINK + BÖLÜM TEMASI + EMOJI ALANI ====================
+        // ==================== HEADER SHRINK + SCROLL TEMASI + EMOJI ALANI ====================
         (function setupHeaderAndEmoji(){
             const header = document.querySelector('.header');
             const root = document.documentElement;
             const body = document.body;
             const emojiField = document.getElementById('emojiField');
 
+            const reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+
             function updateHeaderOffset(){
                 if(!header) return;
                 const h = header.offsetHeight || 80;
                 // body padding-top için: biraz nefes payı
-                root.style.setProperty('--header-offset', (h + 10) + 'px');
+                document.documentElement.style.setProperty('--header-offset', (h + 10) + 'px');
             }
 
             const STAGES = [
@@ -4236,7 +4184,6 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
 
             let stage = -1;
             let sprites = [];
-            let stageTargets = [];
 
             const rand = (min, max) => (Math.random() * (max - min)) + min;
             const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
@@ -4247,12 +4194,11 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
                 sprites = [];
 
                 const count = window.innerWidth < 768 ? 7 : 14;
-                const activeSet = (STAGES[stage] && STAGES[stage].emojis) ? STAGES[stage].emojis : STAGES[0].emojis;
 
                 for(let i=0;i<count;i++){
                     const el = document.createElement('span');
                     el.className = 'emoji-sprite';
-                    el.textContent = pick(activeSet);
+                    el.textContent = pick(STAGES[0].emojis);
 
                     const side = (i % 2 === 0) ? 'left' : 'right';
                     const x = (side === 'left') ? rand(2, 12) : rand(88, 98);
@@ -4268,7 +4214,6 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
                     el.style.setProperty('--dur', dur + 's');
                     el.style.setProperty('--delay', delay + 's');
                     el.style.setProperty('--s', scale);
-                    el.style.setProperty('--py', '0px');
 
                     emojiField.appendChild(el);
                     sprites.push(el);
@@ -4276,9 +4221,8 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
             }
 
             function setStage(next){
-                const safeNext = Number.isInteger(next) && STAGES[next] ? next : 0;
-                if(safeNext === stage) return;
-                stage = safeNext;
+                if(next === stage) return;
+                stage = next;
 
                 body.dataset.stage = String(stage + 1);
 
@@ -4286,125 +4230,44 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
                 sprites.forEach(el => { el.textContent = pick(set); });
             }
 
-            function collectStageTargets(){
-                const groups = [
-                    { stage: 0, selectors: ['main > .section:first-of-type'] },
-                    { stage: 1, selectors: ['#duyurular', '#yaptiklarimiz'] },
-                    { stage: 2, selectors: ['#programlarimiz', '#ogretmenlerimiz', '#veli-gorusleri'] },
-                    { stage: 3, selectors: ['#galerimiz', '#hakkimizda', '#iletisim', 'footer'] }
-                ];
+            let ticking = false;
+            function onScroll(){
+                if(ticking) return;
+                ticking = true;
 
-                stageTargets = groups.flatMap(group =>
-                    group.selectors
-                        .map(selector => document.querySelector(selector))
-                        .filter(Boolean)
-                        .map(el => {
-                            el.dataset.emojiStage = String(group.stage);
-                            return el;
-                        })
-                );
-            }
-
-            function updateStageFromViewport(){
-                if(!stageTargets.length) {
-                    setStage(0);
-                    return;
-                }
-
-                const pivot = (window.innerHeight || 1) * 0.42;
-                let active = stageTargets[0];
-
-                for(const el of stageTargets){
-                    const rect = el.getBoundingClientRect();
-                    if(rect.top <= pivot && rect.bottom >= pivot){
-                        active = el;
-                        break;
-                    }
-                    if(rect.top <= pivot){
-                        active = el;
-                    }
-                }
-
-                setStage(Number(active.dataset.emojiStage || 0));
-            }
-
-            function setupHeaderShrinkObserver(){
-                if(!header || !('IntersectionObserver' in window)) return false;
-
-                const sentinel = document.createElement('span');
-                sentinel.className = 'header-scroll-sentinel';
-                sentinel.setAttribute('aria-hidden', 'true');
-                sentinel.style.cssText = 'position:absolute;top:12px;left:0;width:1px;height:1px;pointer-events:none;opacity:0;';
-                body.prepend(sentinel);
-
-                const observer = new IntersectionObserver(([entry]) => {
-                    const shouldShrink = !entry.isIntersecting;
-                    header.classList.toggle('is-scrolled', shouldShrink);
-                    updateHeaderOffset();
-                }, { threshold: 0 });
-
-                observer.observe(sentinel);
-                return true;
-            }
-
-            function setupStageObserver(){
-                if(!('IntersectionObserver' in window)) return false;
-
-                const observer = new IntersectionObserver(() => {
-                    updateStageFromViewport();
-                }, {
-                    root: null,
-                    rootMargin: '-30% 0px -45% 0px',
-                    threshold: [0, 0.01, 0.25, 0.5, 0.75, 1]
-                });
-
-                stageTargets.forEach(el => observer.observe(el));
-                return true;
-            }
-
-            function fallbackWithRaf(){
-                let ticking = false;
-                const update = () => {
+                requestAnimationFrame(() => {
                     ticking = false;
+
                     const y = window.scrollY || root.scrollTop || 0;
-                    if(header) header.classList.toggle('is-scrolled', y > 12);
-                    updateStageFromViewport();
-                    updateHeaderOffset();
-                };
 
-                window.addEventListener('scroll', () => {
-                    if(ticking) return;
-                    ticking = true;
-                    requestAnimationFrame(update);
-                }, { passive:true });
+                    if(header){
+                        header.classList.toggle('is-scrolled', y > 12);
+                    }
 
-                update();
+                    const docH = Math.max(body.scrollHeight, root.scrollHeight);
+                    const winH = window.innerHeight || 1;
+                    const p = (docH <= winH) ? 0 : Math.min(0.999, y / (docH - winH));
+
+                    const nextStage = (p < 0.25) ? 0 : (p < 0.50) ? 1 : (p < 0.75) ? 2 : 3;
+                    setStage(nextStage);
+
+                    // Scroll ile emoji hareketini "hissettir" (hafif parallax)
+                    if(!reduceMotion){
+                        const shift = (y * 0.02);
+                        sprites.forEach((el, idx) => {
+                            const extra = ((idx % 2 === 0) ? 1 : -1) * (shift % 30);
+                            el.style.setProperty('--py', extra.toFixed(2) + 'px');
+                        });
+                    }
+                });
             }
 
             buildSprites();
             setStage(0);
-            collectStageTargets();
-
-            const headerObserverReady = setupHeaderShrinkObserver();
-            const stageObserverReady = setupStageObserver();
-
-            if(!headerObserverReady || !stageObserverReady){
-                fallbackWithRaf();
-            } else {
-                updateStageFromViewport();
-            }
-
-            if(window.ResizeObserver && header){
-                new ResizeObserver(updateHeaderOffset).observe(header);
-            }
-
-            window.addEventListener('resize', () => {
-                buildSprites();
-                updateHeaderOffset();
-                updateStageFromViewport();
-            }, { passive:true });
-
+            window.addEventListener('scroll', onScroll, { passive:true });
+            window.addEventListener('resize', () => { buildSprites(); updateHeaderOffset(); onScroll(); }, { passive:true });
             updateHeaderOffset();
+            onScroll();
         })();
 
 console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!');
