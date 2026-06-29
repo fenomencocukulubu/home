@@ -1138,28 +1138,36 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
             box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
         }
 
-       /* --------- Modern Modal System (v2) --------- */
+       /* --------- Modern Modal System (v3 - mobil sabit) --------- */
 :root{
   --modal-radius: 24px;
   --modal-max-w: 920px;
   --modal-shadow: 0 24px 60px rgba(0,0,0,.35);
   --modal-gap: clamp(10px, 2.5vw, 22px);
   --modal-visual-height: 100dvh;
+  --modal-visual-width: 100vw;
+  --modal-vv-top: 0px;
+  --modal-vv-left: 0px;
 }
 
 .modal{
   position: fixed;
-  inset: 0;
+  top: var(--modal-vv-top, 0px);
+  left: var(--modal-vv-left, 0px);
+  width: var(--modal-visual-width, 100vw);
+  height: var(--modal-visual-height, 100dvh);
   display: none;
-  z-index: 1000;
+  z-index: 200000;
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity .22s ease;
   overflow: hidden;
   overscroll-behavior: contain;
+  pointer-events: none;
 }
 .modal.active{
   display: block !important;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-overlay{
@@ -1170,17 +1178,22 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   padding: max(var(--modal-gap), env(safe-area-inset-top))
            var(--modal-gap)
            max(var(--modal-gap), env(safe-area-inset-bottom));
-  overflow: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: manipulation;
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   background: radial-gradient(1200px 800px at 15% -10%, rgba(255,255,255,.10), transparent 60%),
               radial-gradient(900px 700px at 90% 110%, rgba(255,255,255,.08), transparent 60%),
-              rgba(0,0,0,.45);
+              rgba(0,0,0,.48);
 }
 
 .modal-container{
   position: relative;
+  z-index: 1;
   width: min(var(--modal-max-w), calc(100vw - (var(--modal-gap) * 2)));
+  max-width: calc(var(--modal-visual-width, 100vw) - (var(--modal-gap) * 2));
   max-height: calc(var(--modal-visual-height) - (var(--modal-gap) * 2) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   min-height: 0;
   display: flex;
@@ -1190,12 +1203,12 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   background: color-mix(in oklab, #fff 92%, var(--primary-2) 8%);
   box-shadow: var(--modal-shadow);
   border: 1px solid rgba(0,0,0,.06);
-  transform: scale(.96);
+  transform: translate3d(0, 10px, 0) scale(.985);
   opacity: 0;
-  transition: transform .28s cubic-bezier(.2,.7,.2,1), opacity .28s ease;
+  transition: transform .24s cubic-bezier(.2,.7,.2,1), opacity .22s ease;
 }
 .modal.active .modal-container{
-  transform: scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
   opacity: 1;
 }
 
@@ -1206,7 +1219,8 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 18px 70px 18px 22px;
+  min-height: 64px;
+  padding: 16px 70px 16px 22px;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
   color: #fff;
 }
@@ -1264,7 +1278,6 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   cursor:pointer;
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:8px;
   transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
 }
@@ -1274,7 +1287,7 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
 .modal-action-btn:hover{ transform: translateY(-1px); }
 
 .modal--media .modal-container{
-  width: min(1100px, calc(100vw - (var(--modal-gap) * 2)));
+  width: min(1100px, calc(var(--modal-visual-width, 100vw) - (var(--modal-gap) * 2)));
   background: #0b0b0b;
   color:#e5e7eb;
 }
@@ -1291,7 +1304,7 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   display:block;
   width:auto;
   height:auto;
-  max-width:100%;
+  max-width:min(96vw, 1080px);
   max-height:calc(var(--modal-visual-height) - 150px);
   object-fit:contain;
   image-rendering:auto;
@@ -1301,8 +1314,12 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
 .modal-media img.is-actual{ max-width:none; max-height:none; }
 .modal-media .zoom-hint{ margin-top:8px; font-size:.85rem; opacity:.75; }
 
+html.modal-open-root,
 body.modal-open{
-  overflow:hidden;
+  overflow:hidden !important;
+  overscroll-behavior: none;
+}
+body.modal-open{
   width:100%;
 }
 
@@ -1313,10 +1330,10 @@ body.modal-open{
 @media (max-width: 768px){
   :root{ --modal-radius: 18px; --modal-gap: 12px; }
   .modal-container{
-    width: calc(100vw - 24px);
+    width: calc(var(--modal-visual-width, 100vw) - 24px);
     max-height: calc(var(--modal-visual-height) - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   }
-  .modal-header{ padding: 12px 58px 12px 14px; }
+  .modal-header{ min-height: 60px; padding: 12px 58px 12px 14px; }
   .modal-body{ padding: 14px; }
   .modal-footer{ padding: 12px 14px; flex-wrap: wrap; }
   .modal-footer .modal-action-btn,
@@ -1331,9 +1348,10 @@ body.modal-open{
 @media (max-width: 480px){
   :root{ --modal-gap: 10px; }
   .modal-container{
-    width: calc(100vw - 20px);
+    width: calc(var(--modal-visual-width, 100vw) - 20px);
     border-radius: 16px;
   }
+  .modal-header{ min-height: 58px; }
   .modal-header h3{ font-size:.98rem; }
   .modal-body{ font-size:.95rem; }
   .modal-image{ max-height:min(30dvh, 240px); }
@@ -1341,7 +1359,7 @@ body.modal-open{
 
 /* SweetAlert2: mobilde gövde yüksekliği ve scrollbar düzeltmesi */
 body.swal2-height-auto{ height:100% !important; }
-.swal2-container{ padding:max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)) !important; }
+.swal2-container{ z-index:300000 !important; padding:max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)) !important; }
 .swal2-popup{ width:min(32em, calc(100vw - 24px)) !important; }
 .swal2-html-container{ max-height:calc(var(--modal-visual-height) - 220px); overflow:auto; -webkit-overflow-scrolling:touch; }
 
@@ -1352,7 +1370,7 @@ body.swal2-height-auto{ height:100% !important; }
             width: 100%;
             min-height: 100vh;
             min-height: 100dvh;
-            z-index: 1001;
+            z-index: 200100;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -3521,11 +3539,20 @@ if (menuBtn) menuBtn.addEventListener('click', toggleMobileMenu);
         let modalScrollY = 0;
 
         function updateModalViewportHeight(){
-            const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-            document.documentElement.style.setProperty('--modal-visual-height', `${Math.max(320, Math.round(vh))}px`);
+            const vv = window.visualViewport;
+            const height = vv ? vv.height : window.innerHeight;
+            const width = vv ? vv.width : window.innerWidth;
+            const top = vv ? vv.offsetTop : 0;
+            const left = vv ? vv.offsetLeft : 0;
+            const rootStyle = document.documentElement.style;
+            rootStyle.setProperty('--modal-visual-height', `${Math.max(320, Math.round(height))}px`);
+            rootStyle.setProperty('--modal-visual-width', `${Math.max(280, Math.round(width))}px`);
+            rootStyle.setProperty('--modal-vv-top', `${Math.round(top)}px`);
+            rootStyle.setProperty('--modal-vv-left', `${Math.round(left)}px`);
         }
         updateModalViewportHeight();
         window.addEventListener('resize', updateModalViewportHeight, { passive: true });
+        window.addEventListener('orientationchange', () => setTimeout(updateModalViewportHeight, 120), { passive: true });
         if (window.visualViewport) {
             window.visualViewport.addEventListener('resize', updateModalViewportHeight, { passive: true });
             window.visualViewport.addEventListener('scroll', updateModalViewportHeight, { passive: true });
@@ -3536,27 +3563,32 @@ if (menuBtn) menuBtn.addEventListener('click', toggleMobileMenu);
             if (document.body.classList.contains('modal-open')) return;
             modalScrollY = window.scrollY || document.documentElement.scrollTop || 0;
             document.body.dataset.modalScrollY = String(modalScrollY);
+            document.documentElement.classList.add('modal-open-root');
             document.body.classList.add('modal-open');
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${modalScrollY}px`;
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
+            document.documentElement.style.overflow = 'hidden';
             document.body.style.overflow = 'hidden';
-        }
-
-        function unlockPageScrollIfNoModal(){
-            if (document.querySelector('.modal.active, .whatsapp-form-modal.active, .uvm-overlay')) return;
-            const y = Math.abs(parseInt(document.body.dataset.modalScrollY || String(modalScrollY || 0), 10)) || 0;
-            document.body.classList.remove('modal-open');
+            document.body.style.width = '100%';
+            /* Mobilde modalın yukarı kaymasına yol açan eski kilidi sıfırla. */
             document.body.style.position = '';
             document.body.style.top = '';
             document.body.style.left = '';
             document.body.style.right = '';
-            document.body.style.width = '';
+        }
+
+        function unlockPageScrollIfNoModal(){
+            if (document.querySelector('.modal.active, .whatsapp-form-modal.active, .uvm-overlay, .fenomen-admin-panel.is-open')) return;
+            const y = parseInt(document.body.dataset.modalScrollY || String(modalScrollY || 0), 10) || 0;
+            document.documentElement.classList.remove('modal-open-root');
+            document.body.classList.remove('modal-open');
+            document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
+            document.body.style.width = '';
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
             delete document.body.dataset.modalScrollY;
-            if (y) window.scrollTo(0, y);
+            if (Math.abs((window.scrollY || 0) - y) > 2) window.scrollTo(0, y);
         }
 
         window.lockPageScroll = lockPageScroll;
@@ -3647,19 +3679,22 @@ function createTestimonialModal(data) {
 
 // === Global kapatma (aynı isim) ===
 function closeModal(options = {}) {
-  const modal = window.currentModal || document.querySelector('.modal.active');
+  const modal = options.modal || window.currentModal || document.querySelector('.modal.active');
   if (!modal) return;
 
   const overlay = modal.querySelector('.modal-overlay');
   if (modal._trapHandler) modal.removeEventListener('keydown', modal._trapHandler);
-  if (overlay && modal._overlayHandler) overlay.removeEventListener('click', modal._overlayHandler);
+  if (overlay && modal._overlayClickHandler) overlay.removeEventListener('click', modal._overlayClickHandler);
+  if (overlay && modal._overlayPointerHandler) overlay.removeEventListener('pointerup', modal._overlayPointerHandler);
   if (modal._resizeHandler) window.removeEventListener('resize', modal._resizeHandler);
+  if (modal._orientationHandler) window.removeEventListener('orientationchange', modal._orientationHandler);
   if (modal._visualResizeHandler && window.visualViewport) {
     window.visualViewport.removeEventListener('resize', modal._visualResizeHandler);
     window.visualViewport.removeEventListener('scroll', modal._visualResizeHandler);
   }
 
   modal.classList.remove('active');
+  modal.setAttribute('aria-hidden', 'true');
 
   const removeModal = () => {
     if (document.body.contains(modal)) modal.remove();
@@ -3844,19 +3879,22 @@ Bu mesaj website iletişim formu aracılığıyla gönderilmiştir.`;
             openWhatsApp(whatsappMessage);
             closeWhatsAppForm();
         }
-        // === Global açma (yeni, isim: openModal) ===
+        // === Global açma (tek modal yöneticisi) ===
 window.openModal = function(modalElement) {
   if (!modalElement) return;
 
   if (window.currentModal && window.currentModal !== modalElement && document.body.contains(window.currentModal)) {
-    closeModal({ immediate: true });
+    closeModal({ immediate: true, modal: window.currentModal });
   }
+  document.querySelectorAll('.modal.active').forEach(openModalEl => {
+    if (openModalEl !== modalElement) closeModal({ immediate: true, modal: openModalEl });
+  });
 
   if (!modalElement.parentNode) document.body.appendChild(modalElement);
 
   window.currentModal = modalElement;
+  modalElement.setAttribute('aria-hidden', 'false');
   lockPageScroll();
-  requestAnimationFrame(() => modalElement.classList.add('active'));
 
   const overlay = modalElement.querySelector('.modal-overlay');
   const container = modalElement.querySelector('.modal-container') || modalElement;
@@ -3865,28 +3903,52 @@ window.openModal = function(modalElement) {
   const focusSel = `a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])`;
   const getFocusables = () => [...modalElement.querySelectorAll(focusSel)].filter(el => !el.disabled && el.offsetParent !== null);
 
-  setTimeout(() => {
+  function focusFirst(){
     const focusables = getFocusables();
     (focusables[0] || container).focus({ preventScroll: true });
-  }, 40);
+  }
 
   function trap(e){
-    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Escape') { closeModal({ modal: modalElement }); return; }
     if (e.key !== 'Tab') return;
     const focusables = getFocusables();
     if (!focusables.length) { e.preventDefault(); container.focus({ preventScroll: true }); return; }
     const first = focusables[0];
     const last  = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus({ preventScroll: true }); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus({ preventScroll: true }); }
   }
   modalElement._trapHandler = trap;
   modalElement.addEventListener('keydown', trap);
 
-  modalElement._overlayHandler = (e) => { if (e.target === overlay) closeModal(); };
-  if (overlay) overlay.addEventListener('click', modalElement._overlayHandler);
+  let overlayDownStarted = false;
+  modalElement._overlayPointerHandler = (e) => {
+    if (e.target === overlay) {
+      if (e.type === 'pointerdown') overlayDownStarted = true;
+      if (e.type === 'pointerup' && overlayDownStarted) {
+        overlayDownStarted = false;
+        closeModal({ modal: modalElement });
+      }
+    } else {
+      overlayDownStarted = false;
+    }
+  };
+  modalElement._overlayClickHandler = (e) => {
+    if (e.target === overlay) closeModal({ modal: modalElement });
+  };
+  if (overlay) {
+    overlay.addEventListener('pointerdown', modalElement._overlayPointerHandler, { passive: true });
+    overlay.addEventListener('pointerup', modalElement._overlayPointerHandler, { passive: true });
+    overlay.addEventListener('click', modalElement._overlayClickHandler);
+  }
 
-  modalElement.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeModal, { once: false }));
+  modalElement.querySelectorAll('.modal-close').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeModal({ modal: modalElement });
+    }, { once: false });
+  });
 
   const fitImages = () => {
     updateModalViewportHeight();
@@ -3907,20 +3969,30 @@ window.openModal = function(modalElement) {
       else img.style.maxHeight = maxImgH + 'px';
     });
 
-    if (body) body.scrollTop = 0;
+    if (body && !modalElement.dataset.bodyResetDone) {
+      body.scrollTop = 0;
+      modalElement.dataset.bodyResetDone = '1';
+    }
   };
 
   modalElement.querySelectorAll('.modal-image, .modal-media img').forEach(img => {
     img.addEventListener('load', fitImages, { once:true });
   });
   modalElement._resizeHandler = fitImages;
+  modalElement._orientationHandler = () => setTimeout(fitImages, 120);
   modalElement._visualResizeHandler = fitImages;
   window.addEventListener('resize', fitImages, { passive:true });
+  window.addEventListener('orientationchange', modalElement._orientationHandler, { passive:true });
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', fitImages, { passive:true });
     window.visualViewport.addEventListener('scroll', fitImages, { passive:true });
   }
-  setTimeout(fitImages, 60);
+
+  requestAnimationFrame(() => {
+    updateModalViewportHeight();
+    modalElement.classList.add('active');
+    setTimeout(() => { fitImages(); focusFirst(); }, 50);
+  });
 };
 
         function validatePhoneNumber(phone) {
@@ -4222,7 +4294,7 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
 
 .modal-close{
   /* konum */
-  position: absolute; top: 10px; right: 10px;
+  position: absolute; top: 50%; right: 12px; transform: translateY(-50%);
 
   /* dokunma alanı (Apple/Material önerisi ≥44px) */
   width: 44px; height: 44px;
@@ -4255,11 +4327,11 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
 /* Hover/active – dönme YOK */
 .modal-close:hover{
   background: rgba(255,255,255,.22);
-  transform: scale(1.06);
+  transform: translateY(-50%) scale(1.06);
   box-shadow: 0 10px 26px rgba(0,0,0,.28);
 }
 .modal-close:active{
-  transform: scale(.96);
+  transform: translateY(-50%) scale(.96);
   box-shadow: 0 4px 12px rgba(0,0,0,.20);
 }
 
@@ -4568,7 +4640,7 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
     o.setAttribute('role','dialog');
     o.setAttribute('aria-modal','true');
     o.setAttribute('aria-label','Video');
-    o.style.cssText = 'position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center';
+    o.style.cssText = 'position:fixed;inset:0;z-index:200200;display:flex;align-items:center;justify-content:center';
 
     o.innerHTML = `
       <div class="uvm-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,.8)"></div>
@@ -4716,21 +4788,21 @@ main > .section:first-of-type{
   .slider{ width: calc(var(--slide-count, 6) * 100%) !important; }
   .slide{ min-width: calc(100% / var(--slide-count, 6)) !important; }
   .fenomen-admin-trigger{
-    position:fixed; right:14px; top:calc(12px + env(safe-area-inset-top)); z-index:100000;
+    position:absolute; right:14px; top:calc(12px + env(safe-area-inset-top)); z-index:100000;
     width:42px; height:42px; border-radius:999px; border:1px solid rgba(255,255,255,.45);
     background:linear-gradient(135deg,#f97316,#fb923c); color:#fff; box-shadow:0 14px 30px rgba(15,23,42,.25);
     cursor:pointer; display:grid; place-items:center; opacity:.62; transition:.2s ease; font-size:16px;
   }
   .fenomen-admin-trigger:hover{ opacity:1; transform:translateY(-1px) scale(1.04); }
   .fenomen-admin-panel{
-    position:fixed; inset:0; z-index:100001;
+    position:fixed; inset:0; z-index:300000;
     background:radial-gradient(900px 520px at 10% 0%, rgba(249,115,22,.24), transparent 58%), rgba(15,23,42,.76);
     backdrop-filter:blur(12px) saturate(130%);
     display:none; padding:18px; color:#111827;
   }
   .fenomen-admin-panel.is-open{ display:grid; place-items:center; }
   .fenomen-admin-dialog{
-    width:min(1260px, 98vw); max-height:94vh; background:#fff; border-radius:24px; overflow:hidden;
+    width:min(1260px, 98vw); max-height:calc(var(--modal-visual-height, 100dvh) - 24px); background:#fff; border-radius:24px; overflow:hidden;
     box-shadow:0 30px 90px rgba(0,0,0,.42); display:grid; grid-template-rows:auto auto 1fr auto;
     border:1px solid rgba(255,255,255,.32);
   }
@@ -5286,6 +5358,7 @@ main > .section:first-of-type{
   }
   function openAdmin(){
     adminOpen = true;
+    if (window.lockPageScroll) window.lockPageScroll();
     editorData = clone(siteData);
     const panel = document.getElementById('fenomenAdminPanel');
     panel.classList.add('is-open'); panel.setAttribute('aria-hidden','false');
@@ -5295,6 +5368,7 @@ main > .section:first-of-type{
     adminOpen = false;
     const panel = document.getElementById('fenomenAdminPanel');
     panel.classList.remove('is-open'); panel.setAttribute('aria-hidden','true');
+    if (window.unlockPageScrollIfNoModal) window.unlockPageScrollIfNoModal();
   }
   function renderTabs(){
     const tabsEl = document.getElementById('fenomenAdminTabs');
