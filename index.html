@@ -3697,13 +3697,21 @@ function closeModal(options = {}) {
   modal.setAttribute('aria-hidden', 'true');
 
   const removeModal = () => {
+    // Video/iframe içeren modallarda sesin arkada kalmasını ve kapanış sonrası scroll zıplamasını önle.
+    modal.querySelectorAll('video').forEach(v => {
+      try { v.pause(); v.removeAttribute('src'); v.load(); } catch (e) {}
+    });
+    modal.querySelectorAll('iframe').forEach(f => {
+      try { f.src = 'about:blank'; } catch (e) {}
+    });
+
     if (document.body.contains(modal)) modal.remove();
     if (window.currentModal === modal) window.currentModal = null;
+    // Modal artık DOM'dan çıktığı için scroll anında geri verilir; sayfanın önce yukarı gidip sonra aşağı kayması engellenir.
     unlockPageScrollIfNoModal();
   };
 
-  if (options.immediate) removeModal();
-  else setTimeout(removeModal, 220);
+  removeModal();
 }
         
         function handleEscapeKey(e) {
@@ -4090,7 +4098,7 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
         };
         
         setTimeout(() => {
-            document.querySelectorAll('.card:not(.testimonial-card):not(.contact-card):not(.no-modal)').forEach(card => {
+            document.querySelectorAll('.card:not(.testimonial-card):not(.contact-card):not(.no-modal):not(.teacher-card)').forEach(card => {
                 if (!card.dataset.modalAdded) {
                     card.style.cursor = 'pointer';
                     card.dataset.modalAdded = 'true';
@@ -4591,30 +4599,94 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
   box-shadow:0 6px 20px rgba(0,0,0,.25) !important;
 }
 </style>
+<style id="fenomen-final-modal-hotfix">
+/* Final mobil/video/öğretmen düzeltmeleri */
+.teacher-card{
+  cursor:default !important;
+  user-select:none;
+}
+.teacher-card *{
+  pointer-events:none; /* öğretmen kartında modal/link tetiklenmesini engeller */
+}
+.teacher-card .teacher-photo-frame,
+.teacher-card .teacher-photo{
+  pointer-events:none;
+}
+@media (hover:none){
+  .teacher-card:active .teacher-photo-frame{
+    transform:translateY(-4px);
+    border-color:#fff;
+    box-shadow:0 18px 38px rgba(15,23,42,.22), 0 0 0 6px rgba(249,115,22,.14);
+  }
+}
+.modal--video .modal-container{
+  width:min(960px, calc(var(--modal-visual-width, 100vw) - (var(--modal-gap) * 2)));
+  background:#050505;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.12);
+}
+.modal--video .modal-header{
+  min-height:54px;
+  background:linear-gradient(135deg,#0f172a,#1f2937);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.modal--video .modal-body{
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#000;
+}
+.modal-video-frame{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  max-height:calc(var(--modal-visual-height, 100dvh) - 96px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  background:#000;
+}
+.modal-video-frame iframe,
+.modal-video-frame video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  object-fit:contain;
+  background:#000;
+}
+@media (max-width:768px){
+  .modal--video .modal-container{
+    width:calc(var(--modal-visual-width, 100vw) - 20px);
+    max-height:calc(var(--modal-visual-height, 100dvh) - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  .modal--video .modal-header{
+    min-height:52px;
+    padding:10px 56px 10px 14px;
+  }
+  .modal-video-frame{
+    max-height:calc(var(--modal-visual-height, 100dvh) - 82px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+}
+</style>
 <script>
 /* ==== Birleşik Video Modal (Universal + Veli Rozeti) ==== */
 (function () {
   if (window.__UVM_MERGED__) return; window.__UVM_MERGED__ = 1;
 
-  /* --- 0) Veli isimleri için video URL haritası (yalnızca rozet tetikleyicisi için) --- */
   const VIDEO_SOURCES = {
-    "Zeynep Aktaş": "video/1.mp4"   // kökten yol vermek 404 riskini azaltır
-    // "Başka Veli": "video/baska.mp4",
+    "Zeynep Aktaş": "video/1.mp4"
   };
 
-  /* --- Yardımcılar --- */
-  const toSlug = (s) => (s||"").toLowerCase().trim()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
-    .replace(/ğ/g,"g").replace(/ü/g,"u").replace(/ş/g,"s")
-    .replace(/ı/g,"i").replace(/ö/g,"o").replace(/ç/g,"c")
-    .replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+  const toSlug = (s) => (s || "").toLowerCase().trim()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+    .replace(/ı/g, "i").replace(/ö/g, "o").replace(/ç/g, "c")
+    .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   function toEmbed(url){
     try{
       const u = new URL(url, location.href);
-      const h = u.hostname.replace(/^www\./,'');
-      if (h.includes('youtube.com') || h==='youtu.be') {
-        const id = h==='youtu.be' ? u.pathname.slice(1) : (u.searchParams.get('v') || u.pathname.split('/').pop());
+      const h = u.hostname.replace(/^www\./, '');
+      if (h.includes('youtube.com') || h === 'youtu.be') {
+        const id = h === 'youtu.be' ? u.pathname.slice(1) : (u.searchParams.get('v') || u.pathname.split('/').pop());
         return { type:'iframe', src:`https://www.youtube.com/embed/${id}` };
       }
       if (h.includes('vimeo.com')) {
@@ -4623,108 +4695,78 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
       }
       if (/\.(mp4|webm|ogg)(\?|$)/i.test(u.pathname)) return { type:'video', src:u.href };
       if (/\/embed\//.test(u.pathname)) return { type:'iframe', src:u.href };
-    } catch(e){}
+    } catch(e) {}
     return null;
   }
 
-  /* --- 1) Tek modal oluşturucu --- */
   function openVideo(url, openerEl){
-    // ZATEN açıkken yenisini açma (çift modalı engeller)
-    if (document.querySelector('.uvm-overlay')) return;
+    if (document.querySelector('.modal--video.active')) return;
 
     const info = toEmbed(url);
     if (!info) { alert('Video açılamadı. URL’i kontrol edin.'); return; }
 
-    const o = document.createElement('div');
-    o.className = 'uvm-overlay';
-    o.setAttribute('role','dialog');
-    o.setAttribute('aria-modal','true');
-    o.setAttribute('aria-label','Video');
-    o.style.cssText = 'position:fixed;inset:0;z-index:200200;display:flex;align-items:center;justify-content:center';
+    const modal = document.createElement('div');
+    modal.className = 'modal modal--video';
+    modal.setAttribute('aria-hidden', 'true');
 
-    o.innerHTML = `
-      <div class="uvm-backdrop" style="position:absolute;inset:0;background:rgba(0,0,0,.8)"></div>
-      <div class="uvm-dialog" style="position:relative;width:min(92vw,900px);">
-        <button class="uvm-close" aria-label="Kapat"
-          style="position:absolute;right:8px;top:8px;width:40px;height:40px;border:0;border-radius:50%;
-                 background:#fff;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;
-                 box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:2">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <div class="uvm-box" style="position:relative;padding-top:56.25%;background:#000;border-radius:10px;overflow:hidden"></div>
+    const mediaHtml = info.type === 'iframe'
+      ? `<iframe src="${info.src}${info.src.includes('?') ? '&' : '?'}autoplay=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Video"></iframe>`
+      : `<video src="${info.src}" controls autoplay playsinline preload="metadata"></video>`;
+
+    modal.innerHTML = `
+      <div class="modal-overlay">
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+          <div class="modal-header">
+            <h3 id="videoModalTitle"><i class="fas fa-play-circle"></i> Video</h3>
+            <button class="modal-close modal-close--contrast" type="button" aria-label="Kapat"></button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-video-frame">${mediaHtml}</div>
+          </div>
+        </div>
       </div>`;
 
-    const box = o.querySelector('.uvm-box');
-    if (info.type === 'iframe') {
-      const sep = info.src.includes('?') ? '&' : '?';
-      box.innerHTML = `<iframe src="${info.src}${sep}autoplay=1"
-        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-        style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>`;
-    } else {
-      box.innerHTML = `<video src="${info.src}" controls autoplay playsinline
-        style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000"></video>`;
+    modal.addEventListener('click', (e) => {
+      if (e.target.closest('video, iframe')) e.stopPropagation();
+    }, true);
+
+    const restoreFocus = () => {
+      try { openerEl?.focus?.({ preventScroll:true }); } catch(e) {}
+    };
+    const oldClose = window.closeModal;
+    if (typeof oldClose === 'function') {
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setTimeout(restoreFocus, 0);
+      });
     }
 
-    function stopAll(ev){
-      if (!ev) return;
-      ev.preventDefault();
-      ev.stopPropagation();
-      if (ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-    }
-    function close(ev){
-      stopAll(ev);
-      const f = box.querySelector('iframe');
-      const v = box.querySelector('video');
-      if (f) f.src = 'about:blank';
-      if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
-      o.remove();
-      window.unlockPageScrollIfNoModal ? window.unlockPageScrollIfNoModal() : (document.body.style.overflow = '');
-      openerEl && openerEl.focus && openerEl.focus();
-      // altta açık başka modal varsa istersen kapat:
-      // document.querySelector('.modal.active .modal-close, .modal.show .btn-close')?.click();
-    }
-
-    // İlk tıkta kapanması için capture fazında dinle
-    ['mousedown','mouseup','click'].forEach(evt=>{
-      o.querySelector('.uvm-close').addEventListener(evt, close, { capture:true });
-      o.querySelector('.uvm-backdrop').addEventListener(evt, close, { capture:true });
-    });
-    document.addEventListener('keydown', function esc(e){
-      if (e.key === 'Escape') { close(e); document.removeEventListener('keydown', esc); }
-    }, { capture:true });
-
-    document.body.appendChild(o);
-    window.lockPageScroll ? window.lockPageScroll() : (document.body.style.overflow = 'hidden');
+    window.openModal ? window.openModal(modal) : document.body.appendChild(modal);
+    setTimeout(() => {
+      try { modal.querySelector('video')?.play?.().catch?.(()=>{}); } catch(e) {}
+    }, 80);
   }
 
-  // Programatik API
   window.VideoModal = { open: openVideo };
 
-  /* --- 2) [data-video] olan her şeyi modalda aç (site geneli) --- */
-  function onDataVideoClick(e){
+  document.addEventListener('click', function onDataVideoClick(e){
     const el = e.target.closest('[data-video]');
     if (!el) return;
     const url = el.dataset.video || el.getAttribute('href');
     if (!url) return;
     e.preventDefault();
+    e.stopPropagation();
+    if (e.stopImmediatePropagation) e.stopImmediatePropagation();
     openVideo(url, el);
-  }
-  document.addEventListener('click', onDataVideoClick, true); // capture yeterli
+  }, true);
 
-  /* --- 3) Veli modalındaki "Video" rozetini bağla --- */
   const wired = new WeakSet();
-
   function findVideoBadge(modal){
     const header = modal.querySelector('.modal-header');
     if (!header) return null;
     const icon = header.querySelector('i[class*="fa-play"]');
-    if (icon) return icon.closest('div');
-    // “Video” yazısını taşıyan elemanı da yakala (div/button/span/a)
-    const cand = Array.from(header.querySelectorAll('div,button,span,a'))
-      .find(el => /video/i.test((el.textContent||'').trim()));
-    return cand || null;
+    if (icon) return icon.closest('div,button,span,a');
+    return Array.from(header.querySelectorAll('div,button,span,a'))
+      .find(el => /video/i.test((el.textContent || '').trim())) || null;
   }
 
   function wireModal(modal){
@@ -4732,35 +4774,32 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
     const badge = findVideoBadge(modal);
     if (!badge) return;
     const name = modal.querySelector('.modal-header h3')?.textContent.trim() || '';
-    const url  = VIDEO_SOURCES[name] || VIDEO_SOURCES[toSlug(name)];
+    const url = VIDEO_SOURCES[name] || VIDEO_SOURCES[toSlug(name)];
     if (!url) return;
 
     badge.style.cursor = 'pointer';
-    badge.setAttribute('role','link');
-    badge.setAttribute('tabindex','0');
-    badge.setAttribute('aria-label','Videoyu aç');
+    badge.setAttribute('role', 'link');
+    badge.setAttribute('tabindex', '0');
+    badge.setAttribute('aria-label', 'Videoyu aç');
 
-    const open = (ev)=>{ ev.preventDefault(); openVideo(url, badge); };
+    const open = (ev) => { ev.preventDefault(); ev.stopPropagation(); openVideo(url, badge); };
     badge.addEventListener('click', open);
-    badge.addEventListener('keydown', (e)=>{ if (e.key==='Enter'||e.key===' ') open(e); });
+    badge.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') open(e); });
     wired.add(modal);
   }
 
-  // Modal DOM'a eklendiğinde otomatik bağla
-  const mo = new MutationObserver(muts=>{
-    for (const m of muts){
-      m.addedNodes && m.addedNodes.forEach(n=>{
-        if (n.nodeType!==1) return;
+  const mo = new MutationObserver(muts => {
+    for (const m of muts) {
+      m.addedNodes && m.addedNodes.forEach(n => {
+        if (n.nodeType !== 1) return;
         if (n.matches?.('.modal')) wireModal(n);
         n.querySelectorAll?.('.modal')?.forEach(wireModal);
       });
     }
   });
   mo.observe(document.body, { childList:true, subtree:true });
-  // sayfada zaten açık modal varsa hemen bağla
   document.querySelectorAll('.modal').forEach(wireModal);
-})();
-</script>
+})();</script>
 <style>
   /* /index.html — Slider → Duyurular arası boşluğu ZORLA kısalt */
 
@@ -4788,12 +4827,21 @@ main > .section:first-of-type{
   .slider{ width: calc(var(--slide-count, 6) * 100%) !important; }
   .slide{ min-width: calc(100% / var(--slide-count, 6)) !important; }
   .fenomen-admin-trigger{
-    position:absolute; right:14px; top:calc(12px + env(safe-area-inset-top)); z-index:100000;
+    /* Sayfanın en üstüne bağlıdır; sticky/fixed header ile beraber aşağı gelmez. */
+    position:absolute !important;
+    right:14px !important;
+    top:calc(12px + env(safe-area-inset-top)) !important;
+    z-index:100000;
     width:42px; height:42px; border-radius:999px; border:1px solid rgba(255,255,255,.45);
     background:linear-gradient(135deg,#f97316,#fb923c); color:#fff; box-shadow:0 14px 30px rgba(15,23,42,.25);
     cursor:pointer; display:grid; place-items:center; opacity:.62; transition:.2s ease; font-size:16px;
   }
   .fenomen-admin-trigger:hover{ opacity:1; transform:translateY(-1px) scale(1.04); }
+  .fenomen-admin-trigger.is-away{
+    opacity:0 !important;
+    pointer-events:none !important;
+    transform:translateY(-10px) scale(.94) !important;
+  }
   .fenomen-admin-panel{
     position:fixed; inset:0; z-index:300000;
     background:radial-gradient(900px 520px at 10% 0%, rgba(249,115,22,.24), transparent 58%), rgba(15,23,42,.76);
@@ -5324,6 +5372,14 @@ main > .section:first-of-type{
         </div>
       </div>`);
     document.getElementById('fenomenAdminTrigger').addEventListener('click', openAdminGate);
+    const adminTrigger = document.getElementById('fenomenAdminTrigger');
+    const syncAdminTriggerPosition = () => {
+      if (!adminTrigger) return;
+      adminTrigger.classList.toggle('is-away', (window.scrollY || document.documentElement.scrollTop || 0) > 80);
+    };
+    window.addEventListener('scroll', syncAdminTriggerPosition, { passive:true });
+    window.addEventListener('resize', syncAdminTriggerPosition, { passive:true });
+    syncAdminTriggerPosition();
     document.querySelector('[data-admin-close]').addEventListener('click', closeAdmin);
     document.querySelector('[data-admin-save]').addEventListener('click', saveActiveTab);
     document.querySelector('[data-admin-reset-tab]').addEventListener('click', resetActiveTab);
