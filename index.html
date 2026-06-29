@@ -3306,7 +3306,24 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
             const barText = loader?.querySelector('.progress-text');
             const fireText = document.getElementById('fireText');
 
-            if (!loader || !barFill || !barText) return;
+            let loadingFinished = false;
+            const finishLoading = () => {
+                if (loadingFinished) return;
+                loadingFinished = true;
+
+                if (loader) {
+                    loader.style.display = 'none';
+                    loader.removeEventListener('transitionend', finishLoading);
+                }
+
+                document.body.classList.add('loading-complete');
+                document.dispatchEvent(new CustomEvent('fenomen:loading-complete'));
+            };
+
+            if (!loader || !barFill || !barText) {
+                finishLoading();
+                return;
+            }
 
             let val = 0;
             let fireShown = false;
@@ -3329,13 +3346,8 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                     clearInterval(timer);
                     loader.style.transition = 'opacity 0.4s ease';
                     loader.style.opacity = '0';
-
-                    const done = () => {
-                        loader.style.display = 'none';
-                        loader.removeEventListener('transitionend', done);
-                    };
-                    loader.addEventListener('transitionend', done);
-                    setTimeout(done, 1000);
+                    loader.addEventListener('transitionend', finishLoading);
+                    setTimeout(finishLoading, 1000);
                 }
             }, STEP_MS);
         }
@@ -4830,18 +4842,27 @@ main > .section:first-of-type{
   .slider{ width: calc(var(--slide-count, 6) * 100%) !important; }
   .slide{ min-width: calc(100% / var(--slide-count, 6)) !important; }
   .fenomen-admin-trigger{
-    /* Sayfanın en üstüne bağlıdır; sticky/fixed header ile beraber aşağı gelmez. */
+    /* Loading bitmeden görünmez; loading tamamlanınca body.loading-complete ile aktifleşir. */
     position:absolute !important;
     right:14px !important;
     top:calc(12px + env(safe-area-inset-top)) !important;
     z-index:100000;
     width:42px; height:42px; border-radius:999px; border:1px solid rgba(255,255,255,.45);
     background:linear-gradient(135deg,#f97316,#fb923c); color:#fff; box-shadow:0 14px 30px rgba(15,23,42,.25);
-    cursor:pointer; display:grid; place-items:center; opacity:.62; transition:.2s ease; font-size:16px;
+    cursor:pointer; display:grid; place-items:center; opacity:0; visibility:hidden; pointer-events:none;
+    transform:translateY(-8px) scale(.94); transition:opacity .22s ease, visibility .22s ease, transform .22s ease; font-size:16px;
   }
-  .fenomen-admin-trigger:hover{ opacity:1; transform:translateY(-1px) scale(1.04); }
+  body.loading-complete .fenomen-admin-trigger{
+    opacity:.62;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+  }
+  body.loading-complete .fenomen-admin-trigger:hover{ opacity:1; transform:translateY(-1px) scale(1.04); }
+  body.loading-complete .fenomen-admin-trigger.is-away,
   .fenomen-admin-trigger.is-away{
     opacity:0 !important;
+    visibility:hidden !important;
     pointer-events:none !important;
     transform:translateY(-10px) scale(.94) !important;
   }
