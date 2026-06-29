@@ -1140,103 +1140,132 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
 
        /* --------- Modern Modal System (v2) --------- */
 :root{
-  /* mevcut değişkenlere sadık */
   --modal-radius: 24px;
   --modal-max-w: 920px;
-  --modal-max-h: 85vh;
   --modal-shadow: 0 24px 60px rgba(0,0,0,.35);
+  --modal-gap: clamp(10px, 2.5vw, 22px);
+  --modal-visual-height: 100dvh;
 }
 
-/* container yerine tüm modalı grid ile ortala */
 .modal{
   position: fixed;
   inset: 0;
-  display: none;              /* .active ile görünür olacak */
-  place-items: center;        /* tam ortalama */
+  display: none;
   z-index: 1000;
-  padding: 20px;
   opacity: 0;
   transition: opacity .25s ease;
+  overflow: hidden;
   overscroll-behavior: contain;
 }
-.modal.active{ display: grid; opacity: 1; }
+.modal.active{
+  display: block !important;
+  opacity: 1;
+}
 
-/* arka plan: blur + koyu cam */
 .modal-overlay{
   position: absolute;
   inset: 0;
+  display: grid !important;
+  place-items: center !important;
+  padding: max(var(--modal-gap), env(safe-area-inset-top))
+           var(--modal-gap)
+           max(var(--modal-gap), env(safe-area-inset-bottom));
+  overflow: hidden;
   backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   background: radial-gradient(1200px 800px at 15% -10%, rgba(255,255,255,.10), transparent 60%),
               radial-gradient(900px 700px at 90% 110%, rgba(255,255,255,.08), transparent 60%),
               rgba(0,0,0,.45);
 }
 
-/* kart */
 .modal-container{
-  will-change: transform, opacity;
   position: relative;
-  width: min(var(--modal-max-w), 92vw);
-  max-height: var(--modal-max-h);
+  width: min(var(--modal-max-w), calc(100vw - (var(--modal-gap) * 2)));
+  max-height: calc(var(--modal-visual-height) - (var(--modal-gap) * 2) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;           /* başlık/altlık sabit, içerik kayar */
+  overflow: hidden;
   border-radius: var(--modal-radius);
   background: color-mix(in oklab, #fff 92%, var(--primary-2) 8%);
   box-shadow: var(--modal-shadow);
-  transform: translateY(12px) scale(.98);
-  transition: transform .28s cubic-bezier(.2,.7,.2,1);
   border: 1px solid rgba(0,0,0,.06);
-}
-.modal.active .modal-container{ transform: translateY(0) scale(1); }
-.modal.active { display: grid !important; place-items: center !important; }
-
-.modal-overlay{
-  display: grid !important;       /* container overlay içinde ortalansın */
-  place-items: center !important;
-  padding: 20px;                   /* kenarlara yapışmasın */
-}
-
-/* animasyon: sadece scale + fade, kaydırma yok */
-.modal-container{
-  transform: scale(.92) !important;
-  opacity: 0 !important;
-  transition: transform .28s cubic-bezier(.2,.7,.2,1), opacity .28s ease !important;
+  transform: scale(.96);
+  opacity: 0;
+  transition: transform .28s cubic-bezier(.2,.7,.2,1), opacity .28s ease;
 }
 .modal.active .modal-container{
-  transform: scale(1) !important;
-  opacity: 1 !important;
+  transform: scale(1);
+  opacity: 1;
 }
-/* header */
+
 .modal-header{
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 22px;
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 70px 18px 22px;
   background: linear-gradient(135deg, var(--primary), var(--primary-2));
   color: #fff;
 }
 .modal-header h3{
-  margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing:.2px;
+  margin: 0;
+  font-size: clamp(1rem, 2.6vw, 1.15rem);
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing:.2px;
+  overflow-wrap: anywhere;
 }
 
-/* içerik */
 .modal-body{
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 20px 22px;
-  overflow: auto;             /* uzun içerik için */
-  color:#111827; line-height:1.6;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color:#111827;
+  line-height:1.6;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
+.modal-body img,
+.modal-image{
+  display:block;
+  max-width:100%;
+  width:auto;
+  height:auto;
+  max-height:min(42dvh, 420px);
+  object-fit:contain;
+  margin:0 auto 16px;
+  border-radius:14px;
+}
+.modal-content{ overflow-wrap:anywhere; }
 
-/* altlık */
 .modal-footer{
-  display:flex; gap:12px; justify-content:flex-end; align-items:center;
+  flex: 0 0 auto;
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+  align-items:center;
   padding: 14px 22px;
   background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.04));
   border-top: 1px solid rgba(0,0,0,.06);
 }
 
-/* eylem butonları */
 .modal-action-btn{
-  padding: 10px 16px; border-radius: 12px; border:0;
-  font-weight: 700; cursor:pointer; display:flex; align-items:center; gap:8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border:0;
+  font-weight: 700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
   transition: transform .15s ease, box-shadow .2s ease, opacity .2s ease;
 }
 .modal-action-btn:focus-visible{ outline: 3px solid color-mix(in oklab, var(--primary) 30%, white); outline-offset: 2px; }
@@ -1244,10 +1273,10 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
 .modal-link-btn{ background: linear-gradient(135deg, #3B82F6, #1D4ED8); color:#fff; }
 .modal-action-btn:hover{ transform: translateY(-1px); }
 
-/* --- Görsel odaklı modal (resimler) --- */
 .modal--media .modal-container{
-  width: min(1100px, 96vw);
-  background: #0b0b0b; color:#e5e7eb; /* koyu arka plan fotoyu öne çıkarır */
+  width: min(1100px, calc(100vw - (var(--modal-gap) * 2)));
+  background: #0b0b0b;
+  color:#e5e7eb;
 }
 .modal--media .modal-header{
   background: linear-gradient(135deg, #0f172a, #1f2937);
@@ -1257,61 +1286,77 @@ main   { padding-bottom: env(safe-area-inset-bottom); }
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.06));
   border-top-color: rgba(255,255,255,.08);
 }
-
-/* görsel kutusu */
-.modal-media{
-  display:grid; place-items:center;
-  padding: 12px 12px 0 12px;
-}
+.modal-media{ display:grid; place-items:center; padding: 12px 12px 0; }
 .modal-media img{
   display:block;
-  width: auto;
-  height: auto;
-  max-width: min(96vw, 1080px);            /* piksel büyütmeyi sınırlıyoruz */
-  max-height: calc(var(--modal-max-h) - 120px);
-  object-fit: contain;                      /* KIRPMAYI önler, tamamını gösterir */
-  image-rendering: auto;                    /* tarayıcıya bırak, yumuşatma sağlanır */
-  -ms-interpolation-mode: bicubic;          /* IE kalıntısı ama zararsız */
-  backface-visibility: hidden;              /* GPU katmanı ile keskinlik */
-  transform: translateZ(0);                 /* bazı tarayıcıda bulanıklığı azaltır */
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:calc(var(--modal-visual-height) - 150px);
+  object-fit:contain;
+  image-rendering:auto;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+}
+.modal-media img.is-actual{ max-width:none; max-height:none; }
+.modal-media .zoom-hint{ margin-top:8px; font-size:.85rem; opacity:.75; }
+
+body.modal-open{
+  overflow:hidden;
+  width:100%;
 }
 
-/* 1:1 görünümde (gerçek piksel) */
-.modal-media img.is-actual{
-  max-width: none; max-height: none;
-}
-
-/* zoom ipucu */
-.modal-media .zoom-hint{
-  margin-top: 8px; font-size:.85rem; opacity:.75;
-}
-
-/* sayfa kaydırmayı kilitle */
-body.modal-open{ overflow:hidden; touch-action: none; }
-
-/* erişilebilirlik: hareket azalt */
 @media (prefers-reduced-motion: reduce){
   .modal, .modal-container, .modal-close{ transition:none !important; }
 }
 
-/* responsive küçük ekran: başlık/altlık daha sıkı */
 @media (max-width: 768px){
-  .modal-container{ width: 96vw; border-radius: 18px; }
-  .modal-header, .modal-footer{ padding: 12px 14px; }
+  :root{ --modal-radius: 18px; --modal-gap: 12px; }
+  .modal-container{
+    width: calc(100vw - 24px);
+    max-height: calc(var(--modal-visual-height) - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+  .modal-header{ padding: 12px 58px 12px 14px; }
   .modal-body{ padding: 14px; }
+  .modal-footer{ padding: 12px 14px; flex-wrap: wrap; }
+  .modal-footer .modal-action-btn,
+  .modal-footer .whatsapp-btn,
+  .modal-footer .modal-link-btn{
+    flex: 1 1 100%;
+    width:100% !important;
+  }
+  .modal-image{ max-height:min(34dvh, 300px); }
 }
+
+@media (max-width: 480px){
+  :root{ --modal-gap: 10px; }
+  .modal-container{
+    width: calc(100vw - 20px);
+    border-radius: 16px;
+  }
+  .modal-header h3{ font-size:.98rem; }
+  .modal-body{ font-size:.95rem; }
+  .modal-image{ max-height:min(30dvh, 240px); }
+}
+
+/* SweetAlert2: mobilde gövde yüksekliği ve scrollbar düzeltmesi */
+body.swal2-height-auto{ height:100% !important; }
+.swal2-container{ padding:max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)) !important; }
+.swal2-popup{ width:min(32em, calc(100vw - 24px)) !important; }
+.swal2-html-container{ max-height:calc(var(--modal-visual-height) - 220px); overflow:auto; -webkit-overflow-scrolling:touch; }
 
         /* WhatsApp Form Styles */
         .whatsapp-form-modal {
             position: fixed;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
-            height: 100%;
+            min-height: 100vh;
+            min-height: 100dvh;
             z-index: 1001;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            overflow: hidden;
         }
         
         .whatsapp-form-modal.active {
@@ -1321,36 +1366,41 @@ body.modal-open{ overflow:hidden; touch-action: none; }
         
         .whatsapp-form-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            -webkit-backdrop-filter: blur(5px);
+            display: grid;
+            place-items: center;
+            padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
+            overflow: hidden;
         }
         
         .whatsapp-form-container {
             background: white;
             border-radius: var(--radius);
             max-width: 500px;
-            width: 100%;
-            transform: translateY(50px);
-            transition: transform 0.3s ease;
+            width: min(100%, calc(100vw - 24px));
+            max-height: calc(var(--modal-visual-height) - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(.96);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
         
         .whatsapp-form-modal.active .whatsapp-form-container {
-            transform: translateY(0);
+            transform: scale(1);
+            opacity: 1;
         }
         
         .whatsapp-form-header {
+            flex: 0 0 auto;
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 20px;
+            padding: 16px 58px 16px 20px;
             background: #25D366;
             color: white;
             border-radius: var(--radius) var(--radius) 0 0;
@@ -1365,16 +1415,21 @@ body.modal-open{ overflow:hidden; touch-action: none; }
             margin: 0;
             flex: 1;
             font-size: 1.25rem;
+            line-height: 1.2;
         }
         
         .whatsapp-form-close {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
             background: none;
             border: none;
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            width: 30px;
-            height: 30px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1387,7 +1442,14 @@ body.modal-open{ overflow:hidden; touch-action: none; }
         }
         
         .whatsapp-form {
+            flex: 1 1 auto;
+            min-height: 0;
             padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            touch-action: pan-y;
         }
         
         .form-group {
@@ -1408,7 +1470,7 @@ body.modal-open{ overflow:hidden; touch-action: none; }
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 16px;
             transition: border-color 0.2s ease;
         }
         
@@ -1442,6 +1504,7 @@ body.modal-open{ overflow:hidden; touch-action: none; }
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
         
@@ -1475,12 +1538,21 @@ body.modal-open{ overflow:hidden; touch-action: none; }
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
         }
         
         .whatsapp-btn:hover {
             background: #1fa851;
             transform: translateY(-2px);
+        }
+
+        @media (max-width: 480px){
+            .whatsapp-form-header{ padding: 14px 56px 14px 16px; }
+            .whatsapp-form-header h3{ font-size: 1.05rem; }
+            .whatsapp-form{ padding: 16px; }
+            .form-actions{ flex-direction: column; }
+            .btn-primary, .btn-secondary{ width: 100%; }
         }
 
         /* --------- Enhanced Responsive Design --------- */
@@ -2149,7 +2221,7 @@ main > .section:first-of-type{
 
 /* Modal görünürlük güvenliği (önceki !important override'ları dengeler) */
 .modal{ display:none !important; }
-.modal.active{ display:grid !important; }
+.modal.active{ display:block !important; }
 </style>
 </head>
 
@@ -3446,28 +3518,83 @@ if (menuBtn) menuBtn.addEventListener('click', toggleMobileMenu);
         
         // ==================== TESTIMONIAL MODALS ====================
         let currentModal = null;
+        let modalScrollY = 0;
+
+        function updateModalViewportHeight(){
+            const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            document.documentElement.style.setProperty('--modal-visual-height', `${Math.max(320, Math.round(vh))}px`);
+        }
+        updateModalViewportHeight();
+        window.addEventListener('resize', updateModalViewportHeight, { passive: true });
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', updateModalViewportHeight, { passive: true });
+            window.visualViewport.addEventListener('scroll', updateModalViewportHeight, { passive: true });
+        }
+
+        function lockPageScroll(){
+            updateModalViewportHeight();
+            if (document.body.classList.contains('modal-open')) return;
+            modalScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+            document.body.dataset.modalScrollY = String(modalScrollY);
+            document.body.classList.add('modal-open');
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${modalScrollY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function unlockPageScrollIfNoModal(){
+            if (document.querySelector('.modal.active, .whatsapp-form-modal.active, .uvm-overlay')) return;
+            const y = Math.abs(parseInt(document.body.dataset.modalScrollY || String(modalScrollY || 0), 10)) || 0;
+            document.body.classList.remove('modal-open');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            delete document.body.dataset.modalScrollY;
+            if (y) window.scrollTo(0, y);
+        }
+
+        window.lockPageScroll = lockPageScroll;
+        window.unlockPageScrollIfNoModal = unlockPageScrollIfNoModal;
+        window.updateModalViewportHeight = updateModalViewportHeight;
+
+        if (window.Swal && !window.Swal.__fenomenResponsivePatch) {
+            const originalSwalFire = window.Swal.fire.bind(window.Swal);
+            window.Swal.fire = function(...args){
+                if (args[0] && typeof args[0] === 'object') {
+                    args[0] = Object.assign({ heightAuto: false, scrollbarPadding: false }, args[0]);
+                }
+                return originalSwalFire(...args);
+            };
+            window.Swal.__fenomenResponsivePatch = true;
+        }
         
 function createTestimonialModal(data) {
   const modalHtml = `
     <div class="modal-overlay">
-      <div class="modal-container">
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="testimonialModalTitle">
         <div class="modal-header">
-          <div style="display: flex; align-items: center; gap: 15px;">
-            <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-2); display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: center; gap: 15px; min-width:0;">
+            <div style="width: 60px; height: 60px; flex:0 0 60px; border-radius: 50%; background: var(--primary-2); display: flex; align-items: center; justify-content: center;">
               <i class="fas fa-user" style="font-size: 1.5rem;"></i>
             </div>
-            <div>
-              <h3 style="margin: 0; color: white;">${data.name}</h3>
+            <div style="min-width:0;">
+              <h3 id="testimonialModalTitle" style="margin: 0; color: white;">${data.name}</h3>
               <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 0.9rem;">${data.grade}</p>
               <p style="margin: 0; opacity: 0.8; font-size: 0.8rem;">${data.subject}</p>
             </div>
-            ${data.hasVideo ? `<div style="background: #ff4757; padding: 8px; border-radius: 8px; margin-left: auto;"><i class="fas fa-play"></i> Video</div>` : ''}
+            ${data.hasVideo ? `<div style="background: #ff4757; padding: 8px; border-radius: 8px; margin-left: auto; white-space:nowrap;"><i class="fas fa-play"></i> Video</div>` : ''}
           </div>
           <button class="modal-close modal-close--contrast" type="button" aria-label="Kapat"></button>
         </div>
         <div class="modal-body">
           <div style="text-align: center; margin-bottom: 20px;">
-            <div style="display: flex; justify-content: center; gap: 2px; margin-bottom: 10px;">
+            <div style="display: flex; justify-content: center; gap: 2px; margin-bottom: 10px; flex-wrap:wrap;">
               <i class="fas fa-star" style="color: #ffd700;"></i>
               <i class="fas fa-star" style="color: #ffd700;"></i>
               <i class="fas fa-star" style="color: #ffd700;"></i>
@@ -3492,7 +3619,7 @@ function createTestimonialModal(data) {
           </div>
 
           ${data.instagramUrl ? `
-            <div class="instagram-embed" style="margin-top:16px;">
+            <div class="instagram-embed" style="margin-top:16px; max-width:100%; overflow:hidden;">
               <blockquote class="instagram-media" data-instgrm-permalink="${data.instagramUrl}" data-instgrm-version="14"></blockquote>
             </div>` : ``}
 
@@ -3504,7 +3631,7 @@ function createTestimonialModal(data) {
           </div>
         </div>
         <div class="modal-footer">
-          <button class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Siz de Bu Başarıyı Yaşayın</button>
+          <button class="whatsapp-btn" type="button"><i class="fab fa-whatsapp"></i> Siz de Bu Başarıyı Yaşayın</button>
         </div>
       </div>
     </div>
@@ -3513,49 +3640,35 @@ function createTestimonialModal(data) {
   const modalElement = document.createElement('div');
   modalElement.className = 'modal';
   modalElement.innerHTML = modalHtml;
-  document.body.appendChild(modalElement);
-
-  const doClose = () => {
-    modalElement.classList.remove('active');
-    setTimeout(() => { modalElement.remove(); document.body.style.overflow = ''; }, 200);
-  };
-
-  setTimeout(() => modalElement.classList.add('active'), 10);
-  document.body.style.overflow = 'hidden';
-
-  const closeBtn = modalElement.querySelector('.modal-close');
-  const overlay = modalElement.querySelector('.modal-overlay');
-  closeBtn.addEventListener('click', doClose);
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) doClose(); });
-  document.addEventListener('keydown', function esc(e){ if(e.key === 'Escape'){ doClose(); document.removeEventListener('keydown', esc); }});
+  window.openModal(modalElement);
 
   try { if (window.instgrm && instgrm.Embeds) { instgrm.Embeds.process(); } } catch (e) {}
 }       
 
 // === Global kapatma (aynı isim) ===
-function closeModal() {
-  if (!window.currentModal) return;
+function closeModal(options = {}) {
+  const modal = window.currentModal || document.querySelector('.modal.active');
+  if (!modal) return;
 
-  // event temizliği
-  const modal = window.currentModal;
-  modal.removeEventListener('keydown', modal._trapHandler);
   const overlay = modal.querySelector('.modal-overlay');
-  if (overlay && modal._overlayHandler) {
-    overlay.removeEventListener('click', modal._overlayHandler);
+  if (modal._trapHandler) modal.removeEventListener('keydown', modal._trapHandler);
+  if (overlay && modal._overlayHandler) overlay.removeEventListener('click', modal._overlayHandler);
+  if (modal._resizeHandler) window.removeEventListener('resize', modal._resizeHandler);
+  if (modal._visualResizeHandler && window.visualViewport) {
+    window.visualViewport.removeEventListener('resize', modal._visualResizeHandler);
+    window.visualViewport.removeEventListener('scroll', modal._visualResizeHandler);
   }
 
-  // kapat animasyonu
   modal.classList.remove('active');
 
-  // scroll kilidini kaldır
-  document.body.classList.remove('modal-open');
-  document.body.style.overflow = '';
-
-  // DOM'dan çıkar
-  setTimeout(() => {
+  const removeModal = () => {
     if (document.body.contains(modal)) modal.remove();
-    window.currentModal = null;
-  }, 200);
+    if (window.currentModal === modal) window.currentModal = null;
+    unlockPageScrollIfNoModal();
+  };
+
+  if (options.immediate) removeModal();
+  else setTimeout(removeModal, 220);
 }
         
         function handleEscapeKey(e) {
@@ -3584,11 +3697,11 @@ function closeModal() {
             
             const formHtml = `
                 <div class="whatsapp-form-overlay">
-                    <div class="whatsapp-form-container">
+                    <div class="whatsapp-form-container" role="dialog" aria-modal="true" aria-labelledby="whatsappFormTitle">
                         <div class="whatsapp-form-header">
                             <i class="fab fa-whatsapp"></i>
-                            <h3>WhatsApp ile İletişim</h3>
-                            <button class="whatsapp-form-close">&times;</button>
+                            <h3 id="whatsappFormTitle">WhatsApp ile İletişim</h3>
+                            <button class="whatsapp-form-close" type="button" aria-label="Kapat">&times;</button>
                         </div>
                         <form class="whatsapp-form" id="whatsappForm">
                             <div class="form-group">
@@ -3631,14 +3744,29 @@ function closeModal() {
             formElement.innerHTML = formHtml;
             document.body.appendChild(formElement);
             
-            setTimeout(() => formElement.classList.add('active'), 10);
             whatsappFormVisible = true;
-            document.body.style.overflow = 'hidden';
+            lockPageScroll();
+            requestAnimationFrame(() => formElement.classList.add('active'));
             
             const closeBtn = formElement.querySelector('.whatsapp-form-close');
             const overlay = formElement.querySelector('.whatsapp-form-overlay');
             const form = formElement.querySelector('#whatsappForm');
             const phoneInput = formElement.querySelector('#wa-phone');
+            const firstInput = formElement.querySelector('#wa-name');
+            const focusSel = `a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])`;
+            
+            function trap(e){
+                if (e.key === 'Escape') { closeWhatsAppForm(); return; }
+                if (e.key !== 'Tab') return;
+                const focusables = [...formElement.querySelectorAll(focusSel)];
+                if (!focusables.length) return;
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+            formElement._trapHandler = trap;
+            formElement.addEventListener('keydown', trap);
             
             closeBtn.addEventListener('click', closeWhatsAppForm);
             overlay.addEventListener('click', (e) => {
@@ -3647,17 +3775,19 @@ function closeModal() {
             
             phoneInput.addEventListener('input', formatPhoneNumber);
             form.addEventListener('submit', handleWhatsAppSubmit);
+            setTimeout(() => firstInput?.focus({ preventScroll: true }), 80);
         }
         
         function closeWhatsAppForm() {
             const formModal = document.querySelector('.whatsapp-form-modal');
             if (formModal) {
                 formModal.classList.remove('active');
+                if (formModal._trapHandler) formModal.removeEventListener('keydown', formModal._trapHandler);
                 setTimeout(() => {
-                    document.body.removeChild(formModal);
+                    if (document.body.contains(formModal)) document.body.removeChild(formModal);
                     whatsappFormVisible = false;
+                    unlockPageScrollIfNoModal();
                 }, 300);
-                document.body.style.overflow = '';
             }
         }
         
@@ -3716,60 +3846,81 @@ Bu mesaj website iletişim formu aracılığıyla gönderilmiştir.`;
         }
         // === Global açma (yeni, isim: openModal) ===
 window.openModal = function(modalElement) {
-  // DOM'a ekle
+  if (!modalElement) return;
+
+  if (window.currentModal && window.currentModal !== modalElement && document.body.contains(window.currentModal)) {
+    closeModal({ immediate: true });
+  }
+
   if (!modalElement.parentNode) document.body.appendChild(modalElement);
 
   window.currentModal = modalElement;
+  lockPageScroll();
+  requestAnimationFrame(() => modalElement.classList.add('active'));
 
-  // görünür yap
-  setTimeout(() => modalElement.classList.add('active'), 10);
+  const overlay = modalElement.querySelector('.modal-overlay');
+  const container = modalElement.querySelector('.modal-container') || modalElement;
+  if (!container.hasAttribute('tabindex')) container.setAttribute('tabindex', '-1');
 
-  // scroll kilidi
-  document.body.classList.add('modal-open');
-  document.body.style.overflow = 'hidden';
-
-  // odaklanabilir ögeler ve odak tuzağı
   const focusSel = `a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])`;
-  const focusables = [...modalElement.querySelectorAll(focusSel)];
-  (focusables[0] || modalElement).focus({ preventScroll: true });
+  const getFocusables = () => [...modalElement.querySelectorAll(focusSel)].filter(el => !el.disabled && el.offsetParent !== null);
+
+  setTimeout(() => {
+    const focusables = getFocusables();
+    (focusables[0] || container).focus({ preventScroll: true });
+  }, 40);
 
   function trap(e){
     if (e.key === 'Escape') { closeModal(); return; }
-    if (e.key === 'Tab' && focusables.length){
-      const first = focusables[0];
-      const last  = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
+    if (e.key !== 'Tab') return;
+    const focusables = getFocusables();
+    if (!focusables.length) { e.preventDefault(); container.focus({ preventScroll: true }); return; }
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
   }
   modalElement._trapHandler = trap;
   modalElement.addEventListener('keydown', trap);
 
-  // overlay tıkla → kapat
-  const overlay = modalElement.querySelector('.modal-overlay');
   modalElement._overlayHandler = (e) => { if (e.target === overlay) closeModal(); };
   if (overlay) overlay.addEventListener('click', modalElement._overlayHandler);
 
-  // görsellere kalite dostu sığdırma (upscale yok)
-  const img = modalElement.querySelector('.modal-image, .modal-media img');
-  if (img) {
-    const fit = () => {
-      const natW = img.naturalWidth || 0;
-      const natH = img.naturalHeight || 0;
-      if (!natW || !natH) return;
-      const vw = Math.min(window.innerWidth * 0.96, 1080);
-      const vh = Math.min(window.innerHeight * 0.85 - 120, window.innerHeight * 0.85);
-      img.style.maxWidth  = Math.min(vw, natW) + 'px';
-      img.style.maxHeight = Math.min(vh, natH) + 'px';
+  modalElement.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeModal, { once: false }));
+
+  const fitImages = () => {
+    updateModalViewportHeight();
+    const header = modalElement.querySelector('.modal-header');
+    const footer = modalElement.querySelector('.modal-footer');
+    const body = modalElement.querySelector('.modal-body');
+    const viewportH = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const reserved = (header?.offsetHeight || 0) + (footer?.offsetHeight || 0) + 56;
+    const maxImgH = Math.max(140, Math.min(viewportH * 0.42, viewportH - reserved));
+
+    modalElement.querySelectorAll('.modal-image, .modal-media img').forEach(img => {
+      img.style.maxWidth = '100%';
       img.style.width = 'auto';
       img.style.height = 'auto';
       img.style.objectFit = 'contain';
       img.style.imageRendering = 'auto';
-    };
-    img.addEventListener('load', fit, { once:true });
-    if (img.complete) fit();
-    window.addEventListener('resize', fit, { once:false });
+      if (img.naturalHeight) img.style.maxHeight = Math.min(maxImgH, img.naturalHeight) + 'px';
+      else img.style.maxHeight = maxImgH + 'px';
+    });
+
+    if (body) body.scrollTop = 0;
+  };
+
+  modalElement.querySelectorAll('.modal-image, .modal-media img').forEach(img => {
+    img.addEventListener('load', fitImages, { once:true });
+  });
+  modalElement._resizeHandler = fitImages;
+  modalElement._visualResizeHandler = fitImages;
+  window.addEventListener('resize', fitImages, { passive:true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', fitImages, { passive:true });
+    window.visualViewport.addEventListener('scroll', fitImages, { passive:true });
   }
+  setTimeout(fitImages, 60);
 };
 
         function validatePhoneNumber(phone) {
@@ -3804,9 +3955,9 @@ window.openModal = function(modalElement) {
 function createCardModal(title, content, imageUrl = '', linkUrl = '') {
   const modalHtml = `
     <div class="modal-overlay">
-      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="cardModalTitle">
         <div class="modal-header">
-          <h3 id="modalTitle">${title}</h3>
+          <h3 id="cardModalTitle">${title}</h3>
           <button class="modal-close modal-close--contrast" type="button" aria-label="Kapat"></button>
         </div>
         <div class="modal-body">
@@ -3817,15 +3968,15 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
           </div>
         </div>
         <div class="modal-footer">
-          <button class="modal-action-btn modal-whatsapp-btn whatsapp-btn">
+          <button class="modal-action-btn modal-whatsapp-btn whatsapp-btn" type="button">
             <i class="fab fa-whatsapp"></i> WhatsApp
           </button>
           ${
             linkUrl
-              ? `<button class="modal-action-btn modal-link-btn has-link" onclick="window.open('${linkUrl}','_blank')">
+              ? `<button class="modal-action-btn modal-link-btn has-link" type="button" data-modal-link="${linkUrl}">
                    <i class="fas fa-external-link-alt"></i> Detay Sayfası
                  </button>`
-              : `<button class="modal-action-btn modal-link-btn no-link" onclick="Swal.fire({icon:'warning', title:'Sayfa Hazır Değil', text:'Bu içerik çok yakında eklenecek. Bilgi için WhatsApp formunu kullanabilirsiniz.'})">
+              : `<button class="modal-action-btn modal-link-btn no-link" type="button" data-modal-alert="true">
                    <i class="fas fa-external-link-alt"></i> Detay Sayfası
                  </button>`
           }
@@ -3837,112 +3988,17 @@ function createCardModal(title, content, imageUrl = '', linkUrl = '') {
   const modalElement = document.createElement('div');
   modalElement.className = 'modal';
   modalElement.innerHTML = modalHtml;
-  document.body.appendChild(modalElement);
 
-  // ==== Scroll kilidi
-  document.body.classList.add('modal-open');
-  document.body.style.overflow = 'hidden';
+  modalElement.querySelector('[data-modal-link]')?.addEventListener('click', (e) => {
+    window.open(e.currentTarget.dataset.modalLink, '_blank', 'noopener,noreferrer');
+  });
+  modalElement.querySelector('[data-modal-alert]')?.addEventListener('click', () => {
+    Swal.fire({icon:'warning', title:'Sayfa Hazır Değil', text:'Bu içerik çok yakında eklenecek. Bilgi için WhatsApp formunu kullanabilirsiniz.'});
+  });
 
-  // ==== Görünür yap (küçük açılış animasyonu)
-  requestAnimationFrame(() => modalElement.classList.add('active'));
-
-  // ==== Referanslar
-  const overlay   = modalElement.querySelector('.modal-overlay');
-  const container = modalElement.querySelector('.modal-container');
-  const closeBtn  = modalElement.querySelector('.modal-close');
-  const img       = modalElement.querySelector('.modal-image');
-
-  // ==== Odak tuzağı + ESC
-  const focusSel   = `a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])`;
-  const focusables = () => [...container.querySelectorAll(focusSel)];
-  (focusables()[0] || closeBtn || container).focus({preventScroll:true});
-
-  function handleKey(e){
-    if(e.key === 'Escape'){ doClose(); return; }
-    if(e.key === 'Tab'){
-      const f = focusables();
-      if(!f.length) return;
-      const first = f[0], last = f[f.length - 1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
-  }
-  container.addEventListener('keydown', handleKey);
-
-  // ==== Kapatma (temizlik dahil)
-  function doClose(){
-    modalElement.classList.remove('active');
-    container.removeEventListener('keydown', handleKey);
-    window.removeEventListener('resize', fitImage);
-    if(img) img.removeEventListener('dblclick', toggleActual);
-
-    setTimeout(() => {
-      if(document.body.contains(modalElement)) modalElement.remove();
-      document.body.classList.remove('modal-open');
-      document.body.style.overflow = '';
-    }, 200);
-  }
-
-  closeBtn.addEventListener('click', doClose);
-  overlay.addEventListener('click', (e) => { if(e.target === overlay) doClose(); });
-  // Global ESC yakalayıcın varsa onunla çakışmaz; sadece container içinde dinliyoruz.
-
-  // ==== Görsel: piksel bozmadan sığdır (upscale YOK) + çift tık 1:1
-// ==== Görsel: sığıyorsa 1:1 bırak, taşarsa yalnızca küçült ====
-function fitImage(){
-  if(!img || !img.naturalWidth || !img.naturalHeight) return;
-
-  const header = container.querySelector('.modal-header');
-  const footer = container.querySelector('.modal-footer');
-
-  // Modalın izin verdiği alan: 85vh içinden header/footer ve küçük bir padding çıkar
-  const availW = Math.floor(Math.min(window.innerWidth * 0.96, container.getBoundingClientRect().width || window.innerWidth * 0.96));
-  const availH = Math.floor(
-    window.innerHeight * 0.85
-    - (header?.offsetHeight || 0)
-    - (footer?.offsetHeight || 0)
-    - 24 // küçük tampon
-  );
-
-  const natW = img.naturalWidth;
-  const natH = img.naturalHeight;
-
-  // Varsayılan: 1:1
-  img.style.width  = 'auto';
-  img.style.height = 'auto';
-  img.style.objectFit = 'contain';
-  img.style.imageRendering = 'auto';
-
-  // Eğer doğal boyut zaten sığıyorsa: dokunma
-  if (natW <= availW && natH <= availH){
-    img.style.maxWidth  = natW + 'px';
-    img.style.maxHeight = natH + 'px';
-    return;
-  }
-
-  // Taşıyorsa: sadece gerekli kadar küçült
-  img.style.maxWidth  = availW + 'px';
-  img.style.maxHeight = availH + 'px';
+  window.openModal(modalElement);
 }
 
-  function toggleActual(){
-    // 1:1 ↔ sığdır
-    const actual = img.classList.toggle('is-actual');
-    if(actual){
-      img.style.maxWidth  = img.naturalWidth + 'px';
-      img.style.maxHeight = img.naturalHeight + 'px';
-    }else{
-      fitImage();
-    }
-  }
-
-  if(img){
-    if(img.complete) fitImage();
-    else img.addEventListener('load', fitImage, {once:true});
-    window.addEventListener('resize', fitImage);
-    img.addEventListener('dblclick', toggleActual);
-  }
-}
         const cardLinks = {
             'LGS HAZIRLIK': 'https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231',
             'AKADEMİK DESTEK': 'https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231',
@@ -4434,39 +4490,7 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
   .loading h1{ font-size:clamp(18px,5vw,22px); margin:12px 0 0; }
   .fire-text{ font-size:clamp(14px,4.4vw,18px); }
 
-  /* ——— MODAL: tam ortalama + güvenli alan ——— */
-  .modal.active, .whatsapp-form-modal.active{
-    display:flex !important;
-    align-items:center; justify-content:center;
-    padding:max(12px, env(safe-area-inset-top)) 12px
-            max(12px, env(safe-area-inset-bottom));
-  }
-  .modal-dialog, .modal-container, .whatsapp-form-container{
-    width:100%;
-    max-width:min(92vw, 520px) !important;  /* sağ-sol taşma yok */
-    margin:0;
-    transform:none !important;              /* alttan kayma animasyonunu iptal */
-  }
-
-  /* Başlık ve kapat butonu (ekrandan taşmayı önle) */
-  .modal-header{
-    position:relative;
-    padding:12px 56px 12px 16px;            /* sağda buton için boşluk */
-  }
-  .modal-header .btn-close,
-  .modal-header [class*="close"],
-  .modal-header button[aria-label="Close"]{
-    position:absolute; right:8px; top:50%;
-    transform:translateY(-50%);
-    width:40px; height:40px; padding:0; margin:0;
-    display:inline-flex; align-items:center; justify-content:center;
-  }
-  .modal-header .btn-close > svg,
-  .modal-header [class*="close"] > svg{ width:22px; height:22px; }
-
-  .modal-body{ padding:16px; }
-  .modal-footer{ padding:12px 16px; gap:10px; flex-wrap:wrap; }
-  .modal-footer .btn{ flex:1 1 100%; max-width:100%; } /* butonlar alt alta */
+  /* ——— MODAL: ana modal sistemi zaten 100dvh + safe-area ile yönetiyor ——— */
 
   /* ——— HAKKIMIZDA: tek kolon + görsel/ metin hizası ——— */
   #hakkimizda [style*="grid-template-columns"]{
@@ -4584,7 +4608,7 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
       if (f) f.src = 'about:blank';
       if (v) { v.pause(); v.removeAttribute('src'); v.load(); }
       o.remove();
-      document.body.style.overflow = '';
+      window.unlockPageScrollIfNoModal ? window.unlockPageScrollIfNoModal() : (document.body.style.overflow = '');
       openerEl && openerEl.focus && openerEl.focus();
       // altta açık başka modal varsa istersen kapat:
       // document.querySelector('.modal.active .modal-close, .modal.show .btn-close')?.click();
@@ -4600,7 +4624,7 @@ console.log('🎓 Fenomen Eğitim Kurumları - JavaScript başarıyla yüklendi!
     }, { capture:true });
 
     document.body.appendChild(o);
-    document.body.style.overflow = 'hidden';
+    window.lockPageScroll ? window.lockPageScroll() : (document.body.style.overflow = 'hidden');
   }
 
   // Programatik API
@@ -5136,11 +5160,11 @@ main > .section:first-of-type{
 
   function openInfoModal(title, content, imageUrl, linkUrl){
     const modal = document.createElement('div');
-    modal.className = 'modal active';
+    modal.className = 'modal';
     modal.innerHTML = `
       <div class="modal-overlay">
-        <div class="modal-container" role="dialog" aria-modal="true">
-          <div class="modal-header"><h3>${esc(title)}</h3><button class="modal-close modal-close--contrast" type="button" aria-label="Kapat"></button></div>
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="dynamicModalTitle">
+          <div class="modal-header"><h3 id="dynamicModalTitle">${esc(title)}</h3><button class="modal-close modal-close--contrast" type="button" aria-label="Kapat"></button></div>
           <div class="modal-body">${imageUrl ? `<img src="${esc(imageUrl)}" alt="${esc(title)}" class="modal-image">` : ''}<div class="modal-content"><p>${content || ''}</p></div></div>
           <div class="modal-footer">
             <button class="modal-action-btn modal-whatsapp-btn" type="button" data-modal-whatsapp><i class="fab fa-whatsapp"></i> WhatsApp</button>
@@ -5148,14 +5172,10 @@ main > .section:first-of-type{
           </div>
         </div>
       </div>`;
-    document.body.appendChild(modal);
-    document.body.classList.add('modal-open');
-    document.body.style.overflow = 'hidden';
-    const close = () => { modal.remove(); document.body.classList.remove('modal-open'); document.body.style.overflow=''; };
-    modal.querySelector('.modal-close')?.addEventListener('click', close);
-    modal.querySelector('.modal-overlay')?.addEventListener('click', e => { if (e.target.classList.contains('modal-overlay')) close(); });
     modal.querySelector('[data-modal-whatsapp]')?.addEventListener('click', () => window.open(`https://wa.me/905337290348?text=${encodeURIComponent(title + ' hakkında bilgi almak istiyorum.')}`, '_blank'));
-    modal.querySelector('[data-modal-link-open]')?.addEventListener('click', e => window.open(e.currentTarget.dataset.modalLinkOpen, '_blank'));
+    modal.querySelector('[data-modal-link-open]')?.addEventListener('click', e => window.open(e.currentTarget.dataset.modalLinkOpen, '_blank', 'noopener,noreferrer'));
+    if (window.openModal) window.openModal(modal);
+    else document.body.appendChild(modal);
   }
 
   document.addEventListener('click', (e) => {
