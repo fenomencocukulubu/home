@@ -66,13 +66,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/Ng7cwStM/fenomen-logo-orange-192x192.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="preload" as="image" href="img/1.jpg" fetchpriority="high" />
-    <link rel="preload" as="image" href="img/2.jpg" />
-    <link rel="preload" as="image" href="img/3.jpg" />
-    <link rel="preload" as="image" href="img/4.jpg" />
-    <link rel="preload" as="image" href="img/5.jpg" />
-    <link rel="preload" as="image" href="img/6.jpg" />
-
 
     <style>
         /* --------- Design Tokens --------- */
@@ -1689,17 +1682,6 @@ body.swal2-height-auto{ height:100% !important; }
   }
 }
 
-/* İsteğe bağlı: Her slayda ayrı kadraj (yüzler kesiliyorsa) */
-@media (max-width: 768px){
-  .slide[style*="img/1.jpg"]{ background-position: 50% 25%; }
-  .slide[style*="img/2.jpg"]{ background-position: 50% 35%; }
-  .slide[style*="img/3.jpg"]{ background-position: 50% 35%; }
-  .slide[style*="img/4.jpg"]{ background-position: 50% 35%; }
-  .slide[style*="img/5.jpg"]{ background-position: 50% 35%; }
-  .slide[style*="img/6.jpg"]{ background-position: 50% 35%; }
-  /* gerekirse diğer img/X.jpg için benzer ayarlar */
-}
-
 @media (max-width: 768px){
   .slider-indicators{
     --dot-size: 4px;   /* görünür çap */
@@ -2304,37 +2286,37 @@ main > .section:first-of-type{
   <div class="container">
     <div class="slider-container">
       <div class="slider">
-        <div class="slide" style="background-image: url('img/1.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>LGS’de Başarıya Giden Yol Fenomenden Geçer.</h3>
             <p></p>
           </div>
         </div>
-        <div class="slide" style="background-image: url('img/5.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>Gurur Tablosu: 2025 LGS’de İki Öğrencimiz 500 Tam Puan aldılar.</h3>
             <p></p>
           </div>
         </div>
-        <div class="slide" style="background-image: url('img/2.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>Gerçek Sınav Ortamı, Gerçek Deneyim</h3>
             <p></p>
           </div>
         </div>
-        <div class="slide" style="background-image: url('img/3.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>Fenomen Eğitim Kurumları ile Geleceğe Hazırlık</h3>
             <p></p>
           </div>
         </div>
-        <div class="slide" style="background-image: url('img/4.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>Fenomen Yaz Okulu ile Keşfet, Öğren, Eğlen</h3>
             <p></p>
           </div>
         </div>
-        <div class="slide" style="background-image: url('img/6.jpg');">
+        <div class="slide" style="">
           <div class="slide-content">
             <h3>Spor, Sanat ve Bilim Bir Arada</h3>
             <p></p>
@@ -2383,8 +2365,6 @@ main > .section:first-of-type{
                     </a>
                     <div class="card">
   <!-- Sadece modal için: GÖRSEL -->
-  <img src="img/duy2.jpg" alt="Yeni Dönem Kayıtları" hidden>
-
   <!-- Sadece modal için: UZUN AÇIKLAMA (ilk sırada olmalı) -->
   <p class="card-description" hidden>
   📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br><br>
@@ -2412,13 +2392,11 @@ main > .section:first-of-type{
 </div>
   <!-- duyuru ayarlama burada 1. örnek bitiyor. -->                   
                     <div class="card">
-                      <img src="img/duy1.jpg" alt="LGS Başarısı 2025" hidden>
-                        <h4><i class="fas fa-trophy"></i> LGS Başarısı 2025</h4>
+                      <h4><i class="fas fa-trophy"></i> LGS Başarısı 2025</h4>
                         <p>Öğrencilerimizin LGS'deki başarısından gurur duyuyoruz. Hedef okullarına yerleşen öğrencilerimizi kutluyoruz.</p>
                     </div>
                     
                     <div class="card">
-                      <img src="img/duy3.jpg" alt="Yaz Okulu Havuzlu" hidden>
                       <p class="card-description" hidden>
   📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br><br>
 
@@ -2443,7 +2421,6 @@ main > .section:first-of-type{
                     </div>
 
                     <div class="card">
-                      <img src="img/duy4.jpg" alt="Yaz Okulu LGS" hidden>
                       <p class="card-description" hidden>
   Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.<br><br>
 📚 Yoğunlaştırılmış konu anlatımları<br>
@@ -2472,7 +2449,6 @@ Bu yaz, geleceğe emin adımlarla hazırlanmak için sen de bizimle ol! <br><br>
                         <p>Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.</p>
                     </div>
                     <div class="card">
-                      <img src="img/duy5.jpg" alt="Deneme Kulübü" hidden>
                       <p class="card-description" hidden>
   Deneme Kulübü’nde öğrenciler;<br>
 ✅ Gerçek sınav temposunu yaşar<br>
@@ -2512,14 +2488,12 @@ Sen de katıl, her denemeyle başarıya biraz daha yaklaş! <br><br>
                 
                 <div class="cards-grid">
                     <div class="card">
-                      <img src="img/yap1.jpg" alt="Yaptıklarımız" hidden>
-                        <h4><i class="fas fa-medal"></i> LGS’de 500 Tam Puan: Tam İsabet!</h4>
+                      <h4><i class="fas fa-medal"></i> LGS’de 500 Tam Puan: Tam İsabet!</h4>
                         <p>LGS'de büyük başarı elde ettik.</p>
                     </div>
                     
                     <div class="card">
-                      <img src="img/yap2.jpg" alt="Yaptıklarımız" hidden>
-                       <p class="card-description" hidden>
+                      <p class="card-description" hidden>
                        Merak eden çocuk, geleceğin bilim insanıdır!<br>
 
 Çocukların içindeki merak duygusu, bilimin ilk adımıdır.<br>
@@ -2563,7 +2537,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                     </div>
                     
                     <div class="card">
-                       <img src="img/yap3.jpg" alt="Yaptıklarımız" hidden>
                        <p class="card-description" hidden>
                         Öğrencilerimizin not ortalamalarında %40 artış sağladık. Ders başarısında sürekli ilerleme.<br><br>
                         <a href="tel:+905337290348"
@@ -2597,7 +2570,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 
                 <div class="cards-grid">
                     <div class="card">
-                        <img src="img/prog1.jpg" alt="LGS Hazırlığı">
                         <p class="card-description" hidden><a href="tel:+905337290348"
      style="color:#1f2937; text-decoration:underline; font-weight:700;"
      onmouseenter="this.style.color='#22c55e'"
@@ -2617,7 +2589,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>8. sınıf öğrencilerine özel kapsamlı LGS hazırlık programı</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog2.jpg" alt="AKADEMİK DESTEK">
                         <p class="card-description" hidden><a href="tel:+905337290348"
      style="color:#1f2937; text-decoration:underline; font-weight:700;"
      onmouseenter="this.style.color='#22c55e'"
@@ -2637,7 +2608,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>Tüm derslerde bireysel ve grup halinde akademik destek</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog3.jpg" alt="Rehber Desteği">
                         <p class="card-description" hidden>
                           “Her öğrencinin bireysel özelliklerini dikkate alarak, onların kişisel gelişimini en iyi şekilde destekleyecek profesyonel rehberlik hizmetleri sağlıyoruz.”<br><br>
                           <a href="tel:+905337290348"
@@ -2659,7 +2629,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>Öğrencilerin kişisel gelişimi için profesyonel rehberlik</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog4.jpg" alt="BİREBİR DESTEĞİ">
                         <p class="card-description" hidden><a href="tel:+905337290348"
      style="color:#1f2937; text-decoration:underline; font-weight:700;"
      onmouseenter="this.style.color='#22c55e'"
@@ -2679,7 +2648,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>Özel ihtiyaçlar için birebir öğretmen desteği</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog5.jpg" alt="Grup Ders">
                         <p class="card-description" hidden>
                           Daha verimli öğrenme için öğrencilerimizi küçük gruplara ayırıyor, etkileşimli ve katılımcı ders programlarıyla öğrenmeyi eğlenceli hale getiriyoruz.<br><br>
     <a href="tel:+905337290348"
@@ -2701,7 +2669,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>Küçük gruplar halinde etkileşimli ders programları</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog6.jpg" alt="Ödev Desteği">
                         <p class="card-description" hidden>
                           Her gün yapılan ödev takibi ve profesyonel yardım ile öğrencilerimizin sorumluluk bilincini geliştiriyor, başarılarını kalıcı hale getiriyoruz.<br><br>
     <a href="tel:+905337290348"
@@ -2723,8 +2690,7 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                         <p>Günlük ödev takibi ve yardımı ile başarıyı artırıyoruz</p>
                     </div>
                     <div class="card">
-                        <img src="img/prog7.jpg" alt="Yaz Okulu">
-                         <p class="card-description" hidden>
+                        <p class="card-description" hidden>
                           Akademik destek ile eğlenceli aktiviteleri bir araya getiren yaz okulu programımız, öğrencilerin hem kişisel hem de sosyal gelişimlerine katkı sağlıyor.<br><br>
     <a href="tel:+905337290348"
      style="color:#1f2937; text-decoration:underline; font-weight:700;"
@@ -2757,148 +2723,127 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 <div class="cards-grid">
                    <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/ramazan.jpg" alt="Ramazan Bey">
-                        </div>
+                            </div>
                         <h4>Ramazan UYSALCAN</h4>
                         <p><strong>Yönetim Kurulu Başkanı</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/cemil.jpg" alt="Cemil Bey">
-                        </div>
+                            </div>
                         <h4>Cemil KARAÇETE</h4>
                         <p><strong>MÜDÜR</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/gülçin.jpg" alt="Gülçin Hanım">
-                        </div>
+                            </div>
                         <h4>Gülçin BAYSAL</h4>
                         <p><strong>Sosyal Bilgiler Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/ferhat.jpg" alt="Ferhat Bey">
-                        </div>
+                            </div>
                         <h4>Ferhat KARAGÖZ</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/eda.jpg" alt="17">
-                        </div>
+                            </div>
                         <h4>Eda ÇETİNKAYA</h4>
                         <p><strong>Muhasebe</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/hüseyin.jpg" alt="Hüseyin Bey">
-                        </div>
+                            </div>
                         <h4>Hüseyin DAĞDELEN</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/müşerref.jpg" alt="1">
-                        </div>
+                            </div>
                         <h4>Müşerref GÖKŞEN</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/havana.jpg" alt="2">
-                        </div>
+                            </div>
                         <h4>Havana ALAGÖZ</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/canan.jpg" alt="3">
-                        </div>
+                            </div>
                         <h4>Canan CAMUZCU</h4>
                         <p><strong>Türkçe Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/mukaddes.jpg" alt="4">
-                        </div>
+                            </div>
                         <h4>Mukaddes YENİGÜN</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/erdem.jpg" alt="5">
-                        </div>
+                            </div>
                         <h4>Erdem KURT</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/zeynep.jpg" alt="6">
-                        </div>
+                            </div>
                         <h4>Zeynep GÜNGÖR</h4>
                         <p><strong>Fen Bilimleri Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/şahiste.jpg" alt="7">
-                        </div>
+                            </div>
                         <h4>Şahiste Nur AKA</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/büşra.jpg" alt="8">
-                        </div>
+                            </div>
                         <h4>Büşra Uysal REÇBER</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/esra.jpg" alt="9">
-                        </div>
+                            </div>
                         <h4>Esra Nur ÖZ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/ülker.jpg" alt="10">
-                        </div>
+                            </div>
                         <h4>Ülker ÇALIŞ</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
 <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/nazire.jpg" alt="16">
-                        </div>
+                            </div>
                         <h4>Nazira BARAN</h4>
                         <p><strong>Matematik Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/sedef.jpg" alt="12">
-                        </div>
+                            </div>
                         <h4>Sedef SİVİŞLİ</h4>
                         <p><strong>İnglizce Öğretmeni</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/merve.jpg" alt="14">
-                        </div>
+                            </div>
                         <h4>Merve SARI</h4>
                         <p><strong>Sınıf Öğretmeni</strong></p>
                     </div>
 <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/deniz.jpg" alt="18">
-                        </div>
+                            </div>
                         <h4>Kader Deniz SARI</h4>
                         <p><strong>Rehber Öğretmen</strong></p>
                     </div>
                     <div class="card teacher-card">
                         <div class="teacher-photo-frame">
-                            <img class="teacher-photo" src="img/fatos.jpg" alt="18">
-                        </div>
+                            </div>
                         <h4>Fatoş KARAÇETE</h4>
                         <p><strong>Personel</strong></p>
                     </div>
@@ -2978,30 +2923,6 @@ Yaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br><br>
                 
                 <div class="gallery-container">
                     <div class="gallery-main">
-                        <img class="gallery-image active" src="img/matzum.jpg" alt="Galeri Resmi 1">
-                        <img class="gallery-image" src="img/fenzum.jpg" alt="Galeri Resmi 2">
-                        <img class="gallery-image" src="img/turkcezum.jpg" alt="Galeri Resmi 3">
-                        <img class="gallery-image" src="img/Sosveingzum.jpg" alt="Galeri Resmi 4">
-                        <img class="gallery-image" src="img/g (20).jpg" alt="Galeri Resmi 5">
-                        <img class="gallery-image" src="img/g (1).jpg" alt="Galeri Resmi 6">
-                        <img class="gallery-image" src="img/g (2).jpg" alt="Galeri Resmi 7">
-                        <img class="gallery-image" src="img/g (3).jpg" alt="Galeri Resmi 8">
-                        <img class="gallery-image" src="img/g (4).jpg" alt="Galeri Resmi 9">
-                        <img class="gallery-image" src="img/g (5).jpg" alt="Galeri Resmi 10">
-                        <img class="gallery-image" src="img/g (6).jpg" alt="Galeri Resmi 11">
-                        <img class="gallery-image" src="img/g (7).jpg" alt="Galeri Resmi 12">
-                        <img class="gallery-image" src="img/g (8).jpg" alt="Galeri Resmi 13">
-                        <img class="gallery-image" src="img/g (9).jpg" alt="Galeri Resmi 14">
-                        <img class="gallery-image" src="img/g (10).jpg" alt="Galeri Resmi 15">
-                        <img class="gallery-image" src="img/g (11).jpg" alt="Galeri Resmi 16">
-                        <img class="gallery-image" src="img/g (12).jpg" alt="Galeri Resmi 17">
-                        <img class="gallery-image" src="img/g (13).jpg" alt="Galeri Resmi 18">
-                        <img class="gallery-image" src="img/g (14).jpg" alt="Galeri Resmi 19">
-                        <img class="gallery-image" src="img/g (15).jpg" alt="Galeri Resmi 20">
-                        <img class="gallery-image" src="img/g (16).jpg" alt="Galeri Resmi 21">
-                        <img class="gallery-image" src="img/g (17).jpg" alt="Galeri Resmi 22">
-                        <img class="gallery-image" src="img/g (18).jpg" alt="Galeri Resmi 23">
-                        <img class="gallery-image" src="img/g (19).jpg" alt="Galeri Resmi 24">
                         <button class="gallery-nav gallery-prev">
                             <i class="fas fa-chevron-left"></i>
                         </button>
@@ -4968,7 +4889,7 @@ main > .section:first-of-type{
 
   const firebaseConfig = {"apiKey":"AIzaSyBABt0TN-k_ALfHyDv0yGzOiZMhACxfJbU","authDomain":"odeme-37f3e.firebaseapp.com","databaseURL":"https://odeme-37f3e-default-rtdb.europe-west1.firebasedatabase.app","projectId":"odeme-37f3e","storageBucket":"odeme-37f3e.firebasestorage.app","messagingSenderId":"433986287426","appId":"1:433986287426:web:264fe3aa9fabcc09103adb","measurementId":"G-QFHTWMBGZ9"};
   const DB_PATH = "sitefenomen";
-  const DEFAULT_CONTENT = {"schemaVersion":1,"updatedAt":null,"site":{"title":"Fenomen Eğitim Kurumları – 1-8. Sınıf Ödev & LGS Desteği | Fethiye","description":"Fethiye'de 1-8. sınıflara ödev ve LGS odaklı ders desteği. Uzman kadro, etkinlikler, programlar ve modern öğrenme ortamı.","theme":{"primary":"#f97316","primary2":"#fb923c","primary3":"#ea580c"},"logo":"https://i.ibb.co/Ng7cwStM/fenomen-logo-orange-192x192.png","keywords":"Fenomen,Fenomen Eğitim Kurumları,LGS Hazırlık Fethiye,Fethiye Çocuk Kulübü,Ödev ve Ders odaklı Fethiye","themeColor":"#f97316","canonicalUrl":"https://fenomencocukulubu.github.io/home/","ogImage":"https://i.ibb.co/Ng7cwStM/fenomen-logo-orange-192x192.png"},"hero":{"title":"LGS’de Başarıya Giden Yol Fenomenden Geçer.","slides":[{"id":"slide-1","enabled":true,"image":{"src":"img/1.jpg","alt":""},"title":"LGS’de Başarıya Giden Yol Fenomenden Geçer.","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-2","enabled":true,"image":{"src":"img/5.jpg","alt":""},"title":"Gurur Tablosu: 2025 LGS’de İki Öğrencimiz 500 Tam Puan aldılar.","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-3","enabled":true,"image":{"src":"img/2.jpg","alt":""},"title":"Gerçek Sınav Ortamı, Gerçek Deneyim","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-4","enabled":true,"image":{"src":"img/3.jpg","alt":""},"title":"Fenomen Eğitim Kurumları ile Geleceğe Hazırlık","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-5","enabled":true,"image":{"src":"img/4.jpg","alt":""},"title":"Fenomen Yaz Okulu ile Keşfet, Öğren, Eğlen","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-6","enabled":true,"image":{"src":"img/6.jpg","alt":""},"title":"Spor, Sanat ve Bilim Bir Arada","subtitle":"","button":null,"backgroundPosition":"center"}]},"sections":{"duyurular":{"enabled":true,"title":"Duyurular","subtitle":"Önemli duyurular ve haberler","items":[{"id":"item-1","enabled":true,"title":"Bursluluk / LGS Provası Başvuru Alanı","iconClass":"fas fa-file-signature","image":{"src":"","alt":"Bursluluk / LGS Provası Başvuru Alanı","hidden":false},"shortDescription":"🎯 Bursluluk sınavlarına ve LGS Provasına online kayıt sistemidir. Hemen başvur, yerini ayırt! ✨","descriptionHtml":"🎯 Bursluluk sınavlarına ve <strong>LGS Provasına</strong> <strong>online kayıt</strong> sistemidir.<br/>\n                        Hemen başvur, yerini ayırt! ✨","link":{"href":"https://ferhat19881988.github.io/burs/","target":"_blank","text":"Detay Sayfası"},"directLink":true},{"id":"item-2","enabled":true,"title":"Yeni Dönem Kayıtları Başladı","iconClass":"fas fa-calendar-alt","image":{"src":"img/duy2.jpg","alt":"Yeni Dönem Kayıtları","hidden":true},"shortDescription":"2025-2026 eğitim öğretim yılı kayıtlarımız başladı. Erken kayıt fırsatlarından yararlanın.","descriptionHtml":"📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"LGS Başarısı 2025","iconClass":"fas fa-trophy","image":{"src":"img/duy1.jpg","alt":"LGS Başarısı 2025","hidden":true},"shortDescription":"Öğrencilerimizin LGS'deki başarısından gurur duyuyoruz. Hedef okullarına yerleşen öğrencilerimizi kutluyoruz.","descriptionHtml":"Öğrencilerimizin LGS'deki başarısından gurur duyuyoruz. Hedef okullarına yerleşen öğrencilerimizi kutluyoruz.","link":{"href":"https://www.instagram.com/reel/DNAF4FwNjp6/?utm_source=ig_web_copy_link&igsh=czRncmpqNjgwb3k2","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-4","enabled":true,"title":"Yaz Okulu Havuzlu","iconClass":"fas fa-sun","image":{"src":"img/duy3.jpg","alt":"Yaz Okulu Havuzlu","hidden":true},"shortDescription":"Yaz aylarında da eğitim devam ediyor. Eğlenceli aktiviteler ve ders takviyesi ile dolu yaz programımız.","descriptionHtml":"📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.facebook.com/share/r/16spP3Zz7a/","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-5","enabled":true,"title":"Yaz Okulu LGS","iconClass":"fas fa-sun","image":{"src":"img/duy4.jpg","alt":"Yaz Okulu LGS","hidden":true},"shortDescription":"Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.","descriptionHtml":"Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.<br/><br/>\n📚 Yoğunlaştırılmış konu anlatımları<br/>\n📝 Soru çözüm saatleri<br/>\n🎲 Motivasyon artırıcı sosyal etkinlikler<br/>\n\nBu yaz, geleceğe emin adımlarla hazırlanmak için sen de bizimle ol! <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-6","enabled":true,"title":"Deneme Kulübü","iconClass":"fas fa-sun","image":{"src":"img/duy5.jpg","alt":"Deneme Kulübü","hidden":true},"shortDescription":"Öğrencilerimizin sınavlara daha bilinçli hazırlanmasını hedefleyen Deneme Kulübü, düzenli deneme sınavları ile gerçek sınav atmosferini yaşatır.","descriptionHtml":"Deneme Kulübü’nde öğrenciler;<br/>\n✅ Gerçek sınav temposunu yaşar<br/>\n✅ Zaman yönetimini geliştirir<br/>\n✅ Hedeflerini netleştirir<br/>\n\nSen de katıl, her denemeyle başarıya biraz daha yaklaş! <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br></br>","link":{"href":"https://www.facebook.com/share/r/1Ay5wiponN/","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"yaptiklarimiz":{"enabled":true,"title":"Yaptıklarımız","subtitle":"Başarılarımız ve öğrencilerimizle gurur duyduğumuz anlar","items":[{"id":"item-1","enabled":true,"title":"LGS’de 500 Tam Puan: Tam İsabet!","iconClass":"fas fa-medal","image":{"src":"img/yap1.jpg","alt":"Yaptıklarımız","hidden":true},"shortDescription":"LGS'de büyük başarı elde ettik.","descriptionHtml":"LGS'de büyük başarı elde ettik.","link":{"href":"https://www.instagram.com/p/DMaZWGzNJjm/?utm_source=ig_web_copylink&igsh=a2I4NXRkcWF3aW1w","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-2","enabled":true,"title":"Yaz okulunda Bilim Atölyesi","iconClass":"fas fa-users","image":{"src":"img/yap2.jpg","alt":"Yaptıklarımız","hidden":true},"shortDescription":"Doğa bizim laboratuvarımız: dokun, ölç, keşfet.","descriptionHtml":"Merak eden çocuk, geleceğin bilim insanıdır!<br/>\n\nÇocukların içindeki merak duygusu, bilimin ilk adımıdır.<br/>\nYaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br/><br/>\n\n🔹 Doğayı laboratuvar gibi keşfeder<br/>\n🔹 Deneyler yaparak öğrenir<br/>\n🔹 Sorar, araştırır, bulur<br/>\n🔹 Eğlenirken bilimin heyecanını yaşar<br/><br/>\n<a class=\"btn btn-danger btn-lg fw-bold shadow-lg rounded-pill d-inline-flex align-items-center gap-2\" data-video=\"\" href=\"video/2.mp4\" onmouseenter=\"this.style.setProperty('color','#FF1744','important');\n                 this.style.setProperty('text-shadow','0 0 6px rgba(255,23,68,.9),0 0 14px rgba(255,23,68,.6),0 0 24px rgba(255,23,68,.45)','important');\n                 this.style.setProperty('box-shadow','0 0 10px rgba(255,23,68,.5),0 0 24px rgba(255,23,68,.35)','important');\" onmouseleave=\"this.style.setProperty('color','#111','important');\n                 this.style.setProperty('text-shadow','none','important');\n                 this.style.removeProperty('box-shadow');\" style=\"color:#111 !important;\">\n<i class=\"fas fa-play fa-fw\" style=\"color:inherit !important\"></i> Videoyu İzle\n</a>\n<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.instagram.com/reel/DNke6SNN-P3/?utm_source=ig_web_copy_link&igsh=MTRlMHl1cG80Mmh0Yw==","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"Akademik Başarı","iconClass":"fas fa-graduation-cap","image":{"src":"img/yap3.jpg","alt":"Yaptıklarımız","hidden":true},"shortDescription":"Öğrencilerimizin not ortalamalarında %40 artış sağladık. Ders başarısında sürekli ilerleme.","descriptionHtml":"Öğrencilerimizin not ortalamalarında %40 artış sağladık. Ders başarısında sürekli ilerleme.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n                       </br></br></br>","link":{"href":"https://www.instagram.com/fenomencocukkulubu?utm_source=ig_web_button_share_sheet&igsh=dmZ2MHY4cjBodWhh","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"programlarimiz":{"enabled":true,"title":"Programlarımız","subtitle":"Öğrencilerimize sunduğumuz çeşitli program ve hizmetler","items":[{"id":"item-1","enabled":true,"title":"LGS HAZIRLIK","iconClass":"fas fa-graduation-cap","image":{"src":"img/prog1.jpg","alt":"LGS Hazırlığı","hidden":false},"shortDescription":"8. sınıf öğrencilerine özel kapsamlı LGS hazırlık programı","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-2","enabled":true,"title":"AKADEMİK DESTEK","iconClass":"fas fa-chalkboard-teacher","image":{"src":"img/prog2.jpg","alt":"AKADEMİK DESTEK","hidden":false},"shortDescription":"Tüm derslerde bireysel ve grup halinde akademik destek","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"REHBER DESTEĞİ","iconClass":"fas fa-compass","image":{"src":"img/prog3.jpg","alt":"Rehber Desteği","hidden":false},"shortDescription":"Öğrencilerin kişisel gelişimi için profesyonel rehberlik","descriptionHtml":"“Her öğrencinin bireysel özelliklerini dikkate alarak, onların kişisel gelişimini en iyi şekilde destekleyecek profesyonel rehberlik hizmetleri sağlıyoruz.”<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-4","enabled":true,"title":"BİREBİR DESTEĞİ","iconClass":"fas fa-user","image":{"src":"img/prog4.jpg","alt":"BİREBİR DESTEĞİ","hidden":false},"shortDescription":"Özel ihtiyaçlar için birebir öğretmen desteği","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-5","enabled":true,"title":"GRUP DERS","iconClass":"fas fa-users","image":{"src":"img/prog5.jpg","alt":"Grup Ders","hidden":false},"shortDescription":"Küçük gruplar halinde etkileşimli ders programları","descriptionHtml":"Daha verimli öğrenme için öğrencilerimizi küçük gruplara ayırıyor, etkileşimli ve katılımcı ders programlarıyla öğrenmeyi eğlenceli hale getiriyoruz.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-6","enabled":true,"title":"ÖDEV DESTEĞİ","iconClass":"fas fa-book-open","image":{"src":"img/prog6.jpg","alt":"Ödev Desteği","hidden":false},"shortDescription":"Günlük ödev takibi ve yardımı ile başarıyı artırıyoruz","descriptionHtml":"Her gün yapılan ödev takibi ve profesyonel yardım ile öğrencilerimizin sorumluluk bilincini geliştiriyor, başarılarını kalıcı hale getiriyoruz.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-7","enabled":true,"title":"YAZ OKULU (HAVUZLU)","iconClass":"fas fa-swimming-pool","image":{"src":"img/prog7.jpg","alt":"Yaz Okulu","hidden":false},"shortDescription":"Yaz aylarında eğlenceli ve öğretici yaz okulu programı","descriptionHtml":"Akademik destek ile eğlenceli aktiviteleri bir araya getiren yaz okulu programımız, öğrencilerin hem kişisel hem de sosyal gelişimlerine katkı sağlıyor.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.instagram.com/reel/DNaf_RjNI1p/?utm_source=ig_web_copy_link&igsh=cGxxM2lvOXB6NGZ5","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"ogretmenlerimiz":{"enabled":true,"title":"Öğretmenlerimiz","subtitle":"Alanında uzman, deneyimli öğretmenlerimizle tanışın","items":[{"id":"teacher-1","enabled":true,"name":"Ramazan UYSALCAN","role":"Yönetim Kurulu Başkanı","image":{"src":"img/ramazan.jpg","alt":"Ramazan Bey"},"descriptionHtml":""},{"id":"teacher-2","enabled":true,"name":"Cemil KARAÇETE","role":"MÜDÜR","image":{"src":"img/cemil.jpg","alt":"Cemil Bey"},"descriptionHtml":""},{"id":"teacher-3","enabled":true,"name":"Gülçin BAYSAL","role":"Sosyal Bilgiler Öğretmeni","image":{"src":"img/gülçin.jpg","alt":"Gülçin Hanım"},"descriptionHtml":""},{"id":"teacher-4","enabled":true,"name":"Ferhat KARAGÖZ","role":"Fen Bilimleri Öğretmeni","image":{"src":"img/ferhat.jpg","alt":"Ferhat Bey"},"descriptionHtml":""},{"id":"teacher-5","enabled":true,"name":"Eda ÇETİNKAYA","role":"Muhasebe","image":{"src":"img/eda.jpg","alt":"17"},"descriptionHtml":""},{"id":"teacher-6","enabled":true,"name":"Hüseyin DAĞDELEN","role":"Matematik Öğretmeni","image":{"src":"img/hüseyin.jpg","alt":"Hüseyin Bey"},"descriptionHtml":""},{"id":"teacher-7","enabled":true,"name":"Müşerref GÖKŞEN","role":"Türkçe Öğretmeni","image":{"src":"img/müşerref.jpg","alt":"1"},"descriptionHtml":""},{"id":"teacher-8","enabled":true,"name":"Havana ALAGÖZ","role":"Türkçe Öğretmeni","image":{"src":"img/havana.jpg","alt":"2"},"descriptionHtml":""},{"id":"teacher-9","enabled":true,"name":"Canan CAMUZCU","role":"Türkçe Öğretmeni","image":{"src":"img/canan.jpg","alt":"3"},"descriptionHtml":""},{"id":"teacher-10","enabled":true,"name":"Mukaddes YENİGÜN","role":"Fen Bilimleri Öğretmeni","image":{"src":"img/mukaddes.jpg","alt":"4"},"descriptionHtml":""},{"id":"teacher-11","enabled":true,"name":"Erdem KURT","role":"Fen Bilimleri Öğretmeni","image":{"src":"img/erdem.jpg","alt":"5"},"descriptionHtml":""},{"id":"teacher-12","enabled":true,"name":"Zeynep GÜNGÖR","role":"Fen Bilimleri Öğretmeni","image":{"src":"img/zeynep.jpg","alt":"6"},"descriptionHtml":""},{"id":"teacher-13","enabled":true,"name":"Şahiste Nur AKA","role":"Matematik Öğretmeni","image":{"src":"img/şahiste.jpg","alt":"7"},"descriptionHtml":""},{"id":"teacher-14","enabled":true,"name":"Büşra Uysal REÇBER","role":"Matematik Öğretmeni","image":{"src":"img/büşra.jpg","alt":"8"},"descriptionHtml":""},{"id":"teacher-15","enabled":true,"name":"Esra Nur ÖZ","role":"Matematik Öğretmeni","image":{"src":"img/esra.jpg","alt":"9"},"descriptionHtml":""},{"id":"teacher-16","enabled":true,"name":"Ülker ÇALIŞ","role":"Matematik Öğretmeni","image":{"src":"img/ülker.jpg","alt":"10"},"descriptionHtml":""},{"id":"teacher-17","enabled":true,"name":"Nazira BARAN","role":"Matematik Öğretmeni","image":{"src":"img/nazire.jpg","alt":"16"},"descriptionHtml":""},{"id":"teacher-18","enabled":true,"name":"Sedef SİVİŞLİ","role":"İnglizce Öğretmeni","image":{"src":"img/sedef.jpg","alt":"12"},"descriptionHtml":""},{"id":"teacher-19","enabled":true,"name":"Merve SARI","role":"Sınıf Öğretmeni","image":{"src":"img/merve.jpg","alt":"14"},"descriptionHtml":""},{"id":"teacher-20","enabled":true,"name":"Kader Deniz SARI","role":"Rehber Öğretmen","image":{"src":"img/deniz.jpg","alt":"18"},"descriptionHtml":""},{"id":"teacher-21","enabled":true,"name":"Fatoş KARAÇETE","role":"Personel","image":{"src":"img/fatos.jpg","alt":"18"},"descriptionHtml":""}]},"veliGorusleri":{"enabled":true,"title":"👨‍👩‍👧‍👦 Öğrenci Görüşleri","subtitle":"Değerli öğrencilerimizin deneyimlerini ve başarı hikayelerini sizinle paylaşıyoruz","stats":[{"id":"stat-1","number":"99","label":"% Memnuniyet"},{"id":"stat-2","number":"800","label":"Mutlu Öğrenci"},{"id":"stat-3","number":"92","label":"% LGS Başarı"},{"id":"stat-4","number":"15","label":"Yıllık Deneyim"}],"cta":{"text":"Öğrenci Görüşleri","url":"https://www.instagram.com/fenomenegitimkurumlarii"},"items":[],"testimonialDataRawJs":"{\n            2: {\n                name: \"Mehmet Yılmaz\",\n                grade: \"7. Sınıf Velisi\", \n                subject: \"LGS Hazırlık Başarısı\",\n                experience: `Kızım Elif, 7. sınıfa geçtiğinde LGS kaygısı yaşıyorduk. Fenomen'deki öğretmenler bu süreci bizim için kolaylaştırdı.\n                \n                🏆 BAŞARILARIMIZ:\n                • Türkçe: 65 → 88 puan\n                • Matematik: 70 → 91 puan  \n                • Fen Bilimleri: 60 → 85 puan\n                • Sosyal Bilgiler: 75 → 90 puan\n                \n                Sadece akademik değil, psikolojik destek de çok değerli. Rehber öğretmen sayesinde sınav kaygısını yendi.\n                \n                Elif artık LGS'den değil, geleceğinden umutlu!`,\n                date: \"Şubat 2024\", \n                results: [\"Türkçe +23 puan\", \"Matematik +21 puan\", \"Fen +25 puan\"],\n                hasVideo: false\n            },\n            3: {\n                name: \"Fatma Özkan\",\n                grade: \"6. Sınıf Velisi\",\n                subject: \"Fen Bilimleri Uzmanı\",\n                experience: `Oğlum Can'ın Fen Bilimleri dersindeki gelişimi herkesi şaşırttı.\n                \n                🔬 DÖNÜŞÜM HİKAYESİ:\n                • Fen notu: 50 → 94 (Sınıf birincisi!)\n                • Deney yapma merakı kazandı\n                • Bilim olimpiyatlarına katılmaya başladı\n                \n                Can artık evde sürekli deneyler yapıyor. Merakı ve öğrenme isteği arttı.\n                \n                1 yılda bu kadar yol alacağımızı hiç düşünmemiştik!`,\n                date: \"Mart 2024\",\n                results: [\"Sınıf birinciliği\", \"Bilim olimpiyatı katılımı\", \"Kariyer hedefi belirledi\"],\n                hasVideo: false\n            },\n            1: {\n                name: \"Zeynep Aktaş\",\n                grade: \"8. Sınıf Velisi\", \n                subject: \"LGS Büyük Başarısı\",\n                experience: `LGS yılı gerçekten zordu ama Fenomen bu süreçte yanımızdaydı.\n                \n                🎯 LGS SONUÇLARIMIZ:\n                • Türkçe: %89 başarı\n                • Matematik: %91 başarı\n                • Fen Bilimleri: %85 başarı  \n                • GENEL BAŞARI: %87\n                \n                Defne, hedeflediği Fethiye Anadolu Lisesi'ne 15 puanla yerleşti!\n                \n                Artık lise hayatına hazır. Çok teşekkürler Fenomen ailesi!`,\n                date: \"Mayıs 2024\",\n                results: [\"LGS %87 başarı\", \"Anadolu Lisesi yerleşti\", \"Hedef aştı +15 puan\"],\n                hasVideo: true\n            },\n        }"},"galerimiz":{"enabled":true,"title":"Galerimiz","subtitle":"Çocuklarımızın keyifle öğrendiği anlardan kareler","images":[{"id":"gallery-1","enabled":true,"src":"img/matzum.jpg","alt":"Galeri Resmi 1","active":true},{"id":"gallery-2","enabled":true,"src":"img/fenzum.jpg","alt":"Galeri Resmi 2","active":false},{"id":"gallery-3","enabled":true,"src":"img/turkcezum.jpg","alt":"Galeri Resmi 3","active":false},{"id":"gallery-4","enabled":true,"src":"img/Sosveingzum.jpg","alt":"Galeri Resmi 4","active":false},{"id":"gallery-5","enabled":true,"src":"img/g (20).jpg","alt":"Galeri Resmi 5","active":false},{"id":"gallery-6","enabled":true,"src":"img/g (1).jpg","alt":"Galeri Resmi 6","active":false},{"id":"gallery-7","enabled":true,"src":"img/g (2).jpg","alt":"Galeri Resmi 7","active":false},{"id":"gallery-8","enabled":true,"src":"img/g (3).jpg","alt":"Galeri Resmi 8","active":false},{"id":"gallery-9","enabled":true,"src":"img/g (4).jpg","alt":"Galeri Resmi 9","active":false},{"id":"gallery-10","enabled":true,"src":"img/g (5).jpg","alt":"Galeri Resmi 10","active":false},{"id":"gallery-11","enabled":true,"src":"img/g (6).jpg","alt":"Galeri Resmi 11","active":false},{"id":"gallery-12","enabled":true,"src":"img/g (7).jpg","alt":"Galeri Resmi 12","active":false},{"id":"gallery-13","enabled":true,"src":"img/g (8).jpg","alt":"Galeri Resmi 13","active":false},{"id":"gallery-14","enabled":true,"src":"img/g (9).jpg","alt":"Galeri Resmi 14","active":false},{"id":"gallery-15","enabled":true,"src":"img/g (10).jpg","alt":"Galeri Resmi 15","active":false},{"id":"gallery-16","enabled":true,"src":"img/g (11).jpg","alt":"Galeri Resmi 16","active":false},{"id":"gallery-17","enabled":true,"src":"img/g (12).jpg","alt":"Galeri Resmi 17","active":false},{"id":"gallery-18","enabled":true,"src":"img/g (13).jpg","alt":"Galeri Resmi 18","active":false},{"id":"gallery-19","enabled":true,"src":"img/g (14).jpg","alt":"Galeri Resmi 19","active":false},{"id":"gallery-20","enabled":true,"src":"img/g (15).jpg","alt":"Galeri Resmi 20","active":false},{"id":"gallery-21","enabled":true,"src":"img/g (16).jpg","alt":"Galeri Resmi 21","active":false},{"id":"gallery-22","enabled":true,"src":"img/g (17).jpg","alt":"Galeri Resmi 22","active":false},{"id":"gallery-23","enabled":true,"src":"img/g (18).jpg","alt":"Galeri Resmi 23","active":false},{"id":"gallery-24","enabled":true,"src":"img/g (19).jpg","alt":"Galeri Resmi 24","active":false}]},"hakkimizda":{"enabled":true,"title":"Hakkımızda","contentHtml":"<div style=\"background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%); padding: 40px; border-radius: 20px; margin: 40px 0; color: white; box-shadow: 0 20px 40px rgba(234, 88, 12, 0.3);\">\n<div style=\"text-align: center; margin-bottom: 30px;\">\n<h3 style=\"font-size: 2rem; margin-bottom: 20px; color: #fff;\">\n<i class=\"fas fa-graduation-cap\" style=\"margin-right: 15px;\"></i>\n                            Fenomen Eğitim Kurumları\n                        </h3>\n<p style=\"font-size: 1.2rem; line-height: 1.6; opacity: 0.95;\">\n                            Fethiye'de 1-8. sınıf öğrencilerine ödev desteği ve LGS hazırlığında \n                            kaliteli eğitim hizmeti sunuyoruz. Modern öğrenme ortamımızda, uzman kadromuzla \n                            çocuklarınızın akademik başarılarını artırmayı hedefliyoruz.\n                        </p>\n</div>\n<div class=\"about-grid\" style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;\"> <div style=\"background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px;\">\n<h4 style=\"color: #fff; margin-bottom: 15px; font-size: 1.3rem;\">\n<i class=\"fas fa-eye\" style=\"margin-right: 10px;\"></i> Vizyonumuz\n                            </h4>\n<p style=\"line-height: 1.6; opacity: 0.9;\">\n                                Her çocuğun potansiyelini keşfetmesi ve geleceğe güvenle hazırlanması için en iyi eğitim desteğini sunmak.\n                            </p>\n</div>\n<div style=\"background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px;\">\n<h4 style=\"color: #fff; margin-bottom: 15px; font-size: 1.3rem;\">\n<i class=\"fas fa-target\" style=\"margin-right: 10px;\"></i> Misyonumuz\n                            </h4>\n<p style=\"line-height: 1.6; opacity: 0.9;\">\n                                Kişiselleştirilmiş eğitim yaklaşımıyla her öğrencinin akademik başarısını artırmak ve özgüvenini geliştirmek.\n                            </p>\n</div>\n</div>\n</div>"},"iletisim":{"enabled":true,"title":"Bize Ulaşın","subtitle":"Sorularınıza aynı gün içinde dönüş yapıyoruz.","cards":[{"id":"contact-1","enabled":true,"iconClass":"fas fa-phone-volume","title":"Telefon","contentHtml":"<h3>Telefon</h3>\n<p>\n<a href=\"tel:+905337290348\">+90 533 729 03 48</a><br>\n<a href=\"tel:+905396752213\">+90 539 675 22 13</a>\n</br></p>"},{"id":"contact-2","enabled":true,"iconClass":"fas fa-envelope","title":"E‑posta","contentHtml":"<h3>E‑posta</h3>\n<p><a href=\"mailto:fenomencocukkulubu@gmail.com\" aria-label=\"Fenomen Eğitim Kurumlarına e-posta gönder\">fenomencocukkulubu@gmail.com</a></p>"},{"id":"contact-3","enabled":true,"iconClass":"fas fa-location-dot","title":"Adres","contentHtml":"<h3>Adres</h3>\n<p>Taşyaka Mahallesi 144.Sokak No:9, Fethiye</p>\n<p>\n<a class=\"mini-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=36.621381983108%2C29.12291\" rel=\"noopener\" target=\"_blank\">Yol Tarifi Al</a>\n</p>"},{"id":"contact-4","enabled":true,"iconClass":"fab fa-instagram","title":"Sosyal Medya","contentHtml":"<h3>Sosyal Medya</h3>\n<p>\n<a href=\"https://www.instagram.com/fenomenegitimkurumlarii\" rel=\"noopener\" target=\"_blank\">Instagram</a> ·\n              <a href=\"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231\" rel=\"noopener\" target=\"_blank\">Facebook</a>\n</p>"}],"note":"Bilgileriniz yalnızca sizinle iletişime geçmek için kullanılacaktır.","mapEmbedUrl":"https://www.google.com/maps?q=36.621381983108,29.12291&output=embed","email":"fenomencocukkulubu@gmail.com"}},"admin":{"version":"2.0-admin-rtb","lastEditor":"","notes":"Bu JSON mevcut HTML'den çıkarılan ilk içerik şemasıdır. Firebase'e başlangıç verisi olarak yüklenebilir."},"footer":{"sections":[{"id":"footer-1","title":"Fenomen Eğitim Kurumları","contentHtml":"<h4>Fenomen Eğitim Kurumları</h4>\n<p><strong>BİRLİKTE BAŞARACAĞIZ!</strong></p>\n<p>Geleceğin liderleri burada yetişiyor. Her çocuk özeldir, her başarı değerlidir.</p>"},{"id":"footer-2","title":"İletişim","contentHtml":"<h4>İletişim</h4>\n<p class=\"phone-row\">\n<i class=\"fas fa-phone\"></i>\n<a class=\"phone-link\" href=\"tel:+905337290348\">+90 533 729 03 48</a>\n</p>\n<p class=\"phone-row\">\n<i class=\"fas fa-phone\"></i>\n<a class=\"phone-link\" href=\"tel:+905396752213\">+90 539 675 22 13</a>\n</p>\n<p class=\"email-row\">\n<i class=\"fas fa-envelope\" aria-hidden=\"true\"></i>\n<a class=\"email-link\" href=\"mailto:fenomencocukkulubu@gmail.com\" aria-label=\"Fenomen Eğitim Kurumlarına e-posta gönder\">fenomencocukkulubu@gmail.com</a>\n</p>\n<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=36.621381983108%2C29.12291\" target=\"_blank\">\n<i class=\"fas fa-map-marker-alt\"></i> Taşyaka Mah. 144.Sok. No:9\n                        </a>"},{"id":"footer-3","title":"Hizmetlerimiz","contentHtml":"<h4>Hizmetlerimiz</h4>\n<ul class=\"footer-services\">\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-graduation-cap\"></i> LGS HAZIRLIK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-book-open\"></i> AKADEMİK DESTEK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-compass\"></i> REHBER DESTEĞİ</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-user\"></i> BİREBİR DESTEK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-users\"></i> GRUP DERS</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-tasks\"></i> ÖDEV DESTEĞİ</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-swimming-pool\"></i> YAZ OKULU (HAVUZLU)</a></li>\n</ul>"}],"bottomText":"© 2025 Fenomen Eğitim Kurumları. Tüm hakları saklıdır. Tasarım : <span class=\"designer-name\">Ferhat KARAGÖZ</span>"},"assets":{"images":["img/Sosveingzum.jpg","img/büşra.jpg","img/canan.jpg","img/cemil.jpg","img/deniz.jpg","img/duy1.jpg","img/duy2.jpg","img/duy3.jpg","img/duy4.jpg","img/duy5.jpg","img/eda.jpg","img/erdem.jpg","img/esra.jpg","img/fatos.jpg","img/fenzum.jpg","img/ferhat.jpg","img/g (1).jpg","img/g (10).jpg","img/g (11).jpg","img/g (12).jpg","img/g (13).jpg","img/g (14).jpg","img/g (15).jpg","img/g (16).jpg","img/g (17).jpg","img/g (18).jpg","img/g (19).jpg","img/g (2).jpg","img/g (20).jpg","img/g (3).jpg","img/g (4).jpg","img/g (5).jpg","img/g (6).jpg","img/g (7).jpg","img/g (8).jpg","img/g (9).jpg","img/gülçin.jpg","img/havana.jpg","img/hüseyin.jpg","img/matzum.jpg","img/merve.jpg","img/mukaddes.jpg","img/müşerref.jpg","img/nazire.jpg","img/prog1.jpg","img/prog2.jpg","img/prog3.jpg","img/prog4.jpg","img/prog5.jpg","img/prog6.jpg","img/prog7.jpg","img/ramazan.jpg","img/sedef.jpg","img/turkcezum.jpg","img/yap1.jpg","img/yap2.jpg","img/yap3.jpg","img/zeynep.jpg","img/ülker.jpg","img/şahiste.jpg"],"videos":["video/2.mp4"]}};
+  const DEFAULT_CONTENT = {"schemaVersion":1,"updatedAt":null,"site":{"title":"Fenomen Eğitim Kurumları – 1-8. Sınıf Ödev & LGS Desteği | Fethiye","description":"Fethiye'de 1-8. sınıflara ödev ve LGS odaklı ders desteği. Uzman kadro, etkinlikler, programlar ve modern öğrenme ortamı.","theme":{"primary":"#f97316","primary2":"#fb923c","primary3":"#ea580c"},"logo":"https://i.ibb.co/Ng7cwStM/fenomen-logo-orange-192x192.png","keywords":"Fenomen,Fenomen Eğitim Kurumları,LGS Hazırlık Fethiye,Fethiye Çocuk Kulübü,Ödev ve Ders odaklı Fethiye","themeColor":"#f97316","canonicalUrl":"https://fenomencocukulubu.github.io/home/","ogImage":"https://i.ibb.co/Ng7cwStM/fenomen-logo-orange-192x192.png"},"hero":{"title":"LGS’de Başarıya Giden Yol Fenomenden Geçer.","slides":[{"id":"slide-1","enabled":true,"image":{"src":"","alt":""},"title":"LGS’de Başarıya Giden Yol Fenomenden Geçer.","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-2","enabled":true,"image":{"src":"","alt":""},"title":"Gurur Tablosu: 2025 LGS’de İki Öğrencimiz 500 Tam Puan aldılar.","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-3","enabled":true,"image":{"src":"","alt":""},"title":"Gerçek Sınav Ortamı, Gerçek Deneyim","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-4","enabled":true,"image":{"src":"","alt":""},"title":"Fenomen Eğitim Kurumları ile Geleceğe Hazırlık","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-5","enabled":true,"image":{"src":"","alt":""},"title":"Fenomen Yaz Okulu ile Keşfet, Öğren, Eğlen","subtitle":"","button":null,"backgroundPosition":"center"},{"id":"slide-6","enabled":true,"image":{"src":"","alt":""},"title":"Spor, Sanat ve Bilim Bir Arada","subtitle":"","button":null,"backgroundPosition":"center"}]},"sections":{"duyurular":{"enabled":true,"title":"Duyurular","subtitle":"Önemli duyurular ve haberler","items":[{"id":"item-1","enabled":true,"title":"Bursluluk / LGS Provası Başvuru Alanı","iconClass":"fas fa-file-signature","image":{"src":"","alt":"Bursluluk / LGS Provası Başvuru Alanı","hidden":false},"shortDescription":"🎯 Bursluluk sınavlarına ve LGS Provasına online kayıt sistemidir. Hemen başvur, yerini ayırt! ✨","descriptionHtml":"🎯 Bursluluk sınavlarına ve <strong>LGS Provasına</strong> <strong>online kayıt</strong> sistemidir.<br/>\n                        Hemen başvur, yerini ayırt! ✨","link":{"href":"https://ferhat19881988.github.io/burs/","target":"_blank","text":"Detay Sayfası"},"directLink":true},{"id":"item-2","enabled":true,"title":"Yeni Dönem Kayıtları Başladı","iconClass":"fas fa-calendar-alt","image":{"src":"","alt":"Yeni Dönem Kayıtları","hidden":true},"shortDescription":"2025-2026 eğitim öğretim yılı kayıtlarımız başladı. Erken kayıt fırsatlarından yararlanın.","descriptionHtml":"📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"LGS Başarısı 2025","iconClass":"fas fa-trophy","image":{"src":"","alt":"LGS Başarısı 2025","hidden":true},"shortDescription":"Öğrencilerimizin LGS'deki başarısından gurur duyuyoruz. Hedef okullarına yerleşen öğrencilerimizi kutluyoruz.","descriptionHtml":"Öğrencilerimizin LGS'deki başarısından gurur duyuyoruz. Hedef okullarına yerleşen öğrencilerimizi kutluyoruz.","link":{"href":"https://www.instagram.com/reel/DNAF4FwNjp6/?utm_source=ig_web_copy_link&igsh=czRncmpqNjgwb3k2","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-4","enabled":true,"title":"Yaz Okulu Havuzlu","iconClass":"fas fa-sun","image":{"src":"","alt":"Yaz Okulu Havuzlu","hidden":true},"shortDescription":"Yaz aylarında da eğitim devam ediyor. Eğlenceli aktiviteler ve ders takviyesi ile dolu yaz programımız.","descriptionHtml":"📣 | Sınırlı kontenjanı kaçırma! Haydi sen de Fenomen Eğitim Kurumları Ailesine Katıl! 💫 <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.facebook.com/share/r/16spP3Zz7a/","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-5","enabled":true,"title":"Yaz Okulu LGS","iconClass":"fas fa-sun","image":{"src":"","alt":"Yaz Okulu LGS","hidden":true},"shortDescription":"Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.","descriptionHtml":"Öğrencilerimiz için hazırladığımız LGS Yaz Kursu Programı, hem ders tekrarlarıyla akademik başarıyı destekliyor hem de okul öncesi öğrenciyi bir adım öne geçiriyor.<br/><br/>\n📚 Yoğunlaştırılmış konu anlatımları<br/>\n📝 Soru çözüm saatleri<br/>\n🎲 Motivasyon artırıcı sosyal etkinlikler<br/>\n\nBu yaz, geleceğe emin adımlarla hazırlanmak için sen de bizimle ol! <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-6","enabled":true,"title":"Deneme Kulübü","iconClass":"fas fa-sun","image":{"src":"","alt":"Deneme Kulübü","hidden":true},"shortDescription":"Öğrencilerimizin sınavlara daha bilinçli hazırlanmasını hedefleyen Deneme Kulübü, düzenli deneme sınavları ile gerçek sınav atmosferini yaşatır.","descriptionHtml":"Deneme Kulübü’nde öğrenciler;<br/>\n✅ Gerçek sınav temposunu yaşar<br/>\n✅ Zaman yönetimini geliştirir<br/>\n✅ Hedeflerini netleştirir<br/>\n\nSen de katıl, her denemeyle başarıya biraz daha yaklaş! <br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br></br>","link":{"href":"https://www.facebook.com/share/r/1Ay5wiponN/","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"yaptiklarimiz":{"enabled":true,"title":"Yaptıklarımız","subtitle":"Başarılarımız ve öğrencilerimizle gurur duyduğumuz anlar","items":[{"id":"item-1","enabled":true,"title":"LGS’de 500 Tam Puan: Tam İsabet!","iconClass":"fas fa-medal","image":{"src":"","alt":"Yaptıklarımız","hidden":true},"shortDescription":"LGS'de büyük başarı elde ettik.","descriptionHtml":"LGS'de büyük başarı elde ettik.","link":{"href":"https://www.instagram.com/p/DMaZWGzNJjm/?utm_source=ig_web_copylink&igsh=a2I4NXRkcWF3aW1w","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-2","enabled":true,"title":"Yaz okulunda Bilim Atölyesi","iconClass":"fas fa-users","image":{"src":"","alt":"Yaptıklarımız","hidden":true},"shortDescription":"Doğa bizim laboratuvarımız: dokun, ölç, keşfet.","descriptionHtml":"Merak eden çocuk, geleceğin bilim insanıdır!<br/>\n\nÇocukların içindeki merak duygusu, bilimin ilk adımıdır.<br/>\nYaz okulumuzda düzenlediğimiz Bilim Atölyesi ile öğrenciler:<br/><br/>\n\n🔹 Doğayı laboratuvar gibi keşfeder<br/>\n🔹 Deneyler yaparak öğrenir<br/>\n🔹 Sorar, araştırır, bulur<br/>\n🔹 Eğlenirken bilimin heyecanını yaşar<br/><br/>\n<a class=\"btn btn-danger btn-lg fw-bold shadow-lg rounded-pill d-inline-flex align-items-center gap-2\" data-video=\"\" href=\"video/2.mp4\" onmouseenter=\"this.style.setProperty('color','#FF1744','important');\n                 this.style.setProperty('text-shadow','0 0 6px rgba(255,23,68,.9),0 0 14px rgba(255,23,68,.6),0 0 24px rgba(255,23,68,.45)','important');\n                 this.style.setProperty('box-shadow','0 0 10px rgba(255,23,68,.5),0 0 24px rgba(255,23,68,.35)','important');\" onmouseleave=\"this.style.setProperty('color','#111','important');\n                 this.style.setProperty('text-shadow','none','important');\n                 this.style.removeProperty('box-shadow');\" style=\"color:#111 !important;\">\n<i class=\"fas fa-play fa-fw\" style=\"color:inherit !important\"></i> Videoyu İzle\n</a>\n<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n</br></br></br>","link":{"href":"https://www.instagram.com/reel/DNke6SNN-P3/?utm_source=ig_web_copy_link&igsh=MTRlMHl1cG80Mmh0Yw==","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"Akademik Başarı","iconClass":"fas fa-graduation-cap","image":{"src":"","alt":"Yaptıklarımız","hidden":true},"shortDescription":"Öğrencilerimizin not ortalamalarında %40 artış sağladık. Ders başarısında sürekli ilerleme.","descriptionHtml":"Öğrencilerimizin not ortalamalarında %40 artış sağladık. Ders başarısında sürekli ilerleme.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Kayıt için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.\n                       </br></br></br>","link":{"href":"https://www.instagram.com/fenomencocukkulubu?utm_source=ig_web_button_share_sheet&igsh=dmZ2MHY4cjBodWhh","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"programlarimiz":{"enabled":true,"title":"Programlarımız","subtitle":"Öğrencilerimize sunduğumuz çeşitli program ve hizmetler","items":[{"id":"item-1","enabled":true,"title":"LGS HAZIRLIK","iconClass":"fas fa-graduation-cap","image":{"src":"","alt":"LGS Hazırlığı","hidden":false},"shortDescription":"8. sınıf öğrencilerine özel kapsamlı LGS hazırlık programı","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-2","enabled":true,"title":"AKADEMİK DESTEK","iconClass":"fas fa-chalkboard-teacher","image":{"src":"","alt":"AKADEMİK DESTEK","hidden":false},"shortDescription":"Tüm derslerde bireysel ve grup halinde akademik destek","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-3","enabled":true,"title":"REHBER DESTEĞİ","iconClass":"fas fa-compass","image":{"src":"","alt":"Rehber Desteği","hidden":false},"shortDescription":"Öğrencilerin kişisel gelişimi için profesyonel rehberlik","descriptionHtml":"“Her öğrencinin bireysel özelliklerini dikkate alarak, onların kişisel gelişimini en iyi şekilde destekleyecek profesyonel rehberlik hizmetleri sağlıyoruz.”<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-4","enabled":true,"title":"BİREBİR DESTEĞİ","iconClass":"fas fa-user","image":{"src":"","alt":"BİREBİR DESTEĞİ","hidden":false},"shortDescription":"Özel ihtiyaçlar için birebir öğretmen desteği","descriptionHtml":"<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-5","enabled":true,"title":"GRUP DERS","iconClass":"fas fa-users","image":{"src":"","alt":"Grup Ders","hidden":false},"shortDescription":"Küçük gruplar halinde etkileşimli ders programları","descriptionHtml":"Daha verimli öğrenme için öğrencilerimizi küçük gruplara ayırıyor, etkileşimli ve katılımcı ders programlarıyla öğrenmeyi eğlenceli hale getiriyoruz.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-6","enabled":true,"title":"ÖDEV DESTEĞİ","iconClass":"fas fa-book-open","image":{"src":"","alt":"Ödev Desteği","hidden":false},"shortDescription":"Günlük ödev takibi ve yardımı ile başarıyı artırıyoruz","descriptionHtml":"Her gün yapılan ödev takibi ve profesyonel yardım ile öğrencilerimizin sorumluluk bilincini geliştiriyor, başarılarını kalıcı hale getiriyoruz.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231","target":"_blank","text":"Detay Sayfası"},"directLink":false},{"id":"item-7","enabled":true,"title":"YAZ OKULU (HAVUZLU)","iconClass":"fas fa-swimming-pool","image":{"src":"","alt":"Yaz Okulu","hidden":false},"shortDescription":"Yaz aylarında eğlenceli ve öğretici yaz okulu programı","descriptionHtml":"Akademik destek ile eğlenceli aktiviteleri bir araya getiren yaz okulu programımız, öğrencilerin hem kişisel hem de sosyal gelişimlerine katkı sağlıyor.<br/><br/>\n<a href=\"tel:+905337290348\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 533 729 03 48\n  </a><br>\n<a href=\"tel:+905396752213\" onmouseenter=\"this.style.color='#22c55e'\" onmouseleave=\"this.style.color='#1f2937'\" style=\"color:#1f2937; text-decoration:underline; font-weight:700;\">\n     📞+90 539 675 22 13\n  </a><br><br>\n 📍 Taşyaka mahallesi 144.sokak no 9<br/><br/>\n  Bilgi için bizi arayabilir veya WhatsApp üzerinden form doldurabilirsiniz.</br></br></br>","link":{"href":"https://www.instagram.com/reel/DNaf_RjNI1p/?utm_source=ig_web_copy_link&igsh=cGxxM2lvOXB6NGZ5","target":"_blank","text":"Detay Sayfası"},"directLink":false}]},"ogretmenlerimiz":{"enabled":true,"title":"Öğretmenlerimiz","subtitle":"Alanında uzman, deneyimli öğretmenlerimizle tanışın","items":[{"id":"teacher-1","enabled":true,"name":"Ramazan UYSALCAN","role":"Yönetim Kurulu Başkanı","image":{"src":"","alt":"Ramazan Bey"},"descriptionHtml":""},{"id":"teacher-2","enabled":true,"name":"Cemil KARAÇETE","role":"MÜDÜR","image":{"src":"","alt":"Cemil Bey"},"descriptionHtml":""},{"id":"teacher-3","enabled":true,"name":"Gülçin BAYSAL","role":"Sosyal Bilgiler Öğretmeni","image":{"src":"","alt":"Gülçin Hanım"},"descriptionHtml":""},{"id":"teacher-4","enabled":true,"name":"Ferhat KARAGÖZ","role":"Fen Bilimleri Öğretmeni","image":{"src":"","alt":"Ferhat Bey"},"descriptionHtml":""},{"id":"teacher-5","enabled":true,"name":"Eda ÇETİNKAYA","role":"Muhasebe","image":{"src":"","alt":"17"},"descriptionHtml":""},{"id":"teacher-6","enabled":true,"name":"Hüseyin DAĞDELEN","role":"Matematik Öğretmeni","image":{"src":"","alt":"Hüseyin Bey"},"descriptionHtml":""},{"id":"teacher-7","enabled":true,"name":"Müşerref GÖKŞEN","role":"Türkçe Öğretmeni","image":{"src":"","alt":"1"},"descriptionHtml":""},{"id":"teacher-8","enabled":true,"name":"Havana ALAGÖZ","role":"Türkçe Öğretmeni","image":{"src":"","alt":"2"},"descriptionHtml":""},{"id":"teacher-9","enabled":true,"name":"Canan CAMUZCU","role":"Türkçe Öğretmeni","image":{"src":"","alt":"3"},"descriptionHtml":""},{"id":"teacher-10","enabled":true,"name":"Mukaddes YENİGÜN","role":"Fen Bilimleri Öğretmeni","image":{"src":"","alt":"4"},"descriptionHtml":""},{"id":"teacher-11","enabled":true,"name":"Erdem KURT","role":"Fen Bilimleri Öğretmeni","image":{"src":"","alt":"5"},"descriptionHtml":""},{"id":"teacher-12","enabled":true,"name":"Zeynep GÜNGÖR","role":"Fen Bilimleri Öğretmeni","image":{"src":"","alt":"6"},"descriptionHtml":""},{"id":"teacher-13","enabled":true,"name":"Şahiste Nur AKA","role":"Matematik Öğretmeni","image":{"src":"","alt":"7"},"descriptionHtml":""},{"id":"teacher-14","enabled":true,"name":"Büşra Uysal REÇBER","role":"Matematik Öğretmeni","image":{"src":"","alt":"8"},"descriptionHtml":""},{"id":"teacher-15","enabled":true,"name":"Esra Nur ÖZ","role":"Matematik Öğretmeni","image":{"src":"","alt":"9"},"descriptionHtml":""},{"id":"teacher-16","enabled":true,"name":"Ülker ÇALIŞ","role":"Matematik Öğretmeni","image":{"src":"","alt":"10"},"descriptionHtml":""},{"id":"teacher-17","enabled":true,"name":"Nazira BARAN","role":"Matematik Öğretmeni","image":{"src":"","alt":"16"},"descriptionHtml":""},{"id":"teacher-18","enabled":true,"name":"Sedef SİVİŞLİ","role":"İnglizce Öğretmeni","image":{"src":"","alt":"12"},"descriptionHtml":""},{"id":"teacher-19","enabled":true,"name":"Merve SARI","role":"Sınıf Öğretmeni","image":{"src":"","alt":"14"},"descriptionHtml":""},{"id":"teacher-20","enabled":true,"name":"Kader Deniz SARI","role":"Rehber Öğretmen","image":{"src":"","alt":"18"},"descriptionHtml":""},{"id":"teacher-21","enabled":true,"name":"Fatoş KARAÇETE","role":"Personel","image":{"src":"","alt":"18"},"descriptionHtml":""}]},"veliGorusleri":{"enabled":true,"title":"👨‍👩‍👧‍👦 Öğrenci Görüşleri","subtitle":"Değerli öğrencilerimizin deneyimlerini ve başarı hikayelerini sizinle paylaşıyoruz","stats":[{"id":"stat-1","number":"99","label":"% Memnuniyet"},{"id":"stat-2","number":"800","label":"Mutlu Öğrenci"},{"id":"stat-3","number":"92","label":"% LGS Başarı"},{"id":"stat-4","number":"15","label":"Yıllık Deneyim"}],"cta":{"text":"Öğrenci Görüşleri","url":"https://www.instagram.com/fenomenegitimkurumlarii"},"items":[],"testimonialDataRawJs":"{\n            2: {\n                name: \"Mehmet Yılmaz\",\n                grade: \"7. Sınıf Velisi\", \n                subject: \"LGS Hazırlık Başarısı\",\n                experience: `Kızım Elif, 7. sınıfa geçtiğinde LGS kaygısı yaşıyorduk. Fenomen'deki öğretmenler bu süreci bizim için kolaylaştırdı.\n                \n                🏆 BAŞARILARIMIZ:\n                • Türkçe: 65 → 88 puan\n                • Matematik: 70 → 91 puan  \n                • Fen Bilimleri: 60 → 85 puan\n                • Sosyal Bilgiler: 75 → 90 puan\n                \n                Sadece akademik değil, psikolojik destek de çok değerli. Rehber öğretmen sayesinde sınav kaygısını yendi.\n                \n                Elif artık LGS'den değil, geleceğinden umutlu!`,\n                date: \"Şubat 2024\", \n                results: [\"Türkçe +23 puan\", \"Matematik +21 puan\", \"Fen +25 puan\"],\n                hasVideo: false\n            },\n            3: {\n                name: \"Fatma Özkan\",\n                grade: \"6. Sınıf Velisi\",\n                subject: \"Fen Bilimleri Uzmanı\",\n                experience: `Oğlum Can'ın Fen Bilimleri dersindeki gelişimi herkesi şaşırttı.\n                \n                🔬 DÖNÜŞÜM HİKAYESİ:\n                • Fen notu: 50 → 94 (Sınıf birincisi!)\n                • Deney yapma merakı kazandı\n                • Bilim olimpiyatlarına katılmaya başladı\n                \n                Can artık evde sürekli deneyler yapıyor. Merakı ve öğrenme isteği arttı.\n                \n                1 yılda bu kadar yol alacağımızı hiç düşünmemiştik!`,\n                date: \"Mart 2024\",\n                results: [\"Sınıf birinciliği\", \"Bilim olimpiyatı katılımı\", \"Kariyer hedefi belirledi\"],\n                hasVideo: false\n            },\n            1: {\n                name: \"Zeynep Aktaş\",\n                grade: \"8. Sınıf Velisi\", \n                subject: \"LGS Büyük Başarısı\",\n                experience: `LGS yılı gerçekten zordu ama Fenomen bu süreçte yanımızdaydı.\n                \n                🎯 LGS SONUÇLARIMIZ:\n                • Türkçe: %89 başarı\n                • Matematik: %91 başarı\n                • Fen Bilimleri: %85 başarı  \n                • GENEL BAŞARI: %87\n                \n                Defne, hedeflediği Fethiye Anadolu Lisesi'ne 15 puanla yerleşti!\n                \n                Artık lise hayatına hazır. Çok teşekkürler Fenomen ailesi!`,\n                date: \"Mayıs 2024\",\n                results: [\"LGS %87 başarı\", \"Anadolu Lisesi yerleşti\", \"Hedef aştı +15 puan\"],\n                hasVideo: true\n            },\n        }"},"galerimiz":{"enabled":true,"title":"Galerimiz","subtitle":"Çocuklarımızın keyifle öğrendiği anlardan kareler","images":[{"id":"gallery-1","enabled":true,"src":"","alt":"Galeri Resmi 1","active":true},{"id":"gallery-2","enabled":true,"src":"","alt":"Galeri Resmi 2","active":false},{"id":"gallery-3","enabled":true,"src":"","alt":"Galeri Resmi 3","active":false},{"id":"gallery-4","enabled":true,"src":"","alt":"Galeri Resmi 4","active":false},{"id":"gallery-5","enabled":true,"src":"","alt":"Galeri Resmi 5","active":false},{"id":"gallery-6","enabled":true,"src":"","alt":"Galeri Resmi 6","active":false},{"id":"gallery-7","enabled":true,"src":"","alt":"Galeri Resmi 7","active":false},{"id":"gallery-8","enabled":true,"src":"","alt":"Galeri Resmi 8","active":false},{"id":"gallery-9","enabled":true,"src":"","alt":"Galeri Resmi 9","active":false},{"id":"gallery-10","enabled":true,"src":"","alt":"Galeri Resmi 10","active":false},{"id":"gallery-11","enabled":true,"src":"","alt":"Galeri Resmi 11","active":false},{"id":"gallery-12","enabled":true,"src":"","alt":"Galeri Resmi 12","active":false},{"id":"gallery-13","enabled":true,"src":"","alt":"Galeri Resmi 13","active":false},{"id":"gallery-14","enabled":true,"src":"","alt":"Galeri Resmi 14","active":false},{"id":"gallery-15","enabled":true,"src":"","alt":"Galeri Resmi 15","active":false},{"id":"gallery-16","enabled":true,"src":"","alt":"Galeri Resmi 16","active":false},{"id":"gallery-17","enabled":true,"src":"","alt":"Galeri Resmi 17","active":false},{"id":"gallery-18","enabled":true,"src":"","alt":"Galeri Resmi 18","active":false},{"id":"gallery-19","enabled":true,"src":"","alt":"Galeri Resmi 19","active":false},{"id":"gallery-20","enabled":true,"src":"","alt":"Galeri Resmi 20","active":false},{"id":"gallery-21","enabled":true,"src":"","alt":"Galeri Resmi 21","active":false},{"id":"gallery-22","enabled":true,"src":"","alt":"Galeri Resmi 22","active":false},{"id":"gallery-23","enabled":true,"src":"","alt":"Galeri Resmi 23","active":false},{"id":"gallery-24","enabled":true,"src":"","alt":"Galeri Resmi 24","active":false}]},"hakkimizda":{"enabled":true,"title":"Hakkımızda","contentHtml":"<div style=\"background: linear-gradient(135deg, #ea580c 0%, #dc2626 100%); padding: 40px; border-radius: 20px; margin: 40px 0; color: white; box-shadow: 0 20px 40px rgba(234, 88, 12, 0.3);\">\n<div style=\"text-align: center; margin-bottom: 30px;\">\n<h3 style=\"font-size: 2rem; margin-bottom: 20px; color: #fff;\">\n<i class=\"fas fa-graduation-cap\" style=\"margin-right: 15px;\"></i>\n                            Fenomen Eğitim Kurumları\n                        </h3>\n<p style=\"font-size: 1.2rem; line-height: 1.6; opacity: 0.95;\">\n                            Fethiye'de 1-8. sınıf öğrencilerine ödev desteği ve LGS hazırlığında \n                            kaliteli eğitim hizmeti sunuyoruz. Modern öğrenme ortamımızda, uzman kadromuzla \n                            çocuklarınızın akademik başarılarını artırmayı hedefliyoruz.\n                        </p>\n</div>\n<div class=\"about-grid\" style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;\"> <div style=\"background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px;\">\n<h4 style=\"color: #fff; margin-bottom: 15px; font-size: 1.3rem;\">\n<i class=\"fas fa-eye\" style=\"margin-right: 10px;\"></i> Vizyonumuz\n                            </h4>\n<p style=\"line-height: 1.6; opacity: 0.9;\">\n                                Her çocuğun potansiyelini keşfetmesi ve geleceğe güvenle hazırlanması için en iyi eğitim desteğini sunmak.\n                            </p>\n</div>\n<div style=\"background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px;\">\n<h4 style=\"color: #fff; margin-bottom: 15px; font-size: 1.3rem;\">\n<i class=\"fas fa-target\" style=\"margin-right: 10px;\"></i> Misyonumuz\n                            </h4>\n<p style=\"line-height: 1.6; opacity: 0.9;\">\n                                Kişiselleştirilmiş eğitim yaklaşımıyla her öğrencinin akademik başarısını artırmak ve özgüvenini geliştirmek.\n                            </p>\n</div>\n</div>\n</div>"},"iletisim":{"enabled":true,"title":"Bize Ulaşın","subtitle":"Sorularınıza aynı gün içinde dönüş yapıyoruz.","cards":[{"id":"contact-1","enabled":true,"iconClass":"fas fa-phone-volume","title":"Telefon","contentHtml":"<h3>Telefon</h3>\n<p>\n<a href=\"tel:+905337290348\">+90 533 729 03 48</a><br>\n<a href=\"tel:+905396752213\">+90 539 675 22 13</a>\n</br></p>"},{"id":"contact-2","enabled":true,"iconClass":"fas fa-envelope","title":"E‑posta","contentHtml":"<h3>E‑posta</h3>\n<p><a href=\"mailto:fenomencocukkulubu@gmail.com\" aria-label=\"Fenomen Eğitim Kurumlarına e-posta gönder\">fenomencocukkulubu@gmail.com</a></p>"},{"id":"contact-3","enabled":true,"iconClass":"fas fa-location-dot","title":"Adres","contentHtml":"<h3>Adres</h3>\n<p>Taşyaka Mahallesi 144.Sokak No:9, Fethiye</p>\n<p>\n<a class=\"mini-link\" href=\"https://www.google.com/maps/dir/?api=1&amp;destination=36.621381983108%2C29.12291\" rel=\"noopener\" target=\"_blank\">Yol Tarifi Al</a>\n</p>"},{"id":"contact-4","enabled":true,"iconClass":"fab fa-instagram","title":"Sosyal Medya","contentHtml":"<h3>Sosyal Medya</h3>\n<p>\n<a href=\"https://www.instagram.com/fenomenegitimkurumlarii\" rel=\"noopener\" target=\"_blank\">Instagram</a> ·\n              <a href=\"https://www.facebook.com/people/Fenomen-%C3%87ocuk-Kul%C3%BCb%C3%BC/100089782568231\" rel=\"noopener\" target=\"_blank\">Facebook</a>\n</p>"}],"note":"Bilgileriniz yalnızca sizinle iletişime geçmek için kullanılacaktır.","mapEmbedUrl":"https://www.google.com/maps?q=36.621381983108,29.12291&output=embed","email":"fenomencocukkulubu@gmail.com"}},"admin":{"version":"2.0-admin-rtb","lastEditor":"","notes":"Bu JSON mevcut HTML'den çıkarılan ilk içerik şemasıdır. Firebase'e başlangıç verisi olarak yüklenebilir."},"footer":{"sections":[{"id":"footer-1","title":"Fenomen Eğitim Kurumları","contentHtml":"<h4>Fenomen Eğitim Kurumları</h4>\n<p><strong>BİRLİKTE BAŞARACAĞIZ!</strong></p>\n<p>Geleceğin liderleri burada yetişiyor. Her çocuk özeldir, her başarı değerlidir.</p>"},{"id":"footer-2","title":"İletişim","contentHtml":"<h4>İletişim</h4>\n<p class=\"phone-row\">\n<i class=\"fas fa-phone\"></i>\n<a class=\"phone-link\" href=\"tel:+905337290348\">+90 533 729 03 48</a>\n</p>\n<p class=\"phone-row\">\n<i class=\"fas fa-phone\"></i>\n<a class=\"phone-link\" href=\"tel:+905396752213\">+90 539 675 22 13</a>\n</p>\n<p class=\"email-row\">\n<i class=\"fas fa-envelope\" aria-hidden=\"true\"></i>\n<a class=\"email-link\" href=\"mailto:fenomencocukkulubu@gmail.com\" aria-label=\"Fenomen Eğitim Kurumlarına e-posta gönder\">fenomencocukkulubu@gmail.com</a>\n</p>\n<a href=\"https://www.google.com/maps/dir/?api=1&amp;destination=36.621381983108%2C29.12291\" target=\"_blank\">\n<i class=\"fas fa-map-marker-alt\"></i> Taşyaka Mah. 144.Sok. No:9\n                        </a>"},{"id":"footer-3","title":"Hizmetlerimiz","contentHtml":"<h4>Hizmetlerimiz</h4>\n<ul class=\"footer-services\">\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-graduation-cap\"></i> LGS HAZIRLIK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-book-open\"></i> AKADEMİK DESTEK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-compass\"></i> REHBER DESTEĞİ</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-user\"></i> BİREBİR DESTEK</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-users\"></i> GRUP DERS</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-tasks\"></i> ÖDEV DESTEĞİ</a></li>\n<li><a href=\"#programlarimiz\"><i class=\"fas fa-swimming-pool\"></i> YAZ OKULU (HAVUZLU)</a></li>\n</ul>"}],"bottomText":"© 2025 Fenomen Eğitim Kurumları. Tüm hakları saklıdır. Tasarım : <span class=\"designer-name\">Ferhat KARAGÖZ</span>"},"assets":{"images":[],"videos":["video/2.mp4"]}};
   const ADMIN_SALT_CODES = [102,101,110,111,109,101,110,45,97,100,109,105,110,45,118,53,124];
   const ADMIN_PEPPER_CODES = [124,115,105,116,101,102,101,110,111,109,101,110,45,112,97,110,101,108];
   const ADMIN_CODE_DIGEST_PARTS = ["a2b9f371e1ed", "92ac541817ec", "1a79a7fe9987", "1a864e4d91f5", "eda41eac8288", "d57c"];
@@ -5003,9 +4924,7 @@ main > .section:first-of-type{
   };
   const normalizeImagePath = (src) => {
     const v = String(src || "").trim();
-    if (!v) return "";
-    if (/^(https?:|data:|blob:|\/|img\/|video\/)/i.test(v)) return v;
-    return "img/" + v.replace(/^\/+/, "");
+    return /^(https?:\/\/|data:|blob:)/i.test(v) ? v : "";
   };
   const stamp = (data) => ({ ...clone(data), updatedAt: new Date().toISOString() });
   async function hashText(value){
@@ -5030,8 +4949,8 @@ main > .section:first-of-type{
     return digest === ADMIN_CODE_DIGEST_PARTS.join("") || digest === ADMIN_CODE_FALLBACK_DIGEST;
   }
 
-  let siteData = clone(DEFAULT_CONTENT);
-  let editorData = clone(DEFAULT_CONTENT);
+  let siteData = {};
+  let editorData = {};
   let activeTab = "site";
   let adminOpen = false;
   let dynamicSlide = 0;
@@ -5072,20 +4991,11 @@ main > .section:first-of-type{
     const val = snapshot.val();
     if (val) {
       localStorage.removeItem(DELETE_FLAG);
-      siteData = mergeWithDefault(val);
+      siteData = clone(val);
       lastDbStatus = "Firebase: sitefenomen verisi yüklendi";
     } else {
-      siteData = clone(DEFAULT_CONTENT);
-      lastDbStatus = "Firebase: sitefenomen boş, ekranda yerel orijinal içerik gösteriliyor";
-      if (!localStorage.getItem(DELETE_FLAG)) {
-        try {
-          await set(siteRef, stamp(DEFAULT_CONTENT));
-          lastDbStatus = "Firebase: sitefenomen ilk orijinal içerikle oluşturuldu";
-        } catch (err) {
-          lastDbStatus = "Firebase yazma hatası: " + err.message;
-          console.error(err);
-        }
-      }
+      siteData = {};
+      lastDbStatus = "Firebase: sitefenomen boş; yerel görsel yüklenmedi";
     }
     applySite(siteData);
     if (adminOpen) renderEditor();
@@ -5148,15 +5058,19 @@ main > .section:first-of-type{
     const slides = (hero.slides || []).filter(s => s.enabled !== false);
     const slider = document.querySelector('.slider');
     const indicators = document.querySelector('.slider-indicators');
-    if (!slider || !indicators || !slides.length) return;
+    if (!slider || !indicators) return;
+    if (!slides.length) { slider.innerHTML = ""; indicators.innerHTML = ""; return; }
     slider.style.setProperty('--slide-count', slides.length);
-    slider.innerHTML = slides.map(slide => `
-      <div class="slide" style="background-image:url('${esc(normalizeImagePath(slide.image?.src))}'); background-position:${esc(slide.backgroundPosition || 'center')};">
+    slider.innerHTML = slides.map(slide => {
+      const imageUrl = normalizeImagePath(slide.image?.src);
+      const imageStyle = imageUrl ? `background-image:url('${esc(imageUrl)}');` : "";
+      return `<div class="slide" style="${imageStyle} background-position:${esc(slide.backgroundPosition || 'center')};">
         <div class="slide-content">
           <h3>${esc(slide.title || '')}</h3>
           <p>${esc(slide.subtitle || '')}</p>
         </div>
-      </div>`).join("");
+      </div>`;
+    }).join("");
     indicators.innerHTML = slides.map((_, i) => `<div class="slider-dot ${i===0?'active':''}" data-dyn-slide="${i}"></div>`).join("");
     dynamicSlide = Math.min(dynamicSlide, slides.length - 1);
     updateDynamicSlider();
@@ -5213,15 +5127,17 @@ main > .section:first-of-type{
     setSectionHead('ogretmenlerimiz', section, 'fas fa-chalkboard-teacher');
     const grid = root.querySelector('.cards-grid');
     if (!grid) return;
-    grid.innerHTML = (section.items || []).filter(t => t.enabled !== false).map(t => `
-      <div class="card teacher-card">
+    grid.innerHTML = (section.items || []).filter(t => t.enabled !== false).map(t => {
+      const photoUrl = normalizeImagePath(t.image?.src);
+      return `<div class="card teacher-card">
         <div class="teacher-photo-frame">
-            <img class="teacher-photo" src="${esc(normalizeImagePath(t.image?.src))}" alt="${esc(t.image?.alt || t.name || '')}">
+          ${photoUrl ? `<img class="teacher-photo" src="${esc(photoUrl)}" alt="${esc(t.image?.alt || t.name || '')}">` : ""}
         </div>
         <h4>${esc(t.name || '')}</h4>
         <p><strong>${esc(t.role || '')}</strong></p>
         ${t.descriptionHtml ? `<p>${t.descriptionHtml}</p>` : ""}
-      </div>`).join("");
+      </div>`;
+    }).join("");
   }
 
   function renderTestimonials(section){
@@ -5245,9 +5161,13 @@ main > .section:first-of-type{
     const main = root.querySelector('.gallery-main');
     const dots = root.querySelector('.gallery-indicators');
     if (!main || !dots) return;
-    const images = (section.images || []).filter(img => img.enabled !== false);
+    const images = (section.images || [])
+      .filter(img => img.enabled !== false)
+      .map(img => ({...img, src: normalizeImagePath(img.src)}))
+      .filter(img => img.src);
     dynamicGallery = Math.min(dynamicGallery, Math.max(0, images.length - 1));
-    main.innerHTML = images.map((img, i) => `<img class="gallery-image ${i===dynamicGallery?'active':''}" src="${esc(normalizeImagePath(img.src))}" alt="${esc(img.alt || `Galeri Resmi ${i+1}`)}">`).join("") + `
+    if (!images.length) { main.innerHTML = ""; dots.innerHTML = ""; return; }
+    main.innerHTML = images.map((img, i) => `<img class="gallery-image ${i===dynamicGallery?'active':''}" src="${esc(img.src)}" alt="${esc(img.alt || `Galeri Resmi ${i+1}`)}">`).join("") + `
       <button class="gallery-nav gallery-prev" type="button"><i class="fas fa-chevron-left"></i></button>
       <button class="gallery-nav gallery-next" type="button"><i class="fas fa-chevron-right"></i></button>`;
     dots.innerHTML = images.map((_, i) => `<span class="gallery-dot ${i===dynamicGallery?'active':''}" data-gallery-index="${i}"></span>`).join("");
@@ -5493,13 +5413,13 @@ main > .section:first-of-type{
     if (action === 'down' && index < arr.length - 1) [arr[index+1], arr[index]] = [arr[index], arr[index+1]];
   }
   function newItemFor(path, i){
-    if (path.includes('hero.slides')) return {id:`slide-${Date.now()}`,enabled:true,title:'Yeni Slider Başlığı',subtitle:'',image:{src:'img/yeni.jpg',alt:''},backgroundPosition:'center'};
-    if (path.includes('ogretmenlerimiz')) return {id:`teacher-${Date.now()}`,enabled:true,name:'Yeni Öğretmen',role:'Görev / Branş',image:{src:'img/ogretmen.jpg',alt:''},descriptionHtml:''};
-    if (path.includes('galerimiz')) return {id:`gallery-${Date.now()}`,enabled:true,src:'img/galeri.jpg',alt:'Galeri görseli'};
+    if (path.includes('hero.slides')) return {id:`slide-${Date.now()}`,enabled:true,title:'Yeni Slider Başlığı',subtitle:'',image:{src:'',alt:''},backgroundPosition:'center'};
+    if (path.includes('ogretmenlerimiz')) return {id:`teacher-${Date.now()}`,enabled:true,name:'Yeni Öğretmen',role:'Görev / Branş',image:{src:'',alt:''},descriptionHtml:''};
+    if (path.includes('galerimiz')) return {id:`gallery-${Date.now()}`,enabled:true,src:'',alt:'Galeri görseli'};
     if (path.includes('veliGorusleri.stats')) return {id:`stat-${Date.now()}`,number:'0',label:'Yeni İstatistik'};
     if (path.includes('iletisim.cards')) return {id:`contact-${Date.now()}`,enabled:true,iconClass:'fas fa-circle-info',title:'Yeni İletişim',contentHtml:'<h3>Yeni İletişim</h3><p>Bilgi</p>'};
     if (path.includes('footer.sections')) return {id:`footer-${Date.now()}`,title:'Yeni Footer',contentHtml:'<h4>Yeni Footer</h4><p>İçerik</p>'};
-    return {id:`item-${Date.now()}`,enabled:true,title:'Yeni Kart',iconClass:'fas fa-star',image:{src:'img/yeni.jpg',alt:'',hidden:false},shortDescription:'Kısa açıklama',descriptionHtml:'Detaylı açıklama',link:{href:'',target:'_blank',text:'Detay'},directLink:false};
+    return {id:`item-${Date.now()}`,enabled:true,title:'Yeni Kart',iconClass:'fas fa-star',image:{src:'',alt:'',hidden:false},shortDescription:'Kısa açıklama',descriptionHtml:'Detaylı açıklama',link:{href:'',target:'_blank',text:'Detay'},directLink:false};
   }
 
   function renderEditor(){
@@ -5536,13 +5456,12 @@ main > .section:first-of-type{
     const value = !!get(editorData, path);
     return `<label class="fenomen-admin-check"><input type="checkbox" data-path="${esc(path)}" ${value ? 'checked' : ''}> ${esc(label)}</label>`;
   }
-  function imageField(label, path, placeholder='img/ornek.jpg', allowRemote=false){
+  function imageField(label, path, placeholder='https://firebasestorage.googleapis.com/...'){
     const value = get(editorData, path) ?? '';
-    const rule = allowRemote ? 'img/... veya https://...' : 'img/...';
     return `<div class="fenomen-admin-field fenomen-admin-image-field" data-image-field>
-      <label>${esc(label)} <span class="fenomen-admin-path-rule">${esc(rule)}</span></label>
+      <label>${esc(label)} <span class="fenomen-admin-path-rule">Firebase / HTTPS URL</span></label>
       <div class="fenomen-admin-image-row">
-        <input type="text" data-path="${esc(path)}" data-image-path-input="1" data-allow-remote="${allowRemote ? '1' : '0'}" value="${esc(value)}" placeholder="${esc(placeholder)}">
+        <input type="url" data-path="${esc(path)}" data-image-path-input="1" value="${esc(value)}" placeholder="${esc(placeholder)}">
         <button class="fenomen-admin-mini ghost" type="button" data-image-preview-btn>Ön izle</button>
       </div>
       <div class="fenomen-admin-image-feedback" data-image-feedback></div>
@@ -5566,21 +5485,16 @@ main > .section:first-of-type{
       </div>
     </div>`;
   }
-  function imageValidationMessage(src, allowRemote=false){
+  function imageValidationMessage(src){
     const v = String(src || '').trim();
-    if (!v) return {ok:true, level:'warn', message:'Görsel yolu boş. Bu alan görsel göstermeyebilir.'};
-    if (/^https?:\/\//i.test(v)) {
-      return allowRemote ? {ok:true, level:'ok', message:'Dış görsel bağlantısı kabul edildi.'} : {ok:false, level:'error', message:'Bu alanda dış bağlantı yerine img/... yolu kullanın.'};
-    }
-    if (!/^img\//i.test(v)) return {ok:false, level:'error', message:'Görsel yolu img/ ile başlamalı. Örnek: img/ornek.jpg'};
-    if (!/\.(jpe?g|png|webp|gif|svg|avif)(\?.*)?$/i.test(v)) return {ok:false, level:'error', message:'Dosya uzantısı jpg, jpeg, png, webp, gif, svg veya avif olmalı.'};
-    return {ok:true, level:'ok', message:'Görsel yolu uygun.'};
+    if (!v) return {ok:true, level:'warn', message:'Görsel URL’si boş; bu alanda görsel gösterilmez.'};
+    if (!/^https:\/\//i.test(v)) return {ok:false, level:'error', message:'Firebase Storage indirme bağlantısını veya geçerli bir HTTPS görsel URL’sini girin.'};
+    return {ok:true, level:'ok', message:'HTTPS görsel URL’si uygun.'};
   }
   function updateImageFieldState(input){
     const box = input.closest('[data-image-field]');
     if (!box) return true;
-    const allowRemote = input.dataset.allowRemote === '1';
-    const info = imageValidationMessage(input.value, allowRemote);
+    const info = imageValidationMessage(input.value);
     box.classList.remove('is-ok','is-warn','is-error');
     box.classList.add(`is-${info.level}`);
     const feedback = box.querySelector('[data-image-feedback]');
@@ -5606,7 +5520,7 @@ main > .section:first-of-type{
       }
     });
     if (bad.length) {
-      const msg = 'Hatalı görsel yolu var. Kaydetmeden önce img/... ve doğru uzantı kullanın.';
+      const msg = 'Hatalı görsel URL’si var. Kaydetmeden önce Firebase Storage veya HTTPS bağlantısı kullanın.';
       updateStatus(msg);
       if (window.Swal) Swal.fire({icon:'warning', title:'Görsel yolu hatası', html: `${esc(msg)}<br><br><pre style="text-align:left;white-space:pre-wrap">${esc(bad.slice(0,8).join('\\n'))}</pre>`});
       else alert(msg + '\\n' + bad.join('\\n'));
@@ -5623,7 +5537,7 @@ main > .section:first-of-type{
     return `<div class="fenomen-admin-hint">SEO alanları arama motorları ve sosyal medya ön izlemeleri için kullanılır.</div>
       <div class="fenomen-admin-grid">
         ${field('Site adı', 'site.name')}${field('Tarayıcı başlığı / title', 'site.title')}
-        ${imageField('Logo yolu', 'site.logo', 'img/logo.png', true)}${imageField('Sosyal medya görseli / og:image', 'site.ogImage', 'img/og-image.png', true)}
+        ${imageField('Logo yolu', 'site.logo')}${imageField('Sosyal medya görseli / og:image', 'site.ogImage')}
         ${field('Canonical URL', 'site.canonicalUrl')}${field('Tema rengi', 'site.themeColor')}
       </div>
       ${textarea('Meta description', 'site.description', 4)}
@@ -5633,12 +5547,12 @@ main > .section:first-of-type{
     const path='hero.slides'; const arr=get(editorData,path) || [];
     return `<div class="fenomen-admin-table-note">Satırları yukarı/aşağı taşıyabilir, kopyalayabilir, silebilir ve görsel ön izlemesini kontrol edebilirsiniz.</div><div class="fenomen-admin-section-title"><h3>Slider Resimleri</h3>${addButton(path,'Yeni Slider Ekle')}</div>
       ${arr.map((s,i)=>`<div class="fenomen-admin-item">${itemHead(s.title || `Slider ${i+1}`, path, i, s, s?.image?.src)}
-        <div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${field('Başlık', `${path}.${i}.title`)}${field('Alt metin', `${path}.${i}.subtitle`)}${imageField('Görsel yolu', `${path}.${i}.image.src`, 'img/1.jpg')}${field('Alt açıklama', `${path}.${i}.image.alt`)}${field('Kadraj / background-position', `${path}.${i}.backgroundPosition`, 'text', 'center')}</div>
+        <div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${field('Başlık', `${path}.${i}.title`)}${field('Alt metin', `${path}.${i}.subtitle`)}${imageField('Görsel yolu', `${path}.${i}.image.src`, 'https://firebasestorage.googleapis.com/...')}${field('Alt açıklama', `${path}.${i}.image.alt`)}${field('Kadraj / background-position', `${path}.${i}.backgroundPosition`, 'text', 'center')}</div>
       </div>`).join('')}`;
   }
   function renderCardEditor(key, label){
     const base=`sections.${key}`; const path=`${base}.items`; const arr=get(editorData,path) || [];
-    return `<div class="fenomen-admin-hint">${esc(label)} kartlarını buradan ekleyebilir, silebilir, sıralayabilir ve metin/görsel/link alanlarını değiştirebilirsiniz. Görseller için ana yol <strong>img/...</strong> olmalı.</div>
+    return `<div class="fenomen-admin-hint">${esc(label)} kartlarını buradan ekleyebilir, silebilir, sıralayabilir ve metin/görsel/link alanlarını değiştirebilirsiniz. Görseller Firebase Storage veya başka bir HTTPS görsel URL’si olmalı.</div>
       ${renderSectionCommon(base)}
       <div class="fenomen-admin-table-note">Tablo mantığı: sıra numarası, aktif/pasif durumu, ön izleme, kopyala/sil ve taşıma işlemleri aynı satır başlığında gösterilir.</div>
       <div class="fenomen-admin-section-title"><h3>Kartlar</h3>${addButton(path,'Yeni Kart Ekle')}</div>
@@ -5646,7 +5560,7 @@ main > .section:first-of-type{
         <div class="fenomen-admin-grid">
           ${check('Kart aktif', `${path}.${i}.enabled`)}${check('Direkt link olarak açılsın', `${path}.${i}.directLink`)}
           ${field('Başlık', `${path}.${i}.title`)}${field('İkon class', `${path}.${i}.iconClass`, 'text', 'fas fa-star')}
-          ${imageField('Görsel yolu', `${path}.${i}.image.src`, 'img/ornek.jpg')}${field('Görsel alt metni', `${path}.${i}.image.alt`)}
+          ${imageField('Görsel yolu', `${path}.${i}.image.src`, 'https://firebasestorage.googleapis.com/...')}${field('Görsel alt metni', `${path}.${i}.image.alt`)}
           ${check('Görsel kartta gizli olsun, sadece modalda çıksın', `${path}.${i}.image.hidden`)}${field('Link URL', `${path}.${i}.link.href`)}
           ${field('Link hedefi', `${path}.${i}.link.target`, 'text', '_blank')}${field('Link buton yazısı', `${path}.${i}.link.text`, 'text', 'Detay Sayfası')}
         </div>
@@ -5658,14 +5572,14 @@ main > .section:first-of-type{
     const base='sections.ogretmenlerimiz'; const path=`${base}.items`; const arr=get(editorData,path) || [];
     return `${renderSectionCommon(base)}<div class="fenomen-admin-table-note">Öğretmen satırlarında fotoğraf ön izlemesi, sıra, aktif/pasif ve hızlı işlem butonları birlikte gösterilir.</div><div class="fenomen-admin-section-title"><h3>Öğretmenler</h3>${addButton(path,'Yeni Öğretmen Ekle')}</div>
       ${arr.map((t,i)=>`<div class="fenomen-admin-item">${itemHead(t.name || `Öğretmen ${i+1}`, path, i, t, t?.image?.src)}
-        <div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${field('Ad Soyad', `${path}.${i}.name`)}${field('Görev / Branş', `${path}.${i}.role`)}${imageField('Fotoğraf yolu', `${path}.${i}.image.src`, 'img/ogretmen.jpg')}${field('Fotoğraf alt metni', `${path}.${i}.image.alt`)}</div>
+        <div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${field('Ad Soyad', `${path}.${i}.name`)}${field('Görev / Branş', `${path}.${i}.role`)}${imageField('Fotoğraf yolu', `${path}.${i}.image.src`, 'https://firebasestorage.googleapis.com/...')}${field('Fotoğraf alt metni', `${path}.${i}.image.alt`)}</div>
         ${textarea('Ek açıklama HTML', `${path}.${i}.descriptionHtml`, 4)}
       </div>`).join('')}`;
   }
   function renderGalleryEditor(){
     const base='sections.galerimiz'; const path=`${base}.images`; const arr=get(editorData,path) || [];
-    return `${renderSectionCommon(base)}<div class="fenomen-admin-table-note">Galeri satırlarında görsel yolu kontrol edilir; yanlış uzantı veya img/ dışı yol kaydetmeyi engeller.</div><div class="fenomen-admin-section-title"><h3>Galeri Görselleri</h3>${addButton(path,'Yeni Görsel Ekle')}</div>
-      ${arr.map((img,i)=>`<div class="fenomen-admin-item">${itemHead(img.src || `Görsel ${i+1}`, path, i, img, img?.src)}<div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${imageField('Görsel yolu', `${path}.${i}.src`, 'img/gorsel.jpg')}${field('Alt metin', `${path}.${i}.alt`)}</div></div>`).join('')}`;
+    return `${renderSectionCommon(base)}<div class="fenomen-admin-table-note">Galeri satırlarında görsel yolu kontrol edilir; geçersiz veya HTTPS dışı bağlantı kaydetmeyi engeller.</div><div class="fenomen-admin-section-title"><h3>Galeri Görselleri</h3>${addButton(path,'Yeni Görsel Ekle')}</div>
+      ${arr.map((img,i)=>`<div class="fenomen-admin-item">${itemHead(img.src || `Görsel ${i+1}`, path, i, img, img?.src)}<div class="fenomen-admin-grid">${check('Aktif', `${path}.${i}.enabled`)}${imageField('Görsel yolu', `${path}.${i}.src`, 'https://firebasestorage.googleapis.com/...')}${field('Alt metin', `${path}.${i}.alt`)}</div></div>`).join('')}`;
   }
   function renderTestimonialsEditor(){
     const base='sections.veliGorusleri'; const stats=`${base}.stats`; const arr=get(editorData,stats) || [];
@@ -5825,11 +5739,11 @@ main > .section:first-of-type{
     updateStatus('Tüm veriler orijinale döndürüldü.');
   }
   async function deleteAllData(){
-    const ok = await confirmAdmin('Sadece Firebase / sitefenomen yolu tamamen silinsin mi? Site yerel orijinal içerikle görünmeye devam eder.');
+    const ok = await confirmAdmin('Sadece Firebase / sitefenomen yolu tamamen silinsin mi? Firebase verisi kalmayacağı için dinamik içerik boş görünür.');
     if (!ok) return;
     localStorage.setItem(DELETE_FLAG, '1');
     await remove(siteRef);
-    siteData = clone(DEFAULT_CONTENT); editorData = clone(DEFAULT_CONTENT); applySite(siteData); renderEditor();
+    siteData = {}; editorData = {}; applySite(siteData); renderEditor();
     updateStatus('sitefenomen yolu silindi.');
   }
   async function confirmAdmin(text){
